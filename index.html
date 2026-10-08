@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#ffe4f0">
+<title>数学PK赛 · 和 Miuya 比一比</title>
+<style>
+:root{--pink:#ff6fa5;--pink2:#ffd1e3;--purple:#8e6bff;--purple2:#e6ddff;--mint:#2fbf94;--mint2:#d6f7ec;--coral:#ff8a7a;--coral2:#ffe3de;--sun:#ffc93c;--ink:#43315e;--ink2:#7a6a93;--card:#fff;--r:20px;--shadow:0 6px 18px rgba(142,107,255,.14);}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;}
+body{font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",sans-serif;color:var(--ink);background:linear-gradient(160deg,#ffe4f0 0%,#f3eaff 45%,#e3f1ff 100%) fixed;overscroll-behavior:none;-webkit-user-select:none;user-select:none;}
+button{font-family:inherit;color:inherit;border:0;cursor:pointer;touch-action:manipulation}
+button:focus-visible{outline:3px solid var(--purple);outline-offset:2px}
+.screen{display:none;min-height:100vh;min-height:100dvh;}
+.screen.active{display:block;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.wrap{max-width:980px;margin:0 auto;padding:14px 16px 28px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:16px}
+.row{display:flex;align-items:center;gap:10px}
+.btn{border-radius:18px;padding:14px 18px;font-size:18px;font-weight:700;background:#fff;box-shadow:0 4px 0 rgba(67,49,94,.12);transition:transform .08s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(67,49,94,.12)}
+.btn.primary{background:linear-gradient(180deg,#ff8dba,#ff5d98);color:#fff;box-shadow:0 5px 0 #d94a80}
+.btn.purple{background:linear-gradient(180deg,#a68bff,#7f5cff);color:#fff;box-shadow:0 5px 0 #6243d6}
+.btn.mint{background:linear-gradient(180deg,#4fd6ad,#25b488);color:#fff;box-shadow:0 5px 0 #1b8f6b}
+.btn.ghost{background:rgba(255,255,255,.7)}
+.iconbtn{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.85);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 3px 0 rgba(67,49,94,.1)}
+.iconbtn svg{width:24px;height:24px}
+.tag{display:inline-block;font-size:13px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--purple2);color:#6a4bd8}
+.tag.pink{background:var(--pink2);color:#d63e7a}.tag.mint{background:var(--mint2);color:#138a66}.tag.sun{background:#fff1c7;color:#a8740a}
+h1,h2,h3{margin:0}
+/* ---------- 首页 ---------- */
+.home-top{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:28px;font-weight:900;letter-spacing:1px;background:linear-gradient(90deg,#ff5d98,#8e6bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--ink2);font-size:14px;margin-top:2px}
+.hero{display:flex;align-items:center;justify-content:center;gap:10px;margin:14px 0 6px;position:relative}
+.hero .av{width:108px;height:108px}
+.vs{font-size:34px;font-weight:900;color:var(--sun);text-shadow:0 3px 0 #e59f00,0 0 12px #fff;transform:rotate(-8deg)}
+.bubble{position:relative;background:#fff;border-radius:16px;padding:8px 12px;font-size:14px;box-shadow:var(--shadow);max-width:260px}
+.hero-say{text-align:center;margin:0 auto 12px;width:fit-content}
+.hero-say:after{content:"";position:absolute;right:30px;top:-8px;border:8px solid transparent;border-top:0;border-bottom-color:#fff}
+.player{display:flex;align-items:center;gap:12px}
+.player .av{width:56px;height:56px;flex:none}
+.pname{font-size:18px;font-weight:800;border:2px dashed transparent;border-radius:10px;padding:2px 6px;background:transparent;font-family:inherit;color:var(--ink);width:9em;outline:none}
+.pname:focus{border-color:var(--pink2);background:#fff8fb}
+.lvl{font-size:13px;color:var(--ink2)}
+.xpbar{height:10px;border-radius:99px;background:#f1eafe;overflow:hidden;margin-top:6px}
+.xpbar i{display:block;height:100%;background:linear-gradient(90deg,#ffb3d0,#a68bff);border-radius:99px;transition:width .6s}
+.sec-title{font-size:16px;font-weight:800;margin:16px 4px 8px;display:flex;align-items:center;gap:6px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.seg button{background:#fff;border-radius:18px;padding:12px 6px;box-shadow:0 4px 0 rgba(67,49,94,.08);border:3px solid transparent;min-height:72px}
+.seg button b{display:block;font-size:19px}
+.seg button small{display:block;color:var(--ink2);font-size:12px;margin-top:3px}
+.seg button.on{border-color:var(--pink);background:#fff4f9}
+.topics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.topics button{background:#fff;border-radius:16px;padding:12px 4px;font-size:15px;font-weight:700;min-height:56px;border:3px solid transparent;box-shadow:0 4px 0 rgba(67,49,94,.08)}
+.topics button.on{border-color:var(--purple);background:#f7f3ff;color:#5b3fd0}
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tgl{display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:16px;padding:12px 14px;font-weight:700;min-height:56px;box-shadow:0 4px 0 rgba(67,49,94,.08);width:100%;font-size:15px}
+.sw{width:50px;height:30px;border-radius:99px;background:#e2dcea;position:relative;transition:.2s;flex:none}
+.sw:after{content:"";position:absolute;left:3px;top:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.15);transition:.2s}
+.tgl.on .sw{background:var(--mint)}.tgl.on .sw:after{left:23px}
+.go{width:100%;font-size:24px;padding:18px;margin-top:18px;letter-spacing:4px}
+.home-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.home-links .btn{font-size:16px;display:flex;align-items:center;justify-content:center;gap:6px}
+.home-links svg{width:22px;height:22px}
+@media(min-width:900px){
+  .home-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:22px;align-items:start}
+  .hero .av{width:150px;height:150px}
+}
+/* ---------- 游戏 ---------- */
+#scr-game.active{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
+.g-top{display:flex;align-items:center;gap:8px;padding:8px 12px 4px;flex:none}
+.g-top .qno{font-weight:900;font-size:17px}
+.g-top .grow{flex:1}
+.timer{font-weight:800;font-size:15px;background:#fff;border-radius:99px;padding:5px 12px;display:none;align-items:center;gap:4px}
+.timer.show{display:inline-flex}.timer.low{background:var(--coral2);color:#d4513f}
+.g-body{flex:1;display:flex;flex-direction:column;min-height:0;padding:0 12px 10px;gap:8px;max-width:1240px;width:100%;margin:0 auto}
+.g-left,.g-right{display:flex;flex-direction:column;gap:8px;min-height:0}
+.g-left{flex:1}
+.race{background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:8px 10px;display:flex;flex-direction:column;gap:6px;flex:none}
+.lane{display:flex;align-items:center;gap:8px}
+.lane .av{width:30px;height:30px;flex:none}
+.lane .nm{font-weight:800;font-size:14px;width:4.4em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dots{display:flex;gap:4px;flex:1}
+.dots i{flex:1;height:10px;border-radius:99px;background:#efe9f7;max-width:26px}
+.dots i.ok{background:var(--mint)}.dots i.no{background:#ffb4a8}.dots i.cur{background:#ffe08a;box-shadow:0 0 0 2px #ffcf4a inset}
+.lane .sc{font-weight:900;font-size:16px;min-width:3.2em;text-align:right}
+.combo{font-size:12px;font-weight:800;color:#e0558b;background:#ffe6f0;border-radius:99px;padding:1px 7px;display:none;white-space:nowrap}
+.combo.show{display:inline-block;animation:pop .3s}
+@keyframes pop{0%{transform:scale(.6)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+.miuya{background:linear-gradient(135deg,#f5f0ff,#fff);border-radius:18px;box-shadow:var(--shadow);padding:8px 10px;display:flex;align-items:center;gap:10px;flex:none;position:relative}
+.miuya .av{width:48px;height:48px;flex:none;animation:bob 1.6s ease-in-out infinite}
+.miuya.done .av{animation:hop .6s ease}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
+@keyframes hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-10px)}}
+.m-info{flex:1;min-width:0}
+.m-say{font-size:14px;font-weight:700;color:#6a4bd8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m-say .dotty:after{content:"";animation:dots 1.2s steps(4) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+.m-bar{height:12px;border-radius:99px;background:#ebe4fb;margin-top:6px;overflow:hidden;position:relative}
+.m-bar i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:99px;background:repeating-linear-gradient(45deg,#a68bff 0 10px,#b9a3ff 10px 20px);background-size:28px 28px;animation:stripes 1s linear infinite}
+@keyframes stripes{to{background-position:28px 0}}
+.miuya.done .m-bar i{background:linear-gradient(90deg,#a68bff,#ff8dba);animation:none}
+.m-pen{font-size:12px;color:var(--ink2);margin-left:auto;white-space:nowrap;font-weight:700}
+.scribble{position:absolute;right:12px;top:-6px;font-size:13px;font-weight:800;color:#b7a4f5;opacity:0;pointer-events:none}
+.scribble.fly{animation:fly 1.6s ease-out}
+@keyframes fly{0%{opacity:0;transform:translateY(8px)}20%{opacity:1}100%{opacity:0;transform:translateY(-22px)}}
+.qcard{background:#fff;border-radius:22px;box-shadow:var(--shadow);padding:14px 16px;flex:1;min-height:0;overflow:auto;position:relative}
+.qtags{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.qtext{font-size:19px;line-height:1.65;white-space:pre-line;font-weight:500;-webkit-user-select:text;user-select:text}
+.fig{display:flex;justify-content:center;margin-top:8px}
+.fig svg{width:100%;max-width:300px;height:auto}
+.hintbtn{margin-left:auto;background:#fff7d6;color:#a8740a;border-radius:99px;padding:5px 12px;font-size:13px;font-weight:800;display:inline-flex;align-items:center;gap:4px}
+.hintbox{margin-top:10px;background:#fffaf0;border:2px dashed #ffd66b;border-radius:14px;padding:8px 12px;font-size:15px;display:none}
+.hintbox.show{display:block;animation:fadein .2s}
+.ansrow{display:flex;align-items:center;gap:8px;background:#fff;border-radius:18px;box-shadow:var(--shadow);padding:8px 12px;flex:none}
+.ansrow .lab{font-weight:800;font-size:17px}
+.ansbox{flex:1;min-height:46px;border-radius:14px;background:#f8f5ff;border:3px solid #ddd0ff;font-size:26px;font-weight:800;display:flex;align-items:center;padding:0 12px;letter-spacing:1px;overflow:hidden}
+.ansbox .ph{color:#c2b6dc;font-size:16px;font-weight:600;letter-spacing:0}
+.ansbox .caret{display:inline-block;width:3px;height:28px;background:var(--pink);margin-left:2px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.ansbox.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.unit{font-weight:800;font-size:17px;color:var(--ink2);white-space:nowrap}
+.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;flex:none}
+.pad button{height:52px;border-radius:16px;background:#fff;font-size:26px;font-weight:800;box-shadow:0 4px 0 rgba(67,49,94,.12)}
+.pad button:active,.pad button.press{transform:translateY(3px);box-shadow:0 1px 0 rgba(67,49,94,.12);background:#fff4f9}
+.pad .fn{font-size:17px;background:#f4efff;color:#6a4bd8}
+.pad .ok{grid-row:span 2;height:auto;background:linear-gradient(180deg,#ff8dba,#ff5d98);color:#fff;font-size:22px;box-shadow:0 5px 0 #d94a80}
+.pad .skip{font-size:15px;background:#fff;color:var(--ink2)}
+.choices{display:grid;gap:10px;flex:none}
+.choices button{min-height:56px;border-radius:18px;background:#fff;font-size:19px;font-weight:800;box-shadow:0 4px 0 rgba(67,49,94,.12);border:3px solid transparent;padding:8px 12px}
+.choices button.sel{border-color:var(--pink);background:#fff4f9}
+.choices.two{grid-template-columns:1fr 1fr}.choices.three{grid-template-columns:1fr 1fr 1fr}
+.choices-foot{display:grid;grid-template-columns:1fr 2fr;gap:10px}
+@media(min-width:900px){
+  .g-body{flex-direction:row;gap:16px;padding:4px 20px 16px}
+  .g-right{width:390px;flex:none}
+  .miuya{padding:12px 14px}.miuya .av{width:84px;height:84px}
+  .m-say{font-size:16px;white-space:normal}
+  .qtext{font-size:22px}
+  .fig svg{max-width:380px}
+  .pad button{height:62px}
+  .race{padding:12px 14px}.lane .av{width:36px;height:36px}.dots i{height:12px}
+}
+.more-cue{display:none}
+.qcard.more .more-cue{display:block;position:sticky;bottom:-14px;margin:6px -16px -14px;padding:14px 0 8px;text-align:center;font-size:13px;font-weight:800;color:#8e6bff;background:linear-gradient(rgba(255,255,255,0),#fff 55%);pointer-events:none}
+.qcard.more .more-cue span{display:inline-block;background:#f3eeff;border-radius:99px;padding:3px 12px;animation:nudge 1.2s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(3px)}}
+@media(max-width:899px){
+  .qcard .fig svg{max-height:min(30vh,210px)}
+  #scr-game.hasfig .pad button{height:46px}
+  #scr-game.hasfig .pad .ok{height:auto}
+  #scr-game.hasfig .miuya{padding:6px 10px}#scr-game.hasfig .miuya .av{width:40px;height:40px}
+}
+@media(max-height:700px) and (max-width:899px){.pad button{height:44px}.qtext{font-size:17px}.miuya .av{width:38px;height:38px}}
+/* ---------- 反馈 ---------- */
+.mask{position:fixed;inset:0;background:rgba(67,49,94,.28);display:none;z-index:20}
+.mask.show{display:block;animation:fadein .2s}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:21;background:#fff;border-radius:26px 26px 0 0;box-shadow:0 -8px 30px rgba(67,49,94,.2);padding:16px 18px calc(16px + env(safe-area-inset-bottom));max-height:82vh;overflow:auto;transform:translateY(105%);visibility:hidden;transition:transform .28s cubic-bezier(.2,.9,.3,1.1),visibility 0s linear .28s;max-width:640px;margin:0 auto}
+.sheet.show{transform:none;visibility:visible;transition:transform .28s cubic-bezier(.2,.9,.3,1.1)} /* 收起时隐藏，免得阴影从底边露出来、也免得键盘 Tab 到看不见的按钮 */
+.fb-head{display:flex;align-items:center;gap:12px}
+.fb-head .big{font-size:26px;font-weight:900}
+.fb-head.ok .big{color:var(--mint)}.fb-head.no .big{color:#f07a67}
+.fb-head svg{width:52px;height:52px;flex:none}
+.fb-msg{color:var(--ink2);font-size:15px;margin-top:2px}
+.fb-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.fb-cell{background:#faf7ff;border-radius:14px;padding:8px 10px;font-size:14px}
+.fb-cell b{font-size:18px;display:block;margin-top:2px;word-break:break-all}
+.pts{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}
+.pts span{font-size:13px;font-weight:800;border-radius:99px;padding:3px 10px;background:var(--mint2);color:#138a66}
+.pts span.m{background:var(--purple2);color:#6a4bd8}
+.steps{background:#fffaf2;border-radius:16px;padding:10px 12px 10px 12px;margin-top:6px}
+.steps h4{margin:0 0 6px;font-size:15px;color:#a8740a;display:flex;align-items:center;gap:6px}
+.steps ol{margin:0;padding-left:22px;font-size:15.5px;line-height:1.7}
+.steps li::marker{color:#e2a31a;font-weight:800}
+.fb-actions{display:flex;gap:10px;margin-top:12px}
+.fb-actions .btn{flex:1}
+.toggle-steps{background:none;color:#a8740a;font-weight:800;font-size:15px;padding:6px 0}
+/* ---------- 结果 ---------- */
+.res-banner{text-align:center;padding:10px 0 4px;position:relative}
+.res-banner h2{font-size:30px;font-weight:900;margin-top:4px}
+.res-banner p{color:var(--ink2);margin:6px 0 0;font-size:15px}
+.trophy{width:120px;height:120px;margin:0 auto;animation:pop .6s}
+.stars{display:flex;justify-content:center;gap:8px;margin:8px 0}
+.stars svg{width:54px;height:54px;opacity:.25;transform:scale(.6);transition:.35s cubic-bezier(.2,.9,.3,1.4)}
+.stars svg.lit{opacity:1;transform:scale(1)}
+.stars svg:nth-child(2){margin-top:-12px}
+.vsbox{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin:10px 0}
+.vsbox .side{text-align:center}
+.vsbox .av{width:62px;height:62px}
+.vsbox .num{font-size:30px;font-weight:900}
+.vsbox .win{position:relative}
+.vsbox .crown{position:absolute;left:50%;top:-18px;transform:translateX(-50%);width:34px}
+.statg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.statg div{background:#faf7ff;border-radius:14px;padding:8px 4px;text-align:center;font-size:12px;color:var(--ink2)}
+.statg b{display:block;font-size:20px;color:var(--ink)}
+.newbadges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:6px 0}
+.res-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.res-actions .wide{grid-column:span 2}
+.lvup{background:linear-gradient(90deg,#fff1c7,#ffe4f0);border-radius:14px;padding:8px 12px;text-align:center;font-weight:800;margin:8px 0;animation:pop .5s}
+@media(min-width:900px){.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}}
+/* ---------- 回顾 / 徽章 / 记录 ---------- */
+.pagehead{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.pagehead h2{font-size:22px;font-weight:900;flex:1}
+.rv{margin-bottom:12px}
+.rv .qtext{font-size:17px}
+.rv-ans{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+.rv-ans span{border-radius:12px;padding:6px 10px;font-weight:800;font-size:15px}
+.rv-ans .me{background:var(--coral2);color:#c9503e}.rv-ans .right{background:var(--mint2);color:#138a66}
+.rv-filter{display:flex;gap:8px;margin-bottom:12px}
+.rv-filter button{border-radius:99px;padding:8px 16px;font-weight:800;background:#fff;font-size:15px}
+.rv-filter button.on{background:var(--purple);color:#fff}
+.allgood{text-align:center;padding:24px 10px}
+.allgood svg{width:110px;height:110px}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.badge{background:#fff;border-radius:18px;padding:12px 8px;text-align:center;box-shadow:var(--shadow)}
+.badge svg{width:64px;height:64px}
+.badge b{display:block;font-size:15px;margin-top:4px}
+.badge small{display:block;color:var(--ink2);font-size:12px;margin-top:2px;line-height:1.4}
+.badge.lock{opacity:.55;filter:grayscale(1)}
+.mini-badge{display:flex;flex-direction:column;align-items:center;font-size:12px;font-weight:800;width:74px;animation:pop .5s}
+.mini-badge svg{width:52px;height:52px}
+table.rec{width:100%;border-collapse:collapse;font-size:14px}
+table.rec th{color:var(--ink2);font-weight:700;text-align:left;padding:6px 4px;border-bottom:2px solid #f1eafe}
+table.rec td{padding:8px 4px;border-bottom:1px solid #f5f0fb}
+.w{color:var(--mint);font-weight:800}.l{color:#e88a7a;font-weight:800}.t{color:#a8740a;font-weight:800}
+.empty{color:var(--ink2);text-align:center;padding:18px}
+.sumg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.sumg div{background:#fff;border-radius:14px;padding:10px 4px;text-align:center;font-size:12px;color:var(--ink2);box-shadow:var(--shadow)}
+.sumg b{display:block;font-size:20px;color:var(--ink)}
+/* ---------- 弹窗 / 提示 / 彩带 ---------- */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:40;background:rgba(67,49,94,.35);padding:20px}
+.modal.show{display:flex;animation:fadein .2s}
+.modal .card{max-width:360px;width:100%;text-align:center}
+.modal p{font-size:17px;margin:10px 0 16px}
+.modal .row{justify-content:center}
+.modal .btn{flex:1}
+#toast{position:fixed;left:50%;top:16px;transform:translate(-50%,-80px);background:#fff;border-radius:99px;padding:10px 18px;font-weight:800;box-shadow:var(--shadow);z-index:50;transition:transform .3s;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+#toast.show{transform:translate(-50%,0)}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:30;overflow:hidden}
+.confetti i{position:absolute;top:-20px;width:10px;height:14px;border-radius:3px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div id="app">
+<!-- 首页 -->
+<section id="scr-home" class="screen active">
+ <div class="wrap">
+  <div class="home-top">
+   <div><div class="logo">数学 PK 赛</div><div class="sub">五年级上册 · 和 Miuya 比一比！</div></div>
+   <button class="iconbtn" data-act="mute" aria-label="音效开关"></button>
+  </div>
+  <div class="home-grid">
+   <div>
+    <div class="hero"><div class="av" data-av="me"></div><div class="vs">VS</div><div class="av" data-av="miuya"></div></div>
+    <div class="bubble hero-say" id="homeSay">今天也来比一比吧～</div>
+    <div class="card player">
+     <div class="av" data-av="me"></div>
+     <div style="flex:1;min-width:0">
+      <input class="pname" id="pname" maxlength="8" aria-label="我的名字" value="我">
+      <div class="lvl" id="lvlText">Lv.1 数学小芽</div>
+      <div class="xpbar"><i id="xpFill" style="width:0"></i></div>
+     </div>
+     <div style="text-align:center"><div style="font-size:12px;color:var(--ink2)">徽章</div><b id="badgeCount" style="font-size:20px">0</b></div>
+    </div>
+   </div>
+   <div>
+    <div class="sec-title">选择难度</div>
+    <div class="seg" id="diffSeg">
+     <button data-diff="1"><b>基础</b><small>Miuya 慢慢想</small></button>
+     <button data-diff="2"><b>提高</b><small>Miuya 认真算</small></button>
+     <button data-diff="3"><b>挑战</b><small>Miuya 全力以赴</small></button>
+    </div>
+    <div class="sec-title">选择专题</div>
+    <div class="topics" id="topicGrid"></div>
+    <div class="sec-title">设置</div>
+    <div class="toggles">
+     <button class="tgl" data-act="timer"><span>每题限时</span><span class="sw"></span></button>
+     <button class="tgl" data-act="sound"><span>音效</span><span class="sw"></span></button>
+    </div>
+    <button class="btn primary go" data-act="start">开始 PK！</button>
+    <div class="home-links">
+     <button class="btn ghost" data-act="badges"></button>
+     <button class="btn ghost" data-act="records"></button>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+<!-- 游戏 -->
+<section id="scr-game" class="screen">
+ <div class="g-top">
+  <button class="iconbtn" data-act="quit" aria-label="退出"></button>
+  <span class="qno" id="qno">第 1 / 10 题</span>
+  <span class="tag" id="gDiff">基础</span>
+  <span class="grow"></span>
+  <span class="timer" id="timer"></span>
+  <button class="iconbtn" data-act="mute" aria-label="音效开关"></button>
+ </div>
+ <div class="g-body">
+  <div class="g-left">
+   <div class="race">
+    <div class="lane"><div class="av" data-av="me"></div><span class="nm" id="meName">我</span><div class="dots" id="meDots"></div><span class="combo" id="meCombo"></span><span class="sc" id="meScore">0</span></div>
+    <div class="lane"><div class="av" data-av="miuya"></div><span class="nm">Miuya</span><div class="dots" id="miDots"></div><span class="combo" id="miCombo"></span><span class="sc" id="miScore">0</span></div>
+   </div>
+   <div class="qcard" id="qcard">
+    <div class="qtags"><span class="tag pink" id="qTopic"></span><span class="tag" id="qKind"></span><button class="hintbtn" data-act="hint"></button></div>
+    <div class="qtext" id="qtext"></div>
+    <div class="fig" id="qfig"></div>
+    <div class="hintbox" id="hintbox"></div>
+    <div class="more-cue" aria-hidden="true"><span>↓ 往下滑，看完整题目和图</span></div>
+   </div>
+  </div>
+  <div class="g-right">
+   <div class="miuya" id="miuyaBox">
+    <div class="av" data-av="miuya"></div>
+    <div class="m-info">
+     <div class="row"><div class="m-say" id="mSay"></div></div>
+     <div class="m-bar"><i id="mBar"></i></div>
+    </div>
+    <span class="scribble" id="scribble"></span>
+   </div>
+   <div id="inputArea"></div>
+  </div>
+ </div>
+</section>
+<!-- 结果 -->
+<section id="scr-result" class="screen"><div class="wrap" id="resultWrap"></div></section>
+<!-- 错题回顾 -->
+<section id="scr-review" class="screen"><div class="wrap" id="reviewWrap"></div></section>
+<!-- 徽章 -->
+<section id="scr-badges" class="screen"><div class="wrap" id="badgesWrap"></div></section>
+<!-- 记录 -->
+<section id="scr-records" class="screen"><div class="wrap" id="recordsWrap"></div></section>
+</div>
+<div class="mask" id="mask"></div>
+<div class="sheet" id="sheet" role="dialog" aria-live="polite"></div>
+<div class="modal" id="modal"><div class="card"><div id="modalAv"></div><p id="modalText"></p><div class="row"><button class="btn ghost" id="modalNo">取消</button><button class="btn primary" id="modalYes">确定</button></div></div></div>
+<div id="toast"></div>
+<script>
+/*GEN-START*/
+(function(root){
+'use strict';
+/* ---------- 随机与数字工具 ---------- */
+var rng=Math.random;
+function setSeed(s){
+  if(s==null){rng=Math.random;return;}
+  var a=s>>>0;
+  rng=function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};
+}
+function ri(a,b){return a+Math.floor(rng()*(b-a+1));}
+function pick(a){return a[Math.floor(rng()*a.length)];}
+function chance(p){return rng()<p;}
+function R(x){return Math.round(x*1e6)/1e6;}
+function F(x){x=R(x);if(x===0)return '0';return String(x);}
+function D(n,k){return R(n/Math.pow(10,k));}
+function dp(x){var s=F(x),i=s.indexOf('.');return i<0?0:s.length-i-1;}
+function isInt(x){return Math.abs(x-Math.round(x))<1e-9;}
+function gcd(a,b){a=Math.abs(a);b=Math.abs(b);while(b){var t=a%b;a=b;b=t;}return a;}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(rng()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function toInt(x){var p=dp(x);return [Math.round(R(x)*Math.pow(10,p)),p];}
+function placeDec(n,p){var s=String(n);if(p===0)return s;while(s.length<=p)s='0'+s;return s.slice(0,s.length-p)+'.'+s.slice(s.length-p);}
+function frac(a,b){var x=toInt(a),y=toInt(b);var N=x[0]*Math.pow(10,y[1]),M=y[0]*Math.pow(10,x[1]);var g=gcd(N,M);return [N/g,M/g];}
+function roundHalfUp(a,b,k){var f=frac(a,b),s=Math.pow(10,k);return R(Math.floor((2*f[0]*s+f[1])/(2*f[1]))/s);}
+function terminates(a,b){var M=frac(a,b)[1];while(M%2===0)M/=2;while(M%5===0)M/=5;return M===1;}
+function longDiv(a,b,max){
+  var f=frac(a,b),N=f[0],M=f[1],ip=Math.floor(N/M),r=N%M,digits=[],seen={},cs=-1;
+  while(r!==0&&digits.length<max){if(seen[r]!==undefined){cs=seen[r];break;}seen[r]=digits.length;r*=10;digits.push(Math.floor(r/M));r%=M;}
+  return {ip:ip,digits:digits,cs:cs,cl:cs<0?0:digits.length-cs};
+}
+function expansion(a,b,n){ // 如 3.333…（循环节是3）
+  var L=longDiv(a,b,40),ds=L.digits.slice();
+  if(L.cs>=0){var cyc=ds.slice(L.cs);while(ds.length<n)ds=ds.concat(cyc);}
+  return {text:L.ip+'.'+ds.slice(0,n).join('')+'…',cyc:L.cs>=0?L.digits.slice(L.cs).join(''):'',digits:ds,ip:L.ip};
+}
+var CN=['零','一','两','三','四','五','六','七','八','九','十'];
+var NAMES=['小丽','朵朵','乐乐','小明','笑笑','天天','甜甜','阳阳','小华','豆豆'];
+function two(){var a=pick(NAMES),b;do{b=pick(NAMES);}while(b===a);return [a,b];}
+
+/* ---------- 模板注册 ---------- */
+var TOPICS={dm:'小数乘法',dd:'小数除法',eq:'简易方程',ar:'多边形的面积',pos:'位置',pr:'可能性',tr:'植树问题'};
+var TPL=[];
+function T(id,topic,lv,kind,gen){TPL.push({id:id,topic:topic,lv:lv,kind:kind,gen:gen});}
+
+/* ======================= 小数乘法 ======================= */
+T('dm_calc1','dm',[1,3],'calc',function(d){
+  var a,b;
+  if(d===1){a=D(ri(12,99),1);b=ri(2,9);}
+  else if(d===2){a=D(ri(12,99),1);b=D(ri(2,35),1);}
+  else{a=D(ri(101,999),2);b=D(ri(12,48),1);}
+  if(isInt(a)||(d>1&&isInt(b)))return null;
+  var x=toInt(a),y=toInt(b),prod=x[0]*y[0],p=x[1]+y[1],placed=placeDec(prod,p),ans=R(a*b);
+  var steps=['先不看小数点，按整数乘法计算：'+x[0]+' × '+y[0]+' = '+prod,
+    '两个因数一共有'+p+'位小数，就从积的右边起数出'+p+'位，点上小数点：'+placed];
+  steps.push(placed!==F(ans)?'小数末尾的0可以去掉，所以积是 '+F(ans):'所以积是 '+F(ans));
+  return {text:'计算：'+F(a)+' × '+F(b)+' = ?',expr:F(a)+'×'+F(b),answer:ans,unit:'',steps:steps,v:{a:a,b:b}};
+});
+T('dm_calc2','dm',[2,3],'calc',function(d){
+  var k=ri(0,d===2?3:5),a=D(ri(11,99),1),e,ans,steps;
+  if(isInt(a))return null;
+  if(k===0){e='0.25×'+F(a)+'×4';ans=a;steps=['运用乘法交换律，先算 0.25×4 = 1','原式 = 0.25×4×'+F(a)+' = 1×'+F(a)+' = '+F(a)];}
+  else if(k===1){e='1.25×'+F(a)+'×8';ans=R(a*10);steps=['运用乘法交换律，先算 1.25×8 = 10','原式 = 1.25×8×'+F(a)+' = 10×'+F(a)+' = '+F(ans)];}
+  else if(k===2){var b=D(ri(11,89),1),c=R(10-b);if(isInt(b))return null;e=F(a)+'×'+F(b)+'+'+F(a)+'×'+F(c);ans=R(a*10);
+    steps=['两个乘法算式都有 '+F(a)+'，运用乘法分配律','原式 = '+F(a)+'×('+F(b)+'+'+F(c)+') = '+F(a)+'×10 = '+F(ans)];}
+  else if(k===3){e=F(a)+'×10.1';ans=R(a*10.1);steps=['把 10.1 看成 10+0.1，运用乘法分配律','原式 = '+F(a)+'×10 + '+F(a)+'×0.1 = '+F(R(a*10))+' + '+F(R(a*0.1))+' = '+F(ans)];}
+  else if(k===4){e=F(a)+'×99';ans=R(a*99);steps=['把 99 看成 100−1，运用乘法分配律','原式 = '+F(a)+'×100 − '+F(a)+' = '+F(R(a*100))+' − '+F(a)+' = '+F(ans)];}
+  else{var b2=D(ri(21,99),1),c2=R(b2-1);if(isInt(b2))return null;e=F(a)+'×'+F(b2)+'-'+F(a)+'×'+F(c2);ans=a;
+    steps=['两个乘法算式都有 '+F(a)+'，运用乘法分配律','原式 = '+F(a)+'×('+F(b2)+'−'+F(c2)+') = '+F(a)+'×1 = '+F(a)];}
+  return {text:'用简便方法计算：'+e.replace(/-/g,'−')+' = ?',expr:e,answer:ans,unit:'',steps:steps,v:{}};
+});
+T('dm_calc3','dm',[2,3],'calc',function(d){
+  var k=ri(0,2),e,ans,steps;
+  if(k===0){var a=D(ri(11,99),1),b=ri(2,9),c=D(ri(11,99),1);if(isInt(a)||isInt(c))return null;var m=R(a*b);ans=R(m+c);
+    e=F(a)+'×'+b+'+'+F(c);steps=['先算乘法：'+F(a)+'×'+b+' = '+F(m),'再算加法：'+F(m)+' + '+F(c)+' = '+F(ans)];}
+  else if(k===1){var a1=D(ri(11,60),1),b1=D(ri(11,60),1),c1=d===3?D(ri(12,49),1):ri(2,9);var s=R(a1+b1);ans=R(s*c1);
+    if(isInt(a1)||isInt(b1)||dp(ans)>2)return null;
+    e='('+F(a1)+'+'+F(b1)+')×'+F(c1);steps=['先算括号里的：'+F(a1)+' + '+F(b1)+' = '+F(s),'再算乘法：'+F(s)+' × '+F(c1)+' = '+F(ans)];}
+  else{var b3=D(ri(11,50),1),c3=ri(2,6),m3=R(b3*c3),a3=R(m3+D(ri(5,99),1));if(isInt(b3))return null;ans=R(a3-m3);
+    e=F(a3)+'-'+F(b3)+'×'+c3;steps=['先算乘法：'+F(b3)+'×'+c3+' = '+F(m3),'再算减法：'+F(a3)+' − '+F(m3)+' = '+F(ans)];}
+  return {text:'计算：'+e.replace(/-/g,'−')+' = ?',expr:e,answer:ans,unit:'',steps:steps,v:{}};
+});
+var FRUITS=[['苹果',55,98],['香蕉',35,68],['葡萄',85,158],['草莓',185,298],['橘子',38,65],['梨',45,78]];
+T('dm_price','dm',[1,3],'app',function(d){
+  var f=pick(FRUITS),p=D(ri(f[1],f[2]),1),w=d===1?ri(2,6):D(ri(12,45),1);
+  if(isInt(p)||(d>1&&isInt(w)))return null;
+  var t=R(p*w),steps=['总价 = 单价 × 数量','买'+f[0]+'要付：'+F(p)+' × '+F(w)+' = '+F(t)+'（元）'];
+  if(d===3){var pay=t<50?50:100;if(t>=pay)return null;var ans=R(pay-t);steps.push('应找回：'+pay+' − '+F(t)+' = '+F(ans)+'（元）');steps.push('答：应找回 '+F(ans)+' 元。');
+    return {text:'水果店里'+f[0]+'每千克'+F(p)+'元，妈妈买了'+F(w)+'千克，付给售货员'+pay+'元，应找回多少元？',answer:ans,unit:'元',steps:steps,v:{p:p,w:w,pay:pay}};}
+  steps.push('答：一共要付 '+F(t)+' 元。');
+  return {text:'水果店里'+f[0]+'每千克'+F(p)+'元，妈妈买了'+F(w)+'千克，一共要付多少元？',answer:t,unit:'元',steps:steps,v:{p:p,w:w}};
+});
+T('dm_step','dm',[1,2],'app',function(d){
+  var n=NAMES[ri(0,9)],s=D(ri(52,68),2),k=ri(30,90)*10,ans=R(s*k);
+  if(s*100%10===0)return null;
+  return {text:n+'每步大约长'+F(s)+'米，从家走到学校一共走了'+k+'步。'+n+'家到学校大约有多少米？',answer:ans,unit:'米',
+    steps:['路程 = 每步的长度 × 步数',F(s)+' × '+k+' = '+F(ans)+'（米）','答：大约有 '+F(ans)+' 米。'],v:{s:s,k:k}};
+});
+T('dm_taxi','dm',[2,3],'app',function(d){
+  var b=pick([8,10,11,13]),r=D(ri(15,26),1),km=ri(5,15),ex=km-3,ans=R(b+ex*r);
+  if(isInt(r))return null;
+  return {text:'某城市出租车收费标准：3千米以内（含3千米）收费'+b+'元，超过3千米的部分每千米收费'+F(r)+'元。妈妈乘出租车行驶了'+km+'千米，应付车费多少元？',answer:ans,unit:'元',
+    steps:['先求超过3千米的部分：'+km+' − 3 = '+ex+'（千米）','超出部分的车费：'+F(r)+' × '+ex+' = '+F(R(ex*r))+'（元）','再加上起步价：'+b+' + '+F(R(ex*r))+' = '+F(ans)+'（元）','答：应付车费 '+F(ans)+' 元。'],v:{b:b,r:r,km:km}};
+});
+T('dm_rect','dm',[1,3],'app',function(d){
+  var a,b;
+  if(d<3){a=D(ri(35,120),1);b=D(ri(15,60),1);if(isInt(a)||isInt(b)||b>=a)return null;var s=R(a*b);
+    return {text:'一块长方形菜地长'+F(a)+'米，宽'+F(b)+'米。这块菜地的面积是多少平方米？',answer:s,unit:'平方米',
+      steps:['长方形的面积 = 长 × 宽',F(a)+' × '+F(b)+' = '+F(s)+'（平方米）','答：面积是 '+F(s)+' 平方米。'],v:{a:a,b:b}};}
+  a=D(ri(35,120),1);b=ri(4,12);var k=D(ri(2,9),1);if(isInt(a)||b>=a)return null;var s2=R(a*b),ans=R(s2*k);
+  return {text:'一块长方形菜地长'+F(a)+'米，宽'+b+'米。如果每平方米施肥'+F(k)+'千克，这块地一共要施肥多少千克？',answer:ans,unit:'千克',
+    steps:['先求面积：'+F(a)+' × '+b+' = '+F(s2)+'（平方米）','再求化肥：'+F(s2)+' × '+F(k)+' = '+F(ans)+'（千克）','答：一共要施肥 '+F(ans)+' 千克。'],v:{a:a,b:b,k:k}};
+});
+T('dm_water','dm',[2,3],'app',function(d){
+  var n=pick(NAMES);
+  if(d===2){var p=D(ri(25,45),1),t=ri(8,20),ans=R(p*t);if(isInt(p))return null;
+    return {text:'自来水每吨'+F(p)+'元，'+n+'家上个月用水'+t+'吨。上个月应交水费多少元？',answer:ans,unit:'元',steps:['水费 = 每吨的价钱 × 吨数',F(p)+' × '+t+' = '+F(ans)+'（元）','答：应交水费 '+F(ans)+' 元。'],v:{p:p,t:t}};}
+  var lim=pick([10,12,15]),p1=D(ri(25,35),1),p2=R(p1+D(ri(10,20),1)),t2=lim+ri(2,9);
+  if(isInt(p1)||isInt(p2))return null;
+  var c1=R(lim*p1),c2=R((t2-lim)*p2),ans2=R(c1+c2);
+  return {text:'某市实行阶梯水价：每户每月用水不超过'+lim+'吨，每吨'+F(p1)+'元；超过'+lim+'吨的部分，每吨'+F(p2)+'元。'+n+'家这个月用水'+t2+'吨，应交水费多少元？',answer:ans2,unit:'元',
+    steps:['前'+lim+'吨的水费：'+lim+' × '+F(p1)+' = '+F(c1)+'（元）','超出部分：'+t2+' − '+lim+' = '+(t2-lim)+'（吨），水费 '+(t2-lim)+' × '+F(p2)+' = '+F(c2)+'（元）','合计：'+F(c1)+' + '+F(c2)+' = '+F(ans2)+'（元）','答：应交水费 '+F(ans2)+' 元。'],v:{lim:lim,p1:p1,p2:p2,t:t2}};
+});
+T('dm_oil','dm',[1,2],'app',function(d){
+  var r=D(ri(32,48),2),m=ri(4,30)*5,ans=R(r*m);
+  if(r*100%10===0)return null;
+  return {text:'1千克花生大约可以榨油'+F(r)+'千克。照这样计算，'+m+'千克花生大约可以榨油多少千克？',answer:ans,unit:'千克',
+    steps:['求'+m+'个'+F(r)+'千克是多少，用乘法',F(r)+' × '+m+' = '+F(ans)+'（千克）','答：大约可以榨油 '+F(ans)+' 千克。'],v:{r:r,m:m}};
+});
+T('dm_speed','dm',[1,3],'app',function(d){
+  var v=ri(45,90),t=D(ri(12,45),1);if(isInt(t))return null;var s=R(v*t);
+  if(d===3){var t2=D(ri(12,30),1),n=R(v*t2),tot=R(s+n);if(isInt(t2))return null;
+    return {text:'一辆汽车每小时行驶'+v+'千米。上午行驶了'+F(t)+'小时，下午行驶了'+F(t2)+'小时，这一天一共行驶了多少千米？',answer:tot,unit:'千米',
+      steps:['先求一共行驶的时间：'+F(t)+' + '+F(t2)+' = '+F(R(t+t2))+'（小时）','路程 = 速度 × 时间：'+v+' × '+F(R(t+t2))+' = '+F(tot)+'（千米）','答：一共行驶了 '+F(tot)+' 千米。'],v:{v:v,t:t,t2:t2}};}
+  return {text:'一辆汽车每小时行驶'+v+'千米，'+F(t)+'小时行驶多少千米？',answer:s,unit:'千米',
+    steps:['路程 = 速度 × 时间',v+' × '+F(t)+' = '+F(s)+'（千米）','答：行驶了 '+F(s)+' 千米。'],v:{v:v,t:t}};
+});
+
+/* ======================= 小数除法 ======================= */
+T('dd_calc1','dd',[1,3],'calc',function(d){
+  var q,b,a,steps=[];
+  if(d===1){b=ri(2,9);q=D(ri(11,99),pick([1,2]));if(isInt(q))return null;a=R(q*b);
+    steps=['除数是整数，按整数除法去除，商的小数点要和被除数的小数点对齐','所以 '+F(a)+' ÷ '+b+' = '+F(q)];}
+  else{
+    if(d===2){b=D(ri(12,49),1);q=chance(0.5)?ri(2,30):D(ri(11,99),1);}
+    else{b=pick([D(ri(12,96),2),D(ri(12,96),2),D(ri(12,49),1)]);q=chance(0.6)?ri(12,80):D(ri(11,99),1);}
+    if(isInt(b))return null;a=R(q*b);if(dp(a)>2||a<1)return null;
+    var p=dp(b),s=Math.pow(10,p),A=R(a*s),B=R(b*s);
+    steps=['除数 '+F(b)+' 是'+CN[p]+'位小数，把除数和被除数同时扩大到原来的'+s+'倍，商不变',F(a)+' ÷ '+F(b)+' = '+F(A)+' ÷ '+F(B),'计算得：'+F(A)+' ÷ '+F(B)+' = '+F(q)];}
+  return {text:'计算：'+F(a)+' ÷ '+F(b)+' = ?',expr:F(a)+'÷'+F(b),answer:q,unit:'',steps:steps,v:{}};
+});
+T('dd_approx','dd',[1,3],'calc',function(d){
+  var a,b;
+  if(d===1){a=ri(1,50);b=pick([3,6,7,9,11,12]);}
+  else if(d===2){a=D(ri(11,99),1);b=pick([3,6,7,9,11]);}
+  else{a=D(ri(11,99),1);b=D(pick([3,6,7,9,11,12,13]),1);}
+  if(terminates(a,b)||isInt(a/b))return null;
+  var k=d===1?pick([1,2]):2,ans=roundHalfUp(a,b,k),ex=expansion(a,b,6),nd=ex.digits[k];
+  var steps=[F(a)+' ÷ '+F(b)+' = '+ex.text+'，除不尽，商是循环小数（循环节是“'+ex.cyc+'”）',
+    '保留'+CN[k]+'位小数，要看小数点后第'+(k+1)+'位：是 '+nd+'，'+(nd>=5?'大于或等于5，向前一位进1':'小于5，直接舍去'),
+    '所以 '+F(a)+' ÷ '+F(b)+' ≈ '+ans.toFixed(k)];
+  return {text:'计算：'+F(a)+' ÷ '+F(b)+' ≈ ?（得数保留'+CN[k]+'位小数）',expr:F(a)+'÷'+F(b),round:k,answer:ans,unit:'',steps:steps,v:{}};
+});
+T('dd_cycdigit','dd',[3,3],'calc',function(d){
+  var b=pick([7,11,13,27,37]),a=ri(1,b-1);if(gcd(a,b)!==1)return null;
+  var n=ri(20,99),L=longDiv(a,b,30),cyc=L.digits.slice(L.cs),Ln=cyc.length,r=n%Ln,dig=r===0?cyc[Ln-1]:cyc[r-1];
+  var steps=[a+' ÷ '+b+' = 0.'+cyc.join('')+cyc.join('')+'…，循环节是“'+cyc.join('')+'”，有'+Ln+'位',
+    n+' ÷ '+Ln+' = '+Math.floor(n/Ln)+(r?'……'+r:''),
+    r===0?'没有余数，第'+n+'位就是循环节的最后一位，是 '+dig:'余数是'+r+'，第'+n+'位就是循环节的第'+r+'位，是 '+dig];
+  return {text:a+' ÷ '+b+' 的商是一个循环小数，商的小数部分第'+n+'位上的数字是几？',answer:dig,unit:'',steps:steps,v:{a:a,b:b,n:n}};
+});
+var GOODS=[['大米','千克'],['面粉','千克'],['毛线','千克'],['彩带','米'],['花布','米']];
+T('dd_price','dd',[1,2],'app',function(d){
+  var g=pick(GOODS),p=D(ri(25,120),1),w=d===1?ri(2,8):D(ri(12,45),1);
+  if(isInt(p)||(d===2&&isInt(w)))return null;var m=R(p*w);if(dp(m)>2)return null;
+  return {text:'妈妈买了'+F(w)+g[1]+g[0]+'，一共花了'+F(m)+'元。每'+g[1]+g[0]+'多少元？',answer:p,unit:'元',
+    steps:['单价 = 总价 ÷ 数量',F(m)+' ÷ '+F(w)+' = '+F(p)+'（元）','答：每'+g[1]+'要 '+F(p)+' 元。'],v:{m:m,w:w}};
+});
+var VEH=[['一辆汽车',40,90],['一列高铁',200,320],['一辆自行车',12,18]];
+T('dd_speed','dd',[1,3],'app',function(d){
+  var vh=pick(VEH),v=ri(vh[1],vh[2]),t=D(ri(12,45),1);if(isInt(t))return null;var s=R(v*t);if(dp(s)>1)return null;
+  if(d===3){var t2=D(ri(12,55),1);if(isInt(t2))return null;var s2=R(v*t2);if(dp(s2)>1||s2===s)return null;
+    return {text:vh[0]+F(t)+'小时行驶了'+F(s)+'千米。照这样的速度，行驶'+F(s2)+'千米需要多少小时？',answer:t2,unit:'小时',
+      steps:['先求速度：'+F(s)+' ÷ '+F(t)+' = '+v+'（千米/时）','再求时间：'+F(s2)+' ÷ '+v+' = '+F(t2)+'（小时）','答：需要 '+F(t2)+' 小时。'],v:{t:t,s:s,s2:s2}};}
+  return {text:vh[0]+F(t)+'小时行驶了'+F(s)+'千米，平均每小时行驶多少千米？',answer:v,unit:'千米',
+    steps:['速度 = 路程 ÷ 时间',F(s)+' ÷ '+F(t)+' = '+v+'（千米）','答：平均每小时行驶 '+v+' 千米。'],v:{t:t,s:s}};
+});
+var CEIL=[function(c,T){return ['妈妈要把'+F(T)+'千克香油分装在瓶子里，每个瓶子最多装'+F(c)+'千克，至少需要几个瓶子？','个','瓶子'];},
+  function(c,T){return ['一批货物重'+F(T)+'吨，一辆货车每次最多运'+F(c)+'吨，至少要运几次才能运完？','次','次数'];},
+  function(c,T){return ['一桶水'+F(T)+'升，用每瓶最多装'+F(c)+'升的水壶来装，至少需要几个水壶？','个','水壶']; }];
+var FLOOR=[function(c,T){return ['做一套衣服用布'+F(c)+'米，'+F(T)+'米布最多可以做几套这样的衣服？','套'];},
+  function(c,T){return ['一个包装盒可以装'+F(c)+'千克月饼，'+F(T)+'千克月饼最多可以装满几盒？','盒'];},
+  function(c,T){return ['包装一个礼盒要用'+F(c)+'米彩带，'+F(T)+'米彩带最多能包装几个礼盒？','个'];}];
+T('dd_ceil','dd',[2,3],'app',function(d){
+  var c=D(ri(12,45),1);if(isInt(c))return null;var q=ri(3,20),ex=D(ri(1,Math.round(c*10)-1),1),Tt=R(c*q+ex);
+  if(dp(Tt)>1||isInt(Tt/c))return null;var up=chance(0.5),tx=up?pick(CEIL)(c,Tt):pick(FLOOR)(c,Tt),val=(Math.floor(Tt/c*100)/100).toFixed(2);
+  var ans=up?q+1:q;
+  var steps=[F(Tt)+' ÷ '+F(c)+' ≈ '+val+'……（除不尽）',
+    up?'剩下的部分也要装（运），所以要多用一个，用“进一法”：'+q+' + 1 = '+ans:'剩下的不够再做（装）一份，用“去尾法”：取整数部分 '+ans,
+    '答：'+(up?'至少需要 ':'最多 ')+ans+' '+tx[1]+'。'];
+  return {text:tx[0],answer:ans,unit:tx[1],steps:steps,v:{c:c,T:Tt,up:up}};
+});
+T('dd_share','dd',[1,2],'app',function(d){
+  var n=ri(3,9),v=ri(0,2),q;
+  if(v===2)q=d===1?D(ri(110,499),1):D(ri(1101,4999),2); // 合买图书：每人十几到几十元才合理
+  else q=D(ri(11,99),d===1?1:2);
+  if(isInt(q)||d===2&&isInt(q*10))return null;var L=R(q*n);if(dp(L)>2)return null;
+  var ctx=[['一根彩带长'+F(L)+'米，平均剪成'+n+'段，每段长多少米？','米','每段长'],['一桶油重'+F(L)+'千克，平均分装在'+n+'个瓶子里，每个瓶子装多少千克？','千克','每个瓶子装'],[n+'个同学一起买了一套图书，一共'+F(L)+'元，平均每人应付多少元？','元','平均每人应付']][v];
+  return {text:ctx[0],answer:q,unit:ctx[1],steps:['平均分，用除法',F(L)+' ÷ '+n+' = '+F(q)+'（'+ctx[1]+'）','答：'+ctx[2]+' '+F(q)+' '+ctx[1]+'。'],v:{L:L,n:n}};
+});
+T('dd_unit','dd',[2,3],'app',function(d){
+  var p=D(ri(25,95),1),w=pick([2,4,5,D(ri(12,45),1)]),w2=ri(3,12);if(isInt(p)||w2===w)return null;
+  var m=R(p*w);if(dp(m)>2)return null;var g=pick(['大米','苹果','花生','白糖']);
+  if(d===3&&chance(0.5)){var w3=D(ri(12,60),1),M=R(p*w3);if(dp(M)>2||isInt(w3))return null;
+    return {text:'商店里'+F(w)+'千克'+g+'卖'+F(m)+'元。照这样的价格，'+F(M)+'元可以买多少千克'+g+'？',answer:w3,unit:'千克',
+      steps:['先求每千克多少元：'+F(m)+' ÷ '+F(w)+' = '+F(p)+'（元）','再求能买多少千克：'+F(M)+' ÷ '+F(p)+' = '+F(w3)+'（千克）','答：可以买 '+F(w3)+' 千克。'],v:{w:w,m:m,M:M}};}
+  var ans=R(p*w2);
+  return {text:'商店里'+F(w)+'千克'+g+'卖'+F(m)+'元。照这样的价格，买'+w2+'千克'+g+'要多少元？',answer:ans,unit:'元',
+    steps:['先求每千克多少元：'+F(m)+' ÷ '+F(w)+' = '+F(p)+'（元）','再求'+w2+'千克的价钱：'+F(p)+' × '+w2+' = '+F(ans)+'（元）','答：要 '+F(ans)+' 元。'],v:{w:w,m:m,w2:w2}};
+});
+T('dd_calc2','dd',[2,3],'calc',function(d){
+  var k=ri(0,2),e,ans,steps;
+  if(k===0){var c=ri(2,9),q=D(ri(11,99),1),diff=R(q*c),b=D(ri(11,99),1),a=R(diff+b);if(isInt(b)||dp(a)>1)return null;ans=q;
+    e='('+F(a)+'-'+F(b)+')÷'+c;steps=['先算括号里的：'+F(a)+' − '+F(b)+' = '+F(diff),'再算除法：'+F(diff)+' ÷ '+c+' = '+F(q)];}
+  else if(k===1){var b1=D(ri(12,49),1),q1=ri(2,30),a1=R(q1*b1),c1=D(ri(11,99),1);if(isInt(b1)||isInt(c1))return null;ans=R(q1+c1);
+    e=F(a1)+'÷'+F(b1)+'+'+F(c1);steps=['先算除法：'+F(a1)+' ÷ '+F(b1)+' = '+q1,'再算加法：'+q1+' + '+F(c1)+' = '+F(ans)];}
+  else{var b2=ri(2,9),q2=D(ri(11,99),1),a2=R(q2*b2),c2=ri(2,9);if(isInt(q2))return null;ans=R(q2*c2);
+    e=F(a2)+'÷'+b2+'×'+c2;steps=['同级运算，从左往右算：'+F(a2)+' ÷ '+b2+' = '+F(q2),F(q2)+' × '+c2+' = '+F(ans)];}
+  return {text:'计算：'+e.replace(/-/g,'−')+' = ?',expr:e,answer:ans,unit:'',steps:steps,v:{}};
+});
+
+/* ======================= 简易方程 ======================= */
+T('eq_solve','eq',[1,3],'calc',function(d){
+  var x=chance(0.5)?ri(2,30):D(ri(11,99),1),a=ri(2,9),b=D(ri(11,99),1),disp,lhs,rhs,steps;
+  var f=ri(0,3);
+  if(d===1){
+    if(f===0){rhs=R(x+b);disp='x + '+F(b)+' = '+F(rhs);lhs='x+'+F(b);steps=['方程两边同时减去 '+F(b),'x = '+F(rhs)+' − '+F(b),'x = '+F(x)];}
+    else if(f===1){rhs=R(x);x=R(rhs+b);if(rhs<=0)return null;disp='x − '+F(b)+' = '+F(rhs);lhs='x-'+F(b);steps=['方程两边同时加上 '+F(b),'x = '+F(rhs)+' + '+F(b),'x = '+F(x)];}
+    else if(f===2){rhs=R(a*x);disp=a+'x = '+F(rhs);lhs=a+'*x';steps=['方程两边同时除以 '+a,'x = '+F(rhs)+' ÷ '+a,'x = '+F(x)];}
+    else{x=R(a*b);rhs=b;disp='x ÷ '+a+' = '+F(b);lhs='x/'+a;steps=['方程两边同时乘 '+a,'x = '+F(b)+' × '+a,'x = '+F(x)];}
+  }else if(d===2){
+    var ax=R(a*x);
+    if(f<2){rhs=R(ax+b);disp=a+'x + '+F(b)+' = '+F(rhs);lhs=a+'*x+'+F(b);steps=['方程两边同时减去 '+F(b)+'：'+a+'x = '+F(rhs)+' − '+F(b),a+'x = '+F(ax),'方程两边同时除以 '+a+'：x = '+F(ax)+' ÷ '+a,'x = '+F(x)];}
+    else{if(ax<=b)return null;rhs=R(ax-b);disp=a+'x − '+F(b)+' = '+F(rhs);lhs=a+'*x-'+F(b);steps=['方程两边同时加上 '+F(b)+'：'+a+'x = '+F(rhs)+' + '+F(b),a+'x = '+F(ax),'方程两边同时除以 '+a+'：x = '+F(ax)+' ÷ '+a,'x = '+F(x)];}
+  }else{
+    var bb=ri(2,9);
+    if(f===0){var s=R(x+b);rhs=R(a*s);disp=a+'(x + '+F(b)+') = '+F(rhs);lhs=a+'*(x+'+F(b)+')';steps=['方程两边同时除以 '+a+'：x + '+F(b)+' = '+F(rhs)+' ÷ '+a,'x + '+F(b)+' = '+F(s),'方程两边同时减去 '+F(b)+'：x = '+F(s)+' − '+F(b),'x = '+F(x)];}
+    else if(f===1){if(x<=b)return null;var s1=R(x-b);rhs=R(a*s1);disp=a+'(x − '+F(b)+') = '+F(rhs);lhs=a+'*(x-'+F(b)+')';steps=['方程两边同时除以 '+a+'：x − '+F(b)+' = '+F(rhs)+' ÷ '+a,'x − '+F(b)+' = '+F(s1),'方程两边同时加上 '+F(b)+'：x = '+F(s1)+' + '+F(b),'x = '+F(x)];}
+    else if(f===2){rhs=R((a+bb)*x);disp=a+'x + '+bb+'x = '+F(rhs);lhs=a+'*x+'+bb+'*x';steps=['合并同类项：'+a+'x + '+bb+'x = '+(a+bb)+'x',(a+bb)+'x = '+F(rhs),'方程两边同时除以 '+(a+bb)+'：x = '+F(rhs)+' ÷ '+(a+bb),'x = '+F(x)];}
+    else{if(a===bb)return null;var hi=Math.max(a,bb),lo=Math.min(a,bb);rhs=R((hi-lo)*x);disp=hi+'x − '+lo+'x = '+F(rhs);lhs=hi+'*x-'+lo+'*x';steps=['合并同类项：'+hi+'x − '+lo+'x = '+(hi-lo)+'x',(hi-lo)+'x = '+F(rhs),(hi-lo===1?'所以 ':'方程两边同时除以 '+(hi-lo)+'：')+'x = '+F(x)];}
+  }
+  steps.push('检验：把 x = '+F(x)+' 代入原方程，左边 = 右边，所以 x = '+F(x)+' 是方程的解');
+  return {text:'解方程：'+disp+'\nx = ?',eq:{lhs:lhs,rhs:rhs},answer:R(x),unit:'',steps:steps,v:{}};
+});
+T('eq_value','eq',[1,2],'calc',function(d){
+  var x=d===1?ri(2,12):D(ri(11,99),1),a=ri(2,9),b=D(ri(1,99),1),ax=R(a*x),ans=R(ax+b);
+  return {text:'当 x = '+F(x)+' 时，'+a+'x + '+F(b)+' 的值是多少？',answer:ans,unit:'',
+    steps:[a+'x 表示 '+a+' × x，把 x = '+F(x)+' 代入',a+' × '+F(x)+' + '+F(b)+' = '+F(ax)+' + '+F(b)+' = '+F(ans)],v:{a:a,x:x,b:b}};
+});
+var TIMES=[['学校图书室里故事书的本数是科技书的K倍','科技书','本','科技书有多少本？','故事书'],
+  ['果园里苹果树的棵数是梨树的K倍','梨树','棵','梨树有多少棵？','苹果树'],
+  ['一条红丝带的长度是蓝丝带的K倍','蓝丝带','米','蓝丝带长多少米？','红丝带'],
+  ['合唱队的人数是舞蹈队的K倍','舞蹈队','人','舞蹈队有多少人？','合唱队']];
+T('eq_times','eq',[1,3],'app',function(d){
+  var c=pick(TIMES),k=ri(2,5),x=c[2]==='米'&&d>1?D(ri(12,99),1):ri(12,90),sum=chance(0.5);
+  var tot=R(sum?(k+1)*x:(k-1)*x),head=c[0].replace('K',k);
+  var text=head+'，'+(sum?'两者一共有':c[4]+'比'+c[1]+'多')+F(tot)+c[2]+'。'+c[3];
+  var steps=['设'+c[1]+'有 x '+c[2]+'，那么'+c[4]+'有 '+k+'x '+c[2],
+    sum?'列方程：x + '+k+'x = '+F(tot):'列方程：'+k+'x − x = '+F(tot),
+    (sum?(k+1):(k-1))+'x = '+F(tot),'x = '+F(x),'答：'+c[1]+'有 '+F(x)+' '+c[2]+'。'];
+  return {text:text,answer:R(x),unit:c[2],steps:steps,v:{k:k,tot:tot,sum:sum}};
+});
+T('eq_more','eq',[1,3],'app',function(d){
+  var n=pick(NAMES),v=ri(0,2),k,x,c,M,text,unit,steps;
+  if(v===0){k=pick([3,4]);x=ri(8,12);c=ri(1,6);M=k*x+c;if(M>50)return null;unit='岁';
+    text='妈妈今年'+M+'岁，比'+n+'年龄的'+k+'倍还多'+c+'岁。'+n+'今年几岁？';
+    steps=['设'+n+'今年 x 岁','列方程：'+k+'x + '+c+' = '+M,k+'x = '+(M-c),'x = '+x,'答：'+n+'今年 '+x+' 岁。'];}
+  else if(v===1){k=2;x=D(ri(280,420),1);c=ri(2,9);M=R(k*x-c);unit='千克';if(isInt(x))return null;
+    text='爸爸的体重是'+F(M)+'千克，比'+n+'体重的2倍少'+c+'千克。'+n+'的体重是多少千克？';
+    steps=['设'+n+'的体重是 x 千克','列方程：2x − '+c+' = '+F(M),'2x = '+F(R(M+c)),'x = '+F(x),'答：'+n+'的体重是 '+F(x)+' 千克。'];}
+  else{k=pick([2,3]);x=D(ri(150,600),1);c=D(ri(5,30)*10,1);M=R(k*x+c);unit='元';if(d===1)x=Math.round(x),M=R(k*x+c);
+    text='一件上衣的价钱是'+F(M)+'元，比一条裤子价钱的'+k+'倍还多'+F(c)+'元。一条裤子多少元？';
+    steps=['设一条裤子 x 元','列方程：'+k+'x + '+F(c)+' = '+F(M),k+'x = '+F(R(M-c)),'x = '+F(x),'答：一条裤子 '+F(x)+' 元。'];}
+  return {text:text,answer:R(x),unit:unit,steps:steps,v:{k:k,c:c,M:M,less:v===1}};
+});
+T('eq_buy','eq',[1,3],'app',function(d){
+  var n=pick(NAMES),k=ri(2,6),p=D(ri(25,120),1),b=D(ri(50,250),1);if(isInt(p))return null;var tot=R(k*p+b);
+  if(d===3&&chance(0.5)){var m=pick([50,100]),ch=R(m-k*p);if(ch<=0)return null;
+    return {text:n+'带了'+m+'元去书店，买了'+k+'本同样的笔记本，找回'+F(ch)+'元。每本笔记本多少元？',answer:p,unit:'元',
+      steps:['设每本笔记本 x 元','列方程：'+m+' − '+k+'x = '+F(ch),k+'x = '+m+' − '+F(ch)+' = '+F(R(m-ch)),'x = '+F(p),'答：每本笔记本 '+F(p)+' 元。'],v:{m:m,k:k,ch:ch,mode:'change'}};}
+  return {text:n+'买了'+k+'支同样的钢笔和一个'+F(b)+'元的笔袋，一共花了'+F(tot)+'元。每支钢笔多少元？',answer:p,unit:'元',
+    steps:['设每支钢笔 x 元','列方程：'+k+'x + '+F(b)+' = '+F(tot),k+'x = '+F(R(tot-b)),'x = '+F(p),'答：每支钢笔 '+F(p)+' 元。'],v:{k:k,b:b,tot:tot,mode:'buy'}};
+});
+T('eq_meet','eq',[2,3],'app',function(d){
+  var a=ri(40,80),b=ri(40,80),t=d===2?ri(2,5):D(ri(15,45),1);var dist=R((a+b)*t);if(dp(dist)>0)return null;
+  return {text:'甲、乙两地相距'+F(dist)+'千米，两辆汽车同时从两地相对开出，'+F(t)+'小时后相遇。一辆车每小时行'+a+'千米，另一辆车每小时行多少千米？',answer:b,unit:'千米',
+    steps:['设另一辆车每小时行 x 千米','相遇时两车合起来走完全程：('+a+' + x) × '+F(t)+' = '+F(dist),a+' + x = '+F(dist)+' ÷ '+F(t)+' = '+(a+b),'x = '+b,'答：另一辆车每小时行 '+b+' 千米。'],v:{a:a,t:t,dist:dist}};
+});
+T('eq_perim','eq',[2,3],'app',function(d){
+  var L=D(ri(60,150),1),x=D(ri(20,59),1);if(x>=L)return null;var P=R(2*(L+x));
+  return {text:'一个长方形花坛的周长是'+F(P)+'米，长是'+F(L)+'米，宽是多少米？',answer:x,unit:'米',
+    steps:['设宽是 x 米','长方形周长 = (长 + 宽) × 2，列方程：('+F(L)+' + x) × 2 = '+F(P),F(L)+' + x = '+F(R(P/2)),'x = '+F(x),'答：宽是 '+F(x)+' 米。'],v:{L:L,P:P}};
+});
+T('eq_ball','eq',[2,3],'app',function(d){
+  var n1=ri(2,6),n2=ri(2,6),a=ri(45,120),x=d===3?D(ri(250,900),1):ri(25,90);var tot=R(n1*a+n2*x);
+  return {text:'学校买了'+n1+'个篮球和'+n2+'个足球，一共用了'+F(tot)+'元。每个篮球'+a+'元，每个足球多少元？',answer:x,unit:'元',
+    steps:['设每个足球 x 元','列方程：'+a+' × '+n1+' + '+n2+'x = '+F(tot),n2+'x = '+F(tot)+' − '+(a*n1)+' = '+F(R(tot-a*n1)),'x = '+F(x),'答：每个足球 '+F(x)+' 元。'],v:{n1:n1,n2:n2,a:a,tot:tot}};
+});
+
+/* ======================= 多边形的面积 ======================= */
+function numPair(d,maxI){ // 返回 [底,高]
+  if(d===1)return [ri(4,maxI),ri(3,maxI)];
+  if(d===2)return [D(ri(25,150),1),ri(3,20)];
+  return [D(ri(25,150),1),D(ri(15,90),1)];
+}
+T('ar_para','ar',[1,3],'app',function(d){
+  var p=numPair(d,20),a=p[0],h=p[1],s=R(a*h);if(dp(s)>2)return null;var u=d===1?'厘米':'米';
+  return {text:'一个平行四边形的底是'+F(a)+u+'，高是'+F(h)+u+'，它的面积是多少平方'+u+'？',answer:s,unit:'平方'+u,fig:{type:'para',b:F(a)+u,h:F(h)+u},
+    steps:['平行四边形的面积 = 底 × 高',F(a)+' × '+F(h)+' = '+F(s)+'（平方'+u+'）','答：面积是 '+F(s)+' 平方'+u+'。'],v:{a:a,h:h}};
+});
+T('ar_tri','ar',[1,3],'app',function(d){
+  var p=numPair(d,20),a=p[0],h=p[1],s=R(a*h/2);if(dp(s)>2)return null;var u=d===1?'厘米':'米';
+  var ctx=chance(0.3)&&d>1?'一块三角形草坪':'一个三角形';
+  return {text:ctx+'的底是'+F(a)+u+'，高是'+F(h)+u+'，它的面积是多少平方'+u+'？',answer:s,unit:'平方'+u,fig:{type:'tri',b:F(a)+u,h:F(h)+u},
+    steps:['三角形的面积 = 底 × 高 ÷ 2',F(a)+' × '+F(h)+' ÷ 2 = '+F(R(a*h))+' ÷ 2 = '+F(s)+'（平方'+u+'）','答：面积是 '+F(s)+' 平方'+u+'。'],v:{a:a,h:h}};
+});
+T('ar_trap','ar',[1,3],'app',function(d){
+  var a,b,h;
+  if(d===1){a=ri(3,12);b=a+ri(2,10);h=ri(3,12);}else if(d===2){a=D(ri(25,90),1);b=R(a+D(ri(10,60),1));h=ri(3,15);}else{a=D(ri(25,90),1);b=R(a+D(ri(10,60),1));h=D(ri(15,80),1);}
+  var s=R((a+b)*h/2);if(dp(s)>2)return null;var u=d===1?'厘米':'米';
+  var ctx=d>1?pick(['一块梯形菜地','一个梯形花坛','一块梯形玻璃']):'一个梯形';
+  return {text:ctx+'的上底是'+F(a)+u+'，下底是'+F(b)+u+'，高是'+F(h)+u+'。它的面积是多少平方'+u+'？',answer:s,unit:'平方'+u,fig:{type:'trap',a:F(a)+u,b:F(b)+u,h:F(h)+u},
+    steps:['梯形的面积 = (上底 + 下底) × 高 ÷ 2','('+F(a)+' + '+F(b)+') × '+F(h)+' ÷ 2 = '+F(R(a+b))+' × '+F(h)+' ÷ 2 = '+F(s)+'（平方'+u+'）','答：面积是 '+F(s)+' 平方'+u+'。'],v:{a:a,b:b,h:h}};
+});
+T('ar_rev','ar',[2,3],'app',function(d){
+  var k=ri(0,2),u='厘米';
+  if(k===0){var a=d===2?ri(4,20):D(ri(25,120),1),h=D(ri(20,150),1);var s=R(a*h);if(dp(s)>2)return null;
+    return {text:'一个平行四边形的面积是'+F(s)+'平方厘米，底是'+F(a)+'厘米，高是多少厘米？',answer:h,unit:u,fig:{type:'para',b:F(a)+u,h:'?'},
+      steps:['平行四边形的面积 = 底 × 高，所以 高 = 面积 ÷ 底',F(s)+' ÷ '+F(a)+' = '+F(h)+'（厘米）','答：高是 '+F(h)+' 厘米。'],v:{k:k,s:s,a:a}};}
+  if(k===1){var a1=ri(4,20),h1=d===2?ri(3,20):D(ri(20,150),1);var s1=R(a1*h1/2);if(dp(s1)>2)return null;
+    return {text:'一个三角形的面积是'+F(s1)+'平方厘米，底是'+a1+'厘米，高是多少厘米？',answer:h1,unit:u,fig:{type:'tri',b:a1+u,h:'?'},
+      steps:['三角形的面积 = 底 × 高 ÷ 2，所以 高 = 面积 × 2 ÷ 底',F(s1)+' × 2 ÷ '+a1+' = '+F(R(s1*2))+' ÷ '+a1+' = '+F(h1)+'（厘米）','答：高是 '+F(h1)+' 厘米。'],v:{k:k,s:s1,a:a1}};}
+  var a2=ri(3,12),b2=a2+ri(2,12),h2=ri(4,12);if(d===3){a2=D(ri(25,90),1);b2=R(a2+D(ri(10,60),1));}
+  var s2=R((a2+b2)*h2/2);if(dp(s2)>2)return null;
+  return {text:'一个梯形的面积是'+F(s2)+'平方厘米，上底是'+F(a2)+'厘米，高是'+h2+'厘米，下底是多少厘米？',answer:b2,unit:u,fig:{type:'trap',a:F(a2)+u,b:'?',h:h2+u},
+    steps:['梯形的面积 = (上底 + 下底) × 高 ÷ 2，所以 上底 + 下底 = 面积 × 2 ÷ 高',F(s2)+' × 2 ÷ '+h2+' = '+F(R(a2+b2)),'下底：'+F(R(a2+b2))+' − '+F(a2)+' = '+F(b2)+'（厘米）','答：下底是 '+F(b2)+' 厘米。'],v:{k:k,s:s2,a:a2,h:h2}};
+});
+T('ar_combo','ar',[2,3],'app',function(d){
+  if(chance(0.5)){var w=ri(6,14),h1=ri(3,8),h2=ri(2,6);if(w*h2%2||h1>=w)return null;var r1=w*h1,t1=w*h2/2,s=R(r1+t1);
+    return {text:'如图，一个“小房子”形状的图形由一个长方形和一个三角形组成。长方形长'+w+'米、宽'+h1+'米，上面三角形的高是'+h2+'米（底和长方形的长相等）。这个图形的面积是多少平方米？',
+      answer:s,unit:'平方米',fig:{type:'house',w:w+'米',h1:h1+'米',h2:h2+'米'},
+      steps:['把组合图形分成长方形和三角形','长方形：'+w+' × '+h1+' = '+r1+'（平方米）','三角形：'+w+' × '+h2+' ÷ 2 = '+t1+'（平方米）','合计：'+r1+' + '+t1+' = '+F(s)+'（平方米）','答：面积是 '+F(s)+' 平方米。'],v:{w:w,h1:h1,h2:h2,shape:'house'}};}
+  var W=ri(8,16),H=ri(6,12),p=ri(2,W-3),q=ri(2,H-2);if(p*q%2)return null;var big=W*H,cut=p*q/2,s2=big-cut;
+  return {text:'一块长方形铁皮长'+W+'分米，宽'+H+'分米，从一个角上剪去一个直角三角形（两条直角边分别是'+p+'分米和'+q+'分米）。剩下部分的面积是多少平方分米？',
+    answer:s2,unit:'平方分米',fig:{type:'cut',w:W+'分米',h:H+'分米',p:p+'分米',q:q+'分米',W:W,H:H,P:p,Q:q},
+    steps:['剩下的面积 = 长方形面积 − 三角形面积','长方形：'+W+' × '+H+' = '+big+'（平方分米）','三角形：'+p+' × '+q+' ÷ 2 = '+cut+'（平方分米）','剩下：'+big+' − '+cut+' = '+s2+'（平方分米）','答：剩下 '+s2+' 平方分米。'],v:{W:W,H:H,p:p,q:q,shape:'cut'}};
+});
+var FIELD=[['菜地','收蔬菜','千克',12,48],['麦田','收小麦','千克',5,9],['草坪','铺草皮需要','元',45,120]]; // 末两项：每平方米数量×10 的范围（小麦约0.5~0.9千克/平方米才符合实际）
+T('ar_field','ar',[2,3],'app',function(d){
+  var sh=ri(0,2),c=pick(FIELD),k=D(ri(c[3],c[4]),1),a,b,h,s,fig,f1,nm;
+  if(isInt(k))return null;
+  if(sh===0){a=ri(10,60);h=ri(8,40);s=a*h;nm='平行四边形';fig={type:'para',b:a+'米',h:h+'米'};f1=a+' × '+h+' = '+s;}
+  else if(sh===1){a=ri(10,60);h=ri(8,40);if(a*h%2)return null;s=a*h/2;nm='三角形';fig={type:'tri',b:a+'米',h:h+'米'};f1=a+' × '+h+' ÷ 2 = '+s;}
+  else{a=ri(10,40);b=a+ri(5,30);h=ri(8,30);if((a+b)*h%2)return null;s=(a+b)*h/2;nm='梯形';fig={type:'trap',a:a+'米',b:b+'米',h:h+'米'};f1='('+a+' + '+b+') × '+h+' ÷ 2 = '+s;}
+  var ans=R(s*k),per=c[2]==='元'?'每平方米'+c[1].replace('需要','')+F(k)+'元':'平均每平方米'+c[1]+F(k)+'千克';
+  var dims=sh===2?'上底'+a+'米，下底'+b+'米，高'+h+'米':'底'+a+'米，高'+h+'米';
+  var q=c[2]==='元'?'一共需要多少元？':'这块地一共可以'+c[1]+'多少千克？';
+  return {text:'一块'+nm+'的'+c[0]+'，'+dims+'。'+per+'，'+q,answer:ans,unit:c[2],fig:fig,
+    steps:['先求面积：'+f1+'（平方米）','再求总数：'+s+' × '+F(k)+' = '+F(ans)+'（'+c[2]+'）','答：一共 '+F(ans)+' '+c[2]+'。'],v:{sh:sh,a:a,b:b||0,h:h,k:k}};
+});
+T('ar_same','ar',[1,2],'app',function(d){
+  var s=d===1?ri(6,60)*2:D(ri(60,600),1)*2;s=R(s);var toTri=chance(0.5),ans=toTri?R(s/2):R(s*2);if(dp(ans)>2)return null;
+  return {text:toTri?'一个平行四边形和一个三角形等底等高，平行四边形的面积是'+F(s)+'平方厘米，三角形的面积是多少平方厘米？':'一个三角形和一个平行四边形等底等高，三角形的面积是'+F(s)+'平方厘米，平行四边形的面积是多少平方厘米？',
+    answer:ans,unit:'平方厘米',steps:['等底等高时，三角形的面积是平行四边形面积的一半',toTri?F(s)+' ÷ 2 = '+F(ans)+'（平方厘米）':F(s)+' × 2 = '+F(ans)+'（平方厘米）','答：面积是 '+F(ans)+' 平方厘米。'],v:{s:s,toTri:toTri}};
+});
+
+/* ======================= 位置 ======================= */
+T('pos_seat','pos',[1,3],'app',function(d){
+  var nm=two(),c=ri(1,7),r=ri(2,7),k=ri(1,3),back=chance(0.6),r2=back?r+k:r-k;if(r2<1)return null;
+  return {text:'教室里，'+nm[0]+'坐在第'+c+'列第'+r+'行，用数对表示是（'+c+'，'+r+'）。'+nm[1]+'坐在'+nm[0]+'正'+(back?'后':'前')+'方第'+k+'个座位上，'+nm[1]+'的位置用数对表示是（'+c+'，□），□里应填几？',
+    answer:r2,unit:'',steps:['数对里先写列，再写行；正'+(back?'后':'前')+'方说明在同一列，列数不变','行数'+(back?'增加':'减少')+' '+k+'：'+r+(back?' + ':' − ')+k+' = '+r2,'所以'+nm[1]+'的位置是（'+c+'，'+r2+'），□里填 '+r2],v:{c:c,r:r,k:k,back:back}};
+});
+T('pos_move','pos',[1,3],'app',function(d){
+  var a=ri(1,6),b=ri(1,5),dx=ri(1,4)*(d>1&&chance(0.4)?-1:1),dy=ri(1,3)*(d>1&&chance(0.4)?-1:1),A2=a+dx,B2=b+dy;
+  if(A2<1||B2<1||A2>10||B2>8)return null;var askCol=chance(0.5),ans=askCol?A2:B2;
+  var mv='先向'+(dx>0?'右':'左')+'平移'+Math.abs(dx)+'格，再向'+(dy>0?'上':'下')+'平移'+Math.abs(dy)+'格';
+  return {text:'在方格纸上，点A的位置是（'+a+'，'+b+'）。把点A'+mv+'得到点B，点B的位置是（□，△）。'+(askCol?'□':'△')+'里应填几？',answer:ans,unit:'',
+    fig:{type:'grid',cols:10,rows:8,pts:[[a,b,'A']]},
+    steps:['左右平移改变的是列数（第一个数），上下平移改变的是行数（第二个数）','列数：'+a+(dx>0?' + ':' − ')+Math.abs(dx)+' = '+A2+'；行数：'+b+(dy>0?' + ':' − ')+Math.abs(dy)+' = '+B2,'点B是（'+A2+'，'+B2+'），'+(askCol?'□':'△')+'里填 '+ans],v:{a:a,b:b,dx:dx,dy:dy,askCol:askCol}};
+});
+T('pos_dist','pos',[1,1],'calc',function(d){
+  var c=ri(1,9),r1=ri(1,9),r2=ri(1,9);if(r1===r2)return null;var ans=Math.abs(r1-r2);
+  return {text:'（'+c+'，'+r1+'）和（'+c+'，'+r2+'）这两个位置在同一列，它们的行数相差几？',answer:ans,unit:'',steps:['第一个数相同，说明在同一列；比较第二个数（行数）',Math.max(r1,r2)+' − '+Math.min(r1,r2)+' = '+ans],v:{c:c,r1:r1,r2:r2}};
+});
+T('pos_area','pos',[2,3],'app',function(d){
+  var sh=d===2?ri(0,1):ri(0,2),x=ri(1,2),y=ri(1,2),pts,ans,nm,steps;
+  if(sh===0){var b=ri(3,7),h=ri(2,5),cx=ri(x,x+b);if(b*h%2)return null;pts=[[x,y,'A'],[x+b,y,'B'],[cx,y+h,'C']];ans=b*h/2;nm='三角形';
+    steps=['AB 在同一行，底 AB = '+(x+b)+' − '+x+' = '+b+'（厘米）','C 到 AB 的距离是高：'+(y+h)+' − '+y+' = '+h+'（厘米）','面积：'+b+' × '+h+' ÷ 2 = '+ans+'（平方厘米）'];}
+  else if(sh===1){var b1=ri(3,5),h1=ri(2,4),s=ri(1,3);pts=[[x,y,'A'],[x+b1,y,'B'],[x+b1+s,y+h1,'C'],[x+s,y+h1,'D']];ans=b1*h1;nm='平行四边形';
+    steps=['底 AB = '+(x+b1)+' − '+x+' = '+b1+'（厘米）','高 = '+(y+h1)+' − '+y+' = '+h1+'（厘米）','面积：'+b1+' × '+h1+' = '+ans+'（平方厘米）'];}
+  else{var bb=ri(5,7),tt=ri(2,bb-2),h2=ri(2,5),s2=ri(0,bb-tt);if((bb+tt)*h2%2)return null;pts=[[x,y,'A'],[x+bb,y,'B'],[x+s2+tt,y+h2,'C'],[x+s2,y+h2,'D']];ans=(bb+tt)*h2/2;nm='梯形';
+    steps=['下底 AB = '+bb+' 厘米，上底 DC = '+tt+' 厘米','高 = '+(y+h2)+' − '+y+' = '+h2+'（厘米）','面积：('+bb+' + '+tt+') × '+h2+' ÷ 2 = '+ans+'（平方厘米）'];}
+  for(var i=0;i<pts.length;i++)if(pts[i][0]>10||pts[i][1]>8)return null;
+  var list=pts.map(function(p){return p[2]+'（'+p[0]+'，'+p[1]+'）';}).join('、');
+  steps.push('答：'+nm+'的面积是 '+ans+' 平方厘米。');
+  return {text:'在方格纸上（每个小方格的边长表示1厘米），依次连接 '+list+'，围成一个'+nm+'。它的面积是多少平方厘米？',answer:ans,unit:'平方厘米',
+    fig:{type:'grid',cols:10,rows:8,pts:pts,poly:true},steps:steps,v:{pts:pts,sh:sh}};
+});
+T('pos_fourth','pos',[2,3],'app',function(d){
+  var x=ri(1,3),y=ri(1,3),b=ri(3,5),h=ri(2,4),s=ri(1,3),A=[x,y],B=[x+b,y],C=[x+b+s,y+h],Dp=[x+s,y+h];
+  if(C[0]>10||C[1]>8)return null;
+  return {text:'在方格纸上，A（'+A[0]+'，'+A[1]+'）、B（'+B[0]+'，'+B[1]+'）、C（'+C[0]+'，'+C[1]+'）是平行四边形ABCD的三个顶点。第四个顶点D的位置是（□，'+Dp[1]+'），□里应填几？',answer:Dp[0],unit:'',
+    fig:{type:'grid',cols:10,rows:8,pts:[[A[0],A[1],'A'],[B[0],B[1],'B'],[C[0],C[1],'C']]},
+    steps:['平行四边形的对边平行且相等，DC 和 AB 平行且相等','AB 长：'+B[0]+' − '+A[0]+' = '+b+'（格），所以 D 在 C 的左边 '+b+' 格，和 C 在同一行','D 的列数：'+C[0]+' − '+b+' = '+Dp[0]+'，D 是（'+Dp[0]+'，'+Dp[1]+'），□里填 '+Dp[0]],v:{A:A,B:B,C:C}};
+});
+T('pos_choice','pos',[1,2],'choice',function(d){
+  var k=ri(0,3),a=ri(1,9),b=ri(1,9);if(a===b)return null;
+  if(k===0)return {text:'数对（'+a+'，'+b+'）和（'+b+'，'+a+'）表示的位置相同吗？',choices:['相同','不相同'],answer:1,noShuffle:true,unit:'',
+    steps:['数对中第一个数表示列，第二个数表示行','（'+a+'，'+b+'）是第'+a+'列第'+b+'行，（'+b+'，'+a+'）是第'+b+'列第'+a+'行','所以位置不相同'],v:{k:k,a:a,b:b}};
+  if(k===1)return {text:'数对（'+a+'，'+b+'）中的“'+b+'”表示什么？',choices:['第'+b+'列','第'+b+'行'],answer:1,unit:'',
+    steps:['数对“先列后行”：第一个数表示列，第二个数表示行','所以“'+b+'”表示第'+b+'行'],v:{k:k,a:a,b:b}};
+  if(k===2)return {text:'（'+a+'，'+b+'）和（'+a+'，'+(b===9?1:b+1)+'）这两个位置在同一（　）上。',choices:['列','行'],answer:0,noShuffle:true,unit:'',
+    steps:['两个数对的第一个数都是 '+a,'第一个数表示列，所以它们在同一列'],v:{k:k,a:a,b:b}};
+  var m=ri(1,4);var ok='（'+(a+m)+'，'+b+'）';
+  return {text:'在方格纸上，点（'+a+'，'+b+'）向右平移'+m+'格后，位置是哪个数对？',choices:[ok,'（'+a+'，'+(b+m)+'）','（'+(a+m)+'，'+(b+m)+'）'],answer:0,unit:'',
+    steps:['向右平移，列数（第一个数）增加 '+m+'，行数不变',a+' + '+m+' = '+(a+m)+'，所以是 '+ok],v:{k:k,a:a,b:b,m:m}};
+});
+
+/* ======================= 可能性 ======================= */
+var EVENTS=[['太阳从西边升起','不可能'],['明天会下雨','可能'],['掷一个普通的骰子，掷出的点数是7','不可能'],['掷一个普通的骰子，掷出的点数小于7','一定'],
+  ['抛一枚硬币，正面朝上','可能'],['一年有12个月','一定'],['公鸡下蛋','不可能'],['2月有30天','不可能'],['下次数学测验得满分','可能'],['水在0℃以下会结冰（标准大气压下）','一定'],['从只装着红球的袋子里摸出一个红球','一定'],['在一副扑克牌里随手抽一张，抽到红桃','可能']];
+T('pr_certain','pr',[1,2],'choice',function(d){
+  var CH=['一定','可能','不可能'];
+  if(chance(0.5)){var e=pick(EVENTS);return {text:'“'+e[0]+'”，这件事是（　）发生的。',choices:CH,answer:CH.indexOf(e[1]),noShuffle:true,unit:'',
+    steps:[e[1]==='一定'?'这件事每次都会发生，是“一定”发生的':e[1]==='不可能'?'这件事根本不会发生，是“不可能”发生的':'这件事有时发生、有时不发生，是“可能”发生的','答案：'+e[1]],v:{ev:e[0]}};}
+  var r=ri(3,9),y=chance(0.5)?0:ri(1,6),col=pick(['红','黄']),ans=col==='红'?(y===0?'一定':'可能'):(y===0?'不可能':'可能');
+  return {text:'盒子里有'+r+'个红球'+(y?'和'+y+'个黄球':'（没有其他球）')+'，这些球除颜色外完全相同。任意摸出一个，摸到'+col+'球是（　）的。',choices:CH,answer:CH.indexOf(ans),noShuffle:true,unit:'',
+    steps:[y?'盒子里既有红球又有黄球':'盒子里只有红球',ans==='一定'?'摸出的一定是红球':ans==='不可能'?'盒子里没有黄球，不可能摸到黄球':'两种球都有，可能摸到'+col+'球，也可能摸不到','答案：'+ans],v:{r:r,y:y,col:col}};
+});
+var COLS=['红','黄','蓝','绿','白'];
+T('pr_most','pr',[1,2],'choice',function(d){
+  var n=d===1?3:4,cols=shuffle(COLS).slice(0,n),cnt=shuffle([1,2,3,4,5,6,7,8,9]).slice(0,n),most=chance(0.6);
+  var idx=0;for(var i=1;i<n;i++){if(most?cnt[i]>cnt[idx]:cnt[i]<cnt[idx])idx=i;}
+  var desc=cols.map(function(c,i){return cnt[i]+'个'+c+'球';}).join('、');
+  return {text:'袋子里有'+desc+'，这些球除颜色外完全相同。任意摸出一个，摸到哪种颜色的球可能性最'+(most?'大':'小')+'？',choices:cols.map(function(c){return c+'球';}),answer:idx,noShuffle:true,unit:'',
+    steps:['数量越多，摸到的可能性越大；数量越少，可能性越小','比较数量：'+desc,cols[idx]+'球有'+cnt[idx]+'个，最'+(most?'多':'少')+'，所以摸到'+cols[idx]+'球的可能性最'+(most?'大':'小')],v:{cols:cols,cnt:cnt,most:most}};
+});
+T('pr_equal','pr',[1,3],'app',function(d){
+  var r=ri(5,12),y=ri(1,r-2),add=chance(0.5),ans=r-y;
+  return {text:'袋子里有'+r+'个红球和'+y+'个黄球（除颜色外完全相同）。要使摸到红球和黄球的可能性相等，'+(add?'需要再放入几个黄球？':'需要拿出几个红球？'),answer:ans,unit:'个',
+    steps:['两种球的个数相等时，摸到它们的可能性相等',add?'黄球要增加到和红球一样多：'+r+' − '+y+' = '+ans+'（个）':'红球要减少到和黄球一样多：'+r+' − '+y+' = '+ans+'（个）','答：'+(add?'再放入 ':'拿出 ')+ans+' 个。'],v:{r:r,y:y,add:add}};
+});
+T('pr_atleast','pr',[2,3],'app',function(d){
+  var r=ri(4,12),w=ri(0,r-1),ans=r-w+1;
+  return {text:'袋子里有'+r+'个红球'+(w?'和'+w+'个白球':'')+'。至少再放入几个白球，才能使摸到白球的可能性比摸到红球的可能性大？',answer:ans,unit:'个',
+    steps:['要使摸到白球的可能性大，白球要比红球多','白球至少要有 '+r+' + 1 = '+(r+1)+' 个',w?'还要再放入：'+(r+1)+' − '+w+' = '+ans+'（个）':'原来没有白球，要放入 '+ans+' 个','答：至少再放入 '+ans+' 个白球。'],v:{r:r,w:w}};
+});
+T('pr_spinner','pr',[2,3],'app',function(d){
+  var n=pick([6,8,9,10,12]),ans=Math.floor(n/2)+1;
+  return {text:'把一个转盘平均分成'+n+'份，每份涂上红色或黄色。要使转动后指针停在红色区域的可能性比黄色大，至少要涂几份红色？',answer:ans,unit:'份',fig:{type:'spinner',n:n},
+    steps:['红色份数比黄色多，停在红色区域的可能性就大',n+' ÷ 2 = '+(n/2)+(n%2?'，':'，红黄各一半时可能性相等，')+'红色至少要比一半多',n%2?'所以至少涂 '+ans+' 份红色（剩下 '+(n-ans)+' 份黄色）':(n/2)+' + 1 = '+ans+'，所以至少涂 '+ans+' 份红色'],v:{n:n}};
+});
+T('pr_design','pr',[2,3],'choice',function(d){
+  var N=pick([10,12]),r=ri(Math.floor(N/2)+1,N-1),y=N-r;if(y===r)return null;
+  var ok='红球'+r+'个，黄球'+y+'个';
+  var bad=['红球'+y+'个，黄球'+r+'个','红球'+(N/2)+'个，黄球'+(N/2)+'个','红球'+(r-1)+'个，黄球'+(y)+'个，蓝球1个'];
+  if(r-1<=y)bad[2]='红球'+r+'个，黄球'+(y-1)+'个，蓝球1个';
+  if(y-1<0)return null;
+  return {text:'在袋子里放'+N+'个球，要使摸到红球的可能性比黄球大，并且不可能摸到蓝球。下面哪种放法符合要求？',choices:[ok].concat(bad),answer:0,unit:'',
+    steps:['“不可能摸到蓝球”：袋子里不能放蓝球','“红球可能性比黄球大”：红球要比黄球多','符合要求的是：'+ok],v:{N:N,r:r}};
+});
+var GAMES=[['掷一个骰子，点数是单数小丽赢，点数是双数小明赢',1,'单数有 1、3、5，共3种；双数有 2、4、6，共3种'],['掷一个骰子，点数大于3小丽赢，点数不大于3小明赢',1,'大于3的有 4、5、6，共3种；不大于3的有 1、2、3，共3种'],['掷一个骰子，点数大于4小丽赢，点数小于或等于4小明赢',0,'大于4的只有 5、6，共2种；小于或等于4的有 1、2、3、4，共4种'],
+  ['掷一个骰子，点数是3的倍数小丽赢，不是3的倍数小明赢',0,'3的倍数只有 3、6，共2种；不是3的倍数的有 1、2、4、5，共4种'],['抛一枚硬币，正面朝上小丽赢，反面朝上小明赢',1,'正面朝上和反面朝上各1种情况']];
+T('pr_fair','pr',[3,3],'choice',function(d){
+  var g;
+  if(chance(0.5)){g=pick(GAMES);}else{var r=ri(2,6),y=chance(0.5)?r:ri(2,6);g=['袋子里有'+r+'个红球和'+y+'个黄球，摸到红球小丽赢，摸到黄球小明赢（摸后放回）',r===y?1:0,'红球'+r+'个，黄球'+y+'个，'+(r===y?'一样多':r>y?'红球多':'黄球多')];}
+  var fair=g[1]===1;
+  return {text:'游戏规则：'+g[0]+'。这个游戏公平吗？',choices:['公平','不公平'],answer:fair?0:1,noShuffle:true,unit:'',
+    steps:['游戏公平，要看双方赢的可能性是否相等',g[2],fair?'双方赢的可能性相等，所以这个游戏公平':'双方赢的可能性不相等，所以这个游戏不公平'],v:{rule:g[0]}};
+});
+
+/* ======================= 植树问题 ======================= */
+var GAPS=[2,3,4,5,6,8,10,12,15,20,25];
+function road(maxL){for(;;){var d=pick(GAPS),k=ri(5,40),L=d*k;if(L<=maxL&&L>=20)return [L,d,k];}}
+T('tr_both','tr',[1,3],'app',function(d){
+  var x=road(600),L=x[0],g=x[1],k=x[2],sides=d>=2?2:1;
+  if(d===3){g=pick([20,25,30,40,50]);k=ri(10,40);L=g*k;if(L%100)return null;}
+  var km=d===3?F(L/1000)+'千米':L+'米',n1=k+1,ans=n1*sides;
+  var steps=[d===3?'先统一单位：'+km+' = '+L+' 米':null,'间隔数：'+L+' ÷ '+g+' = '+k+'（个）',(d===3?'两端都装，盏数':'两端都种，棵数')+' = 间隔数 + 1：'+k+' + 1 = '+n1+'（'+(d===3?'盏':'棵')+'）',
+    sides===2?'道路两边都'+(d===3?'装':'种')+'：'+n1+' × 2 = '+ans+'（'+(d===3?'盏':'棵')+'）':null,'答：一共 '+ans+(d===3?' 盏。':' 棵。')].filter(Boolean);
+  if(d===3)return {text:'一条公路长'+km+'，在公路两边从头到尾每隔'+g+'米安装一盏路灯（两端都装）。一共要安装多少盏路灯？',answer:ans,unit:'盏',steps:steps,v:{L:L,g:g,sides:2}};
+  return {text:'在一条长'+L+'米的小路'+(sides===2?'两边':'一边')+'种树，每隔'+g+'米种一棵（两端都种）。一共要种多少棵树？',answer:ans,unit:'棵',steps:steps,v:{L:L,g:g,sides:sides}};
+});
+T('tr_none','tr',[1,2],'app',function(d){
+  var x=road(300),L=x[0],g=x[1],k=x[2],sides=d===2&&chance(0.5)?2:1,ans=(k-1)*sides;
+  return {text:'两栋楼之间相距'+L+'米，要在两楼之间的小路'+(sides===2?'两边':'一边')+'每隔'+g+'米栽一棵树（靠近楼的两端都不栽）。一共要栽多少棵树？',answer:ans,unit:'棵',
+    steps:['间隔数：'+L+' ÷ '+g+' = '+k+'（个）','两端都不栽，棵数 = 间隔数 − 1：'+k+' − 1 = '+(k-1)+'（棵）',sides===2?'两边：'+(k-1)+' × 2 = '+ans+'（棵）':'答：一共 '+ans+' 棵。'].concat(sides===2?['答：一共 '+ans+' 棵。']:[]),v:{L:L,g:g,sides:sides}};
+});
+T('tr_one','tr',[1,2],'app',function(d){
+  var x=road(500),L=x[0],g=x[1],k=x[2];
+  return {text:'从学校门口到公园门口的路长'+L+'米。在路的一边从学校门口开始，每隔'+g+'米放一盆花，公园门口已有花坛不用放。一共要放多少盆花？',answer:k,unit:'盆',
+    steps:['间隔数：'+L+' ÷ '+g+' = '+k+'（个）','一端放一端不放，盆数 = 间隔数 = '+k+'（盆）','答：一共 '+k+' 盆。'],v:{L:L,g:g}};
+});
+T('tr_circle','tr',[1,3],'app',function(d){
+  var g=pick([2,3,4,5,6,8,10]),k=ri(8,40),v=d===1?0:ri(0,d===2?1:2),C,text,steps,ans=k;
+  if(v===0){C=g*k;text='一个圆形池塘的周长是'+C+'米，沿着池塘四周每隔'+g+'米种一棵柳树。一共可以种多少棵？';steps=['在封闭的图形上种树，棵数 = 间隔数','间隔数：'+C+' ÷ '+g+' = '+k+'（个）','所以种 '+k+' 棵'];}
+  else if(v===1){var side=g*ri(2,10);C=side*4;ans=C/g;text='一个正方形广场的边长是'+side+'米，沿着广场四周每隔'+g+'米摆一盆花（四个角都要摆）。一共要摆多少盆？';
+    steps=['先求周长：'+side+' × 4 = '+C+'（米）','封闭图形上，盆数 = 间隔数：'+C+' ÷ '+g+' = '+ans+'（盆）'];}
+  else{var a=g*ri(3,12),b=g*ri(2,8);if(a<=b)return null;C=2*(a+b);ans=C/g;text='一个长方形操场长'+a+'米，宽'+b+'米。沿着操场四周每隔'+g+'米插一面彩旗（四个角都插）。一共要插多少面彩旗？';
+    steps=['先求周长：('+a+' + '+b+') × 2 = '+C+'（米）','封闭图形上，面数 = 间隔数：'+C+' ÷ '+g+' = '+ans+'（面）'];}
+  var unit=v===0?'棵':v===1?'盆':'面';steps.push('答：一共 '+ans+' '+unit+'。');
+  return {text:text,answer:ans,unit:unit,steps:steps,v:v===0?{g:g,C:C}:v===1?{g:g,side:side}:{g:g,a:a,b:b}};
+});
+T('tr_rev','tr',[2,3],'app',function(d){
+  var g=pick(GAPS),n=ri(6,40),L=(n-1)*g;if(L>800)return null;
+  if(chance(0.5))return {text:'在一条小路的一边种树，两端都种，每隔'+g+'米种一棵，一共种了'+n+'棵。这条小路长多少米？',answer:L,unit:'米',
+    steps:['两端都种，间隔数 = 棵数 − 1：'+n+' − 1 = '+(n-1)+'（个）','路长 = 间隔长 × 间隔数：'+g+' × '+(n-1)+' = '+L+'（米）','答：小路长 '+L+' 米。'],v:{g:g,n:n,ask:'L'}};
+  return {text:'在一条长'+L+'米的小路一边种树，两端都种，一共种了'+n+'棵。相邻两棵树之间相距多少米？',answer:g,unit:'米',
+    steps:['两端都种，间隔数 = 棵数 − 1：'+n+' − 1 = '+(n-1)+'（个）','每个间隔长：'+L+' ÷ '+(n-1)+' = '+g+'（米）','答：相距 '+g+' 米。'],v:{L:L,n:n,ask:'g'}};
+});
+T('tr_saw','tr',[1,3],'app',function(d){
+  if(d<3||chance(0.3)){var n=ri(3,10),t=ri(2,8),ans=(n-1)*t;
+    return {text:'把一根木头锯成'+n+'段，每锯一次要用'+t+'分钟。一共要用多少分钟？',answer:ans,unit:'分钟',
+      steps:['锯成'+n+'段，只要锯 '+n+' − 1 = '+(n-1)+' 次（段数比次数多1）','时间：'+t+' × '+(n-1)+' = '+ans+'（分钟）','答：一共要用 '+ans+' 分钟。'],v:{n:n,t:t,mode:1}};}
+  var a=ri(3,6),per=ri(2,6),Tm=(a-1)*per,b=a+ri(2,5),ans2=(b-1)*per;
+  return {text:'把一根木头锯成'+a+'段要用'+Tm+'分钟。照这样的速度，锯成'+b+'段要用多少分钟？',answer:ans2,unit:'分钟',
+    steps:['锯成'+a+'段要锯 '+(a-1)+' 次，每次用：'+Tm+' ÷ '+(a-1)+' = '+per+'（分钟）','锯成'+b+'段要锯 '+(b-1)+' 次：'+per+' × '+(b-1)+' = '+ans2+'（分钟）','答：要用 '+ans2+' 分钟。'],v:{a:a,Tm:Tm,b:b,mode:2}};
+});
+T('tr_stairs','tr',[1,3],'app',function(d){
+  var nm=pick(NAMES);
+  if(d===1||chance(0.4)){var n=ri(3,8),k=ri(12,20),ans=(n-1)*k;
+    return {text:'楼房每层楼梯有'+k+'级台阶，'+nm+'从1楼走到'+n+'楼，一共要走多少级台阶？',answer:ans,unit:'级',
+      steps:['从1楼到'+n+'楼，只要走 '+n+' − 1 = '+(n-1)+' 层楼梯','台阶数：'+k+' × '+(n-1)+' = '+ans+'（级）','答：一共走 '+ans+' 级。'],v:{n:n,k:k,mode:1}};}
+  var a=ri(2,4),per=ri(10,20),Tt=(a-1)*per,b=a+ri(2,4),ans2=(b-1)*per;
+  return {text:nm+'从1楼走到'+a+'楼用了'+Tt+'秒。照这样的速度，从1楼走到'+b+'楼需要多少秒？',answer:ans2,unit:'秒',
+    steps:['1楼到'+a+'楼走了 '+(a-1)+' 层，每层用：'+Tt+' ÷ '+(a-1)+' = '+per+'（秒）','1楼到'+b+'楼要走 '+(b-1)+' 层：'+per+' × '+(b-1)+' = '+ans2+'（秒）','答：需要 '+ans2+' 秒。'],v:{a:a,Tt:Tt,b:b,mode:2}};
+});
+T('tr_clock','tr',[2,3],'app',function(d){
+  var a=ri(3,6),per=ri(2,4),Tt=(a-1)*per,b=ri(a+1,12),ans=(b-1)*per;
+  return {text:'一座钟'+a+'点整敲'+a+'下，用了'+Tt+'秒。照这样，'+b+'点整敲'+b+'下，要用多少秒？',answer:ans,unit:'秒',
+    steps:['敲'+a+'下只有 '+(a-1)+' 个间隔，每个间隔：'+Tt+' ÷ '+(a-1)+' = '+per+'（秒）','敲'+b+'下有 '+(b-1)+' 个间隔：'+per+' × '+(b-1)+' = '+ans+'（秒）','答：要用 '+ans+' 秒。'],v:{a:a,Tt:Tt,b:b}};
+});
+T('tr_queue','tr',[1,2],'app',function(d){
+  var n=ri(8,40),g=pick([1,2,3,1.5,0.5]),L=R((n-1)*g);if(d===1&&!isInt(g))return null;
+  if(chance(0.5))return {text:'同学们排成一路纵队做操，相邻两人之间相隔'+F(g)+'米，一共有'+n+'人。这支队伍长多少米？',answer:L,unit:'米',
+    steps:['排成一队，两端都有人，间隔数 = 人数 − 1：'+n+' − 1 = '+(n-1)+'（个）','队伍长：'+F(g)+' × '+(n-1)+' = '+F(L)+'（米）','答：队伍长 '+F(L)+' 米。'],v:{n:n,g:g,ask:'L'}};
+  return {text:'同学们排成一路纵队，队伍长'+F(L)+'米，相邻两人之间相隔'+F(g)+'米。这支队伍一共有多少人？',answer:n,unit:'人',
+    steps:['间隔数：'+F(L)+' ÷ '+F(g)+' = '+(n-1)+'（个）','两端都有人，人数 = 间隔数 + 1：'+(n-1)+' + 1 = '+n+'（人）','答：一共有 '+n+' 人。'],v:{L:L,g:g,ask:'n'}};
+});
+T('tr_flag','tr',[3,3],'app',function(d){
+  var n=ri(4,15),ans=4*n-4;
+  return {text:'在一个正方形广场的四周插彩旗，四个角上都要插，每条边上都插'+n+'面（包括两端）。一共要插多少面彩旗？',answer:ans,unit:'面',
+    steps:['4条边一共：'+n+' × 4 = '+(4*n)+'（面）','四个角上的彩旗被重复算了一次，要减去4：'+(4*n)+' − 4 = '+ans+'（面）','答：一共插 '+ans+' 面。'],v:{n:n}};
+});
+
+/* ---------- 出题 ---------- */
+var PAR={calc:30,app:65,choice:22},DPAR={1:1,2:1.15,3:1.3};
+function build(tpl,d){
+  for(var i=0;i<400;i++){
+    var p=tpl.gen(d);
+    if(!p)continue;
+    p.id=tpl.id;p.topic=tpl.topic;p.topicName=TOPICS[tpl.topic];p.kind=tpl.kind;p.d=d;
+    p.par=Math.round(PAR[tpl.kind]*DPAR[d]);
+    if(p.choices&&!p.noShuffle){var ord=shuffle(p.choices.map(function(_,i){return i;}));var ok=p.choices[p.answer];p.choices=ord.map(function(i){return p.choices[i];});p.answer=p.choices.indexOf(ok);}
+    return p;
+  }
+  throw new Error('generator failed: '+tpl.id+' d='+d);
+}
+function templatesFor(topic,d){return TPL.filter(function(t){return (topic==='all'||t.topic===topic)&&d>=t.lv[0]&&d<=t.lv[1];});}
+function makeProblem(id,d){var t=TPL.filter(function(x){return x.id===id;})[0];if(!t)throw new Error('no tpl '+id);return build(t,d);}
+function makeRound(topic,d,n){
+  n=n||10;var out=[],pool;
+  if(topic==='all'){
+    var tk=shuffle(Object.keys(TOPICS));while(tk.length<n)tk.push(pick(Object.keys(TOPICS)));
+    var used={};
+    tk.slice(0,n).forEach(function(tp){var c=templatesFor(tp,d),fresh=c.filter(function(t){return !used[t.id];});var t=pick(fresh.length?fresh:c);used[t.id]=1;out.push(build(t,d));});
+    return shuffle(out);
+  }
+  pool=templatesFor(topic,d);var bag=[];var last=null;
+  while(out.length<n){if(!bag.length)bag=shuffle(pool.concat(pool.filter(function(t){return t.kind!=='calc';})));var t=bag.pop();if(t.id===last&&bag.some(function(b){return b.id!==last;})){bag.unshift(t);continue;}last=t.id;out.push(build(t,d));}
+  return out;
+}
+function fmtAnswer(p){if(p.choices)return p.choices[p.answer];return p.round?p.answer.toFixed(p.round):F(p.answer);}
+function parseNum(s){s=String(s).trim();if(!/^\d*\.?\d*$/.test(s)||s===''||s==='.')return NaN;return parseFloat(s);}
+function check(p,input){if(p.choices)return Number(input)===p.answer;var v=parseNum(input);return !isNaN(v)&&Math.abs(v-p.answer)<1e-9;}
+
+root.MathGen={TOPICS:TOPICS,TPL:TPL,setSeed:setSeed,makeProblem:makeProblem,makeRound:makeRound,templatesFor:templatesFor,fmtAnswer:fmtAnswer,check:check,parseNum:parseNum,F:F,R:R};
+})(typeof window!=='undefined'?window:globalThis);
+/*GEN-END*/
+</script>
+<script>
+/* ======================= 界面与游戏逻辑 ======================= */
+(function(){
+'use strict';
+var G=window.MathGen;
+var $=function(s){return document.querySelector(s);},$$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s));};
+var QS=new URLSearchParams(location.search);
+var SPEED=Math.max(1,parseFloat(QS.get('speed'))||1);
+if(QS.get('seed'))G.setSeed(+QS.get('seed'));
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function pickOne(a){return a[Math.floor(Math.random()*a.length)];}
+
+/* ---------- 图形素材（纯 SVG，离线可用） ---------- */
+var AV={
+ miuya:'<svg viewBox="0 0 100 100" aria-label="Miuya"><path d="M17 44 L20 6 L45 27Z" fill="#9d7bff"/><path d="M83 44 L80 6 L55 27Z" fill="#9d7bff"/><path d="M23 33 L24 15 L37 27Z" fill="#ffc2dc"/><path d="M77 33 L76 15 L63 27Z" fill="#ffc2dc"/><circle cx="50" cy="55" r="38" fill="#9d7bff"/><ellipse cx="50" cy="60" rx="30" ry="27" fill="#fff3ea"/><path d="M19 55 Q20 24 50 22 Q80 24 81 55 Q73 40 63 42 Q57 31 50 41 Q43 31 37 42 Q27 40 19 55Z" fill="#9d7bff"/><ellipse cx="38" cy="61" rx="5.2" ry="6.6" fill="#3b2a5a"/><ellipse cx="62" cy="61" rx="5.2" ry="6.6" fill="#3b2a5a"/><circle cx="40" cy="58.5" r="2" fill="#fff"/><circle cx="64" cy="58.5" r="2" fill="#fff"/><ellipse cx="29" cy="70" rx="5" ry="3" fill="#ffadc6" opacity=".85"/><ellipse cx="71" cy="70" rx="5" ry="3" fill="#ffadc6" opacity=".85"/><path d="M44 71 Q47 75 50 71 Q53 75 56 71" stroke="#3b2a5a" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M73 26 l2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.3 2.8 1-5.9-4.3-4.1 5.9-.8z" fill="#ffd84d" stroke="#f1b400" stroke-width="1"/></svg>',
+ me:'<svg viewBox="0 0 100 100" aria-label="我"><circle cx="22" cy="30" r="13" fill="#6b3f2a"/><circle cx="78" cy="30" r="13" fill="#6b3f2a"/><circle cx="50" cy="56" r="37" fill="#6b3f2a"/><ellipse cx="50" cy="61" rx="29" ry="27" fill="#fff0e4"/><path d="M21 56 Q22 26 50 25 Q78 26 79 56 Q70 44 58 45 Q50 36 40 45 Q28 44 21 56Z" fill="#6b3f2a"/><path d="M58 22 q8-9 16 0 q-8 9-16 0z M42 22 q-8-9-16 0 q8 9 16 0z" fill="#ff6fa5"/><circle cx="50" cy="22" r="4" fill="#ff4d8d"/><ellipse cx="39" cy="62" rx="4.6" ry="6" fill="#3b2a3a"/><ellipse cx="61" cy="62" rx="4.6" ry="6" fill="#3b2a3a"/><circle cx="40.6" cy="59.8" r="1.8" fill="#fff"/><circle cx="62.6" cy="59.8" r="1.8" fill="#fff"/><ellipse cx="30" cy="71" rx="5" ry="3" fill="#ffa3bd" opacity=".85"/><ellipse cx="70" cy="71" rx="5" ry="3" fill="#ffa3bd" opacity=".85"/><path d="M44 72 Q50 78 56 72" stroke="#3b2a3a" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>'
+};
+var IC={
+ soundOn:'<svg viewBox="0 0 24 24" fill="none" stroke="#6a4bd8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z" fill="#e6ddff"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>',
+ soundOff:'<svg viewBox="0 0 24 24" fill="none" stroke="#9a8db0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h4l5-4v14l-5-4H4z" fill="#eee"/><path d="M17 9l5 6M22 9l-5 6"/></svg>',
+ close:'<svg viewBox="0 0 24 24" fill="none" stroke="#7a6a93" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+ back:'<svg viewBox="0 0 24 24" fill="none" stroke="#7a6a93" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
+ bulb:'<svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z" fill="#ffd84d" stroke="#e2a31a" stroke-width="1.5"/><rect x="8.5" y="18" width="7" height="3" rx="1.2" fill="#e2a31a"/></svg>',
+ medal:'<svg viewBox="0 0 24 24"><path d="M7 2h4l2 6H9zM13 2h4l-2 6h-4z" fill="#ff8dba"/><circle cx="12" cy="15" r="7" fill="#ffd84d" stroke="#e2a31a" stroke-width="1.5"/><path d="M12 11l1.2 2.5 2.7.4-2 1.9.5 2.7-2.4-1.3-2.4 1.3.5-2.7-2-1.9 2.7-.4z" fill="#fff"/></svg>',
+ chart:'<svg viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="9" rx="1.5" fill="#a68bff"/><rect x="10" y="6" width="4" height="15" rx="1.5" fill="#ff8dba"/><rect x="17" y="9" width="4" height="12" rx="1.5" fill="#4fd6ad"/></svg>',
+ star:'<svg viewBox="0 0 50 50"><path d="M25 3l6.6 13.6 15 2.1-10.9 10.5 2.6 14.8L25 37 11.7 44l2.6-14.8L3.4 18.7l15-2.1z" fill="#ffc93c" stroke="#f0a500" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 17l4-1" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"/></svg>',
+ ok:'<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" fill="#d6f7ec"/><circle cx="26" cy="26" r="18" fill="#2fbf94"/><path d="M17 27l6 6 12-13" stroke="#fff" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ hug:'<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" fill="#ffe3de"/><path d="M26 39s-12-7.5-12-15.5a6.5 6.5 0 0 1 12-3.5 6.5 6.5 0 0 1 12 3.5C38 31.5 26 39 26 39z" fill="#ff8a7a"/></svg>',
+ trophy:'<svg viewBox="0 0 120 120"><path d="M34 22h52v18a26 26 0 0 1-52 0z" fill="#ffd84d" stroke="#e2a31a" stroke-width="3"/><path d="M34 28H20a14 14 0 0 0 16 20M86 28h14a14 14 0 0 1-16 20" fill="none" stroke="#e2a31a" stroke-width="5"/><rect x="54" y="64" width="12" height="16" fill="#e2a31a"/><rect x="38" y="80" width="44" height="12" rx="4" fill="#a68bff"/><rect x="32" y="92" width="56" height="10" rx="4" fill="#8e6bff"/><path d="M60 30l3.5 7 7.7 1.1-5.6 5.4 1.3 7.7-6.9-3.6-6.9 3.6 1.3-7.7-5.6-5.4 7.7-1.1z" fill="#fff"/></svg>',
+ crown:'<svg viewBox="0 0 40 26"><path d="M3 22L6 5l9 9 5-11 5 11 9-9 3 17z" fill="#ffd84d" stroke="#e2a31a" stroke-width="2" stroke-linejoin="round"/></svg>',
+ party:'<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="#fff1c7"/><path d="M30 95l18-52 34 34z" fill="#ff8dba"/><path d="M36 78l8 8M42 62l16 16" stroke="#fff" stroke-width="5"/><circle cx="80" cy="30" r="5" fill="#a68bff"/><circle cx="95" cy="55" r="4" fill="#4fd6ad"/><circle cx="68" cy="18" r="3" fill="#ff6fa5"/><path d="M84 44q8-2 10 6M72 36q2-10 12-10" stroke="#ffc93c" stroke-width="4" fill="none" stroke-linecap="round"/></svg>'
+};
+function medalSVG(ch,c1,c2){return '<svg viewBox="0 0 64 64"><path d="M20 2h10l4 16H24zM34 2h10l-4 16H30z" fill="'+c2+'"/><circle cx="32" cy="39" r="21" fill="'+c1+'" stroke="#fff" stroke-width="4"/><circle cx="32" cy="39" r="15" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3" opacity=".8"/><text x="32" y="46" text-anchor="middle" font-size="19" font-weight="900" fill="#fff" font-family="PingFang SC,Microsoft YaHei,Noto Sans CJK SC,sans-serif">'+ch+'</text></svg>';}
+
+/* ---------- 题目配图 ---------- */
+function lbl(x,y,t,anchor){var q=t==='?';return '<text x="'+x+'" y="'+y+'" text-anchor="'+(anchor||'middle')+'" font-size="14" font-weight="700" fill="'+(q?'#e64d7f':'#5b3fd0')+'">'+esc(t)+'</text>';}
+function hline(x1,y1,x2,y2){return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="#ff6fa5" stroke-width="2" stroke-dasharray="5 4"/>';}
+function rmark(x,y){return '<path d="M'+x+' '+(y-9)+'h9v9" fill="none" stroke="#ff6fa5" stroke-width="1.6"/>';}
+var FILL='fill="#efe8ff" stroke="#8e6bff" stroke-width="2.5" stroke-linejoin="round"';
+function renderFig(f){
+ if(!f)return '';
+ var s='';
+ if(f.type==='para'){s='<svg viewBox="0 0 260 150"><path d="M40 118H190L230 38H80Z" '+FILL+'/>'+hline(100,38,100,118)+rmark(100,118)+lbl(115,138,f.b)+lbl(106,84,f.h,'start')+'</svg>';}
+ else if(f.type==='tri'){s='<svg viewBox="0 0 260 150"><path d="M30 118H220L95 28Z" '+FILL+'/>'+hline(95,28,95,118)+rmark(95,118)+lbl(125,138,f.b)+lbl(101,82,f.h,'start')+'</svg>';}
+ else if(f.type==='trap'){s='<svg viewBox="0 0 260 160"><path d="M25 122H235L175 42H75Z" '+FILL+'/>'+hline(110,42,110,122)+rmark(110,122)+lbl(125,34,f.a)+lbl(130,144,f.b)+lbl(116,88,f.h,'start')+'</svg>';}
+ else if(f.type==='house'){s='<svg viewBox="0 0 260 170"><path d="M70 65H190V135H70Z" '+FILL+'/><path d="M70 65L130 18L190 65Z" fill="#ffe4f0" stroke="#ff6fa5" stroke-width="2.5" stroke-linejoin="round"/>'+hline(130,18,130,65)+lbl(130,156,f.w)+lbl(196,104,f.h1,'start')+lbl(136,48,f.h2,'start')+'</svg>';}
+ else if(f.type==='cut'){var W=180,H=110,px=Math.round(f.P/f.W*W),qy=Math.round(f.Q/f.H*H),x0=40,y0=20;
+   s='<svg viewBox="0 0 260 170"><path d="M'+x0+' '+y0+'H'+(x0+W-px)+'L'+(x0+W)+' '+(y0+qy)+'V'+(y0+H)+'H'+x0+'Z" '+FILL+'/><path d="M'+(x0+W-px)+' '+y0+'H'+(x0+W)+'V'+(y0+qy)+'Z" fill="none" stroke="#ff6fa5" stroke-width="2" stroke-dasharray="5 4"/>'+
+   lbl(x0+W/2,y0+H+22,f.w)+lbl(x0-6,y0+H/2+5,f.h,'end')+lbl(x0+W-px/2,y0-5,f.p)+lbl(x0+W+6,y0+qy/2+5,f.q,'start')+'</svg>';}
+ else if(f.type==='grid'){var c=24,cols=f.cols,rows=f.rows,ox=28,oy=12,Wd=ox+cols*c+14,Hd=oy+rows*c+26,g='';
+   for(var i=0;i<=cols;i++)g+='<line x1="'+(ox+i*c)+'" y1="'+oy+'" x2="'+(ox+i*c)+'" y2="'+(oy+rows*c)+'" stroke="#e3dcf3"/>'+'<text x="'+(ox+i*c)+'" y="'+(oy+rows*c+16)+'" font-size="11" text-anchor="middle" fill="#9a8db0">'+i+'</text>';
+   for(var j=0;j<=rows;j++)g+='<line x1="'+ox+'" y1="'+(oy+j*c)+'" x2="'+(ox+cols*c)+'" y2="'+(oy+j*c)+'" stroke="#e3dcf3"/>'+'<text x="'+(ox-8)+'" y="'+(oy+(rows-j)*c+4)+'" font-size="11" text-anchor="end" fill="#9a8db0">'+j+'</text>';
+   var P=f.pts.map(function(p){return [ox+p[0]*c,oy+(rows-p[1])*c,p[2]];});
+   if(f.poly)g+='<path d="M'+P.map(function(p){return p[0]+' '+p[1];}).join('L')+'Z" fill="rgba(255,111,165,.18)" stroke="#ff6fa5" stroke-width="2.5" stroke-linejoin="round"/>';
+   P.forEach(function(p){g+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="5" fill="#8e6bff"/><text x="'+(p[0]+7)+'" y="'+(p[1]-7)+'" font-size="14" font-weight="800" fill="#5b3fd0">'+p[2]+'</text>';});
+   s='<svg viewBox="0 0 '+Wd+' '+Hd+'">'+g+'</svg>';}
+ else if(f.type==='spinner'){var n=f.n,r=60,cx=90,cy=75,sg='';
+   for(var k=0;k<n;k++){var a1=k/n*2*Math.PI-Math.PI/2,a2=(k+1)/n*2*Math.PI-Math.PI/2;sg+='<path d="M'+cx+' '+cy+'L'+(cx+r*Math.cos(a1)).toFixed(1)+' '+(cy+r*Math.sin(a1)).toFixed(1)+'A'+r+' '+r+' 0 0 1 '+(cx+r*Math.cos(a2)).toFixed(1)+' '+(cy+r*Math.sin(a2)).toFixed(1)+'Z" fill="'+(k%2?'#fff':'#faf7ff')+'" stroke="#8e6bff" stroke-width="2"/>';}
+   s='<svg viewBox="0 0 180 150">'+sg+'<path d="M'+cx+' '+(cy-38)+'L'+(cx-7)+' '+cy+'H'+(cx+7)+'Z" fill="#ff6fa5"/><circle cx="'+cx+'" cy="'+cy+'" r="7" fill="#ff6fa5"/></svg>';}
+ return s;
+}
+
+/* ---------- 本地存储 ---------- */
+var KEY='mathpk_v1';
+function defStore(){return {v:1,name:'我',xp:0,badges:{},best:[],history:[],stats:{rounds:0,wins:0,correct:0,total:0,topicWins:{}},settings:{sound:true,timer:false,diff:1,topic:'all'}};}
+function load(){var d=defStore();try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.v===1){for(var k in s)d[k]=s[k];d.settings=Object.assign(defStore().settings,s.settings||{});d.stats=Object.assign(defStore().stats,s.stats||{});}}catch(e){}return d;}
+var store=load();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
+
+/* ---------- 声音（WebAudio 合成，无需素材） ---------- */
+var actx=null;
+function ac(){if(!actx){var C=window.AudioContext||window.webkitAudioContext;if(!C)return null;try{actx=new C();}catch(e){return null;}}if(actx.state==='suspended')actx.resume();return actx;}
+function tone(f,d,type,v,delay){if(!store.settings.sound)return;var c=ac();if(!c)return;var t=c.currentTime+(delay||0),o=c.createOscillator(),g=c.createGain();o.type=type||'sine';o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(v||0.12,t+0.02);g.gain.exponentialRampToValueAtTime(0.0001,t+d);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+d+0.05);}
+var SFX={
+ tap:function(){tone(700,0.05,'triangle',0.06);},
+ ok:function(){[523,659,784,1046].forEach(function(f,i){tone(f,0.18,'triangle',0.13,i*0.08);});},
+ no:function(){tone(440,0.18,'sine',0.09);tone(370,0.28,'sine',0.08,0.14);},
+ miuya:function(){tone(988,0.07,'square',0.035);tone(1319,0.09,'square',0.035,0.08);},
+ win:function(){[523,659,784,659,784,1046].forEach(function(f,i){tone(f,0.22,'triangle',0.13,i*0.12);});},
+ lose:function(){[392,440,523,659].forEach(function(f,i){tone(f,0.25,'sine',0.1,i*0.14);});},
+ star:function(i){tone(880+i*220,0.25,'triangle',0.12);},
+ badge:function(){[784,988,1175,1568].forEach(function(f,i){tone(f,0.15,'square',0.04,i*0.07);});}
+};
+
+/* ---------- 等级与徽章 ---------- */
+var TITLES=['数学小芽','口算小星','计算小能手','方程小侦探','图形小画家','解题小达人','数学小学霸','数学小博士','数学小明星','数学女王'];
+function levelInfo(xp){var lv=1,need=100,rest=xp;while(rest>=need){rest-=need;lv++;need=100+60*(lv-1);}return {lv:lv,title:TITLES[Math.min(lv,TITLES.length)-1],cur:rest,need:need};}
+var BADGES=[
+ ['first_round','初','初次登场','完成第一局 PK','#a68bff','#ffb3d0'],
+ ['first_win','胜','首胜','第一次赢了 Miuya','#ff6fa5','#a68bff'],
+ ['perfect','满','满分小天才','一局 10 题全部答对','#ffb400','#ff8dba'],
+ ['combo5','连','连击高手','一局中连续答对 5 题','#ff8a3d','#ffd84d'],
+ ['combo8','炫','连击之星','一局中连续答对 8 题','#e64d7f','#ffd84d'],
+ ['speed','闪','闪电手','10 秒内答对一道应用题','#2fbf94','#a68bff'],
+ ['win_mid','进','进阶之星','在“提高”难度赢了 Miuya','#4a8dff','#ffd84d'],
+ ['win_hard','王','挑战王者','在“挑战”难度赢了 Miuya','#8e6bff','#ffc93c'],
+ ['rounds10','恒','坚持不懈','累计完成 10 局','#3cb6c8','#ffb3d0'],
+ ['wins5','将','常胜小将','累计赢 Miuya 5 次','#d9534f','#ffd84d'],
+ ['t_dm','乘','小数乘法达人','在“小数乘法”专题获胜','#ff7eb3','#c9b6ff'],
+ ['t_dd','除','小数除法达人','在“小数除法”专题获胜','#7c6cff','#ffc2dc'],
+ ['t_eq','方','方程小侦探','在“简易方程”专题获胜','#27ae8f','#ffd84d'],
+ ['t_ar','形','图形小画家','在“多边形的面积”专题获胜','#f39c35','#c9b6ff'],
+ ['t_pos','位','位置小向导','在“位置”专题获胜','#3a9be0','#ffc2dc'],
+ ['t_pr','猜','可能性小预言家','在“可能性”专题获胜','#b35cff','#ffd84d'],
+ ['t_tr','树','植树小园丁','在“植树问题”专题获胜','#4caf50','#ffc2dc'],
+ ['all_topics','全','全能小博士','7 个专题都赢过 Miuya','#ff5d98','#8e6bff']
+];
+function badgeById(id){return BADGES.filter(function(b){return b[0]===id;})[0];}
+function badgeSVG(b){return medalSVG(b[1],b[4],b[5]);}
+
+/* ---------- 文案 ---------- */
+var TXT={
+ ok:['太棒啦！','答对了，真厉害！','思路清晰，赞！','你是数学小达人！','完美！继续保持～','漂亮！一次就对！'],
+ no:['没关系，看看解题思路就懂啦～','差一点点！下一题一定行！','错误是进步的小台阶哦～','别灰心，我们一起看看怎么做～','学会这题，你又变强啦！'],
+ timeout:['时间到啦，没关系，看看思路吧～'],
+ think:['嗯……让我想想','先找找数量关系','画个图看看','列个算式……','这题有点意思！','小数点可别点错','认真检查一下','一步一步来～'],
+ done:['我写好啦！','搞定～你呢？','答完啦，等你哦～','写好了，你慢慢来～'],
+ both:['我们都答对啦，击掌！','英雄所见略同～'],
+ meOnly:['哇，你比我厉害！','这题你赢啦，佩服！'],
+ miOnly:['这题我碰巧会，下题看你的！','下一题你一定能追上！'],
+ none:['这题好难，我们一起看思路吧～','我也错啦，一起学习！'],
+ home:['今天也来比一比吧～','准备好了吗？我可不会让着你哦～','练习越多，进步越快！','听说你最近又变厉害了？']
+};
+var SCRIB=['3.5×4','x=?','÷','≈','(a+b)×h÷2','+1','0.25','×10','(□,△)'];
+
+/* ---------- 通用界面 ---------- */
+function show(id){$$('.screen').forEach(function(s){s.classList.remove('active');});$('#scr-'+id).classList.add('active');window.scrollTo(0,0);}
+var toastT=0;function toast(t){var el=$('#toast');el.textContent=t;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){el.classList.remove('show');},2200);}
+function confirmBox(text,yes,no,cb){$('#modalText').textContent=text;$('#modalYes').textContent=yes;$('#modalNo').textContent=no;$('#modalAv').innerHTML='<div style="width:70px;height:70px;margin:0 auto">'+AV.miuya+'</div>';$('#modal').classList.add('show');
+ $('#modalYes').onclick=function(){$('#modal').classList.remove('show');cb(true);};$('#modalNo').onclick=function(){$('#modal').classList.remove('show');cb(false);};}
+function paintAvatars(){$$('[data-av]').forEach(function(el){el.innerHTML=AV[el.getAttribute('data-av')];});}
+function paintMute(){$$('[data-act="mute"]').forEach(function(b){b.innerHTML=store.settings.sound?IC.soundOn:IC.soundOff;});}
+function confetti(n){var box=document.createElement('div');box.className='confetti';var cols=['#ff6fa5','#8e6bff','#ffc93c','#2fbf94','#4a8dff','#ff8a7a'];
+ for(var i=0;i<(n||60);i++){var c=document.createElement('i');c.style.left=Math.random()*100+'%';c.style.background=cols[i%cols.length];c.style.animationDuration=(1.8+Math.random()*1.8)+'s';c.style.animationDelay=(Math.random()*0.6)+'s';c.style.transform='rotate('+Math.random()*360+'deg)';box.appendChild(c);}
+ document.body.appendChild(box);setTimeout(function(){box.remove();},4200);}
+
+/* ---------- 首页 ---------- */
+var TOPIC_LIST=[['all','综合']].concat(Object.keys(G.TOPICS).map(function(k){return [k,G.TOPICS[k]];}));
+function renderHome(){
+ $('#topicGrid').innerHTML=TOPIC_LIST.map(function(t){return '<button data-topic="'+t[0]+'">'+t[1]+'</button>';}).join('');
+ $$('#diffSeg button').forEach(function(b){b.classList.toggle('on',+b.dataset.diff===store.settings.diff);});
+ $$('#topicGrid button').forEach(function(b){b.classList.toggle('on',b.dataset.topic===store.settings.topic);});
+ $('[data-act="timer"]').classList.toggle('on',store.settings.timer);
+ $('[data-act="sound"]').classList.toggle('on',store.settings.sound);
+ $('#pname').value=store.name;
+ var li=levelInfo(store.xp);$('#lvlText').textContent='Lv.'+li.lv+' '+li.title+' · 经验 '+li.cur+'/'+li.need;$('#xpFill').style.width=Math.round(li.cur/li.need*100)+'%';
+ $('#badgeCount').textContent=Object.keys(store.badges).length+'/'+BADGES.length;
+ $('#homeSay').textContent='Miuya：'+pickOne(TXT.home);
+ $('[data-act="badges"]').innerHTML=IC.medal+'徽章墙';$('[data-act="records"]').innerHTML=IC.chart+'成绩记录';
+ paintMute();
+}
+
+/* ---------- 一局游戏 ---------- */
+var MIUYA={1:{acc:0.62,lo:0.7,hi:1.1},2:{acc:0.74,lo:0.5,hi:0.9},3:{acc:0.86,lo:0.35,hi:0.7}};
+var DIFF_NAME={1:'基础',2:'提高',3:'挑战'};
+var KIND_NAME={calc:'计算',app:'应用题',choice:'选择题'};
+var S=null,tickT=0;
+function scoreOf(ok,t,par,streak,hint){if(!ok)return {base:0,speed:0,combo:0,total:0};var base=hint?70:100,speed=Math.round(50*Math.max(0,Math.min(1,(1.5*par-t)/(1.5*par)))),combo=streak>=2?Math.min(streak-1,5)*10:0;return {base:base,speed:speed,combo:combo,total:base+speed+combo};}
+function startRound(){
+ var d=store.settings.diff,topic=store.settings.topic;
+ S={d:d,topic:topic,probs:G.makeRound(topic,d,10),i:-1,me:{score:0,streak:0,maxStreak:0,correct:0,res:[]},mi:{score:0,streak:0,maxStreak:0,correct:0,res:[]},fast:false,started:Date.now()};
+ $('#gDiff').textContent=DIFF_NAME[d]+(topic==='all'?' · 综合':' · '+G.TOPICS[topic]);
+ $('#meName').textContent=store.name||'我';
+ show('game');paintAvatars();paintMute();nextQ();
+}
+function dotsHTML(res,cur){var h='';for(var i=0;i<10;i++){var c=i<res.length?(res[i].ok?'ok':'no'):(i===cur?'cur':'');h+='<i class="'+c+'"></i>';}return h;}
+function paintRace(){
+ $('#meDots').innerHTML=dotsHTML(S.me.res,S.i);$('#miDots').innerHTML=dotsHTML(S.mi.res,S.i);
+ $('#meScore').textContent=S.me.score;$('#miScore').textContent=S.mi.score;
+ [['#meCombo',S.me],['#miCombo',S.mi]].forEach(function(x){var el=$(x[0]);if(x[1].streak>=2){el.textContent='连对×'+x[1].streak;el.classList.add('show');}else el.classList.remove('show');});
+}
+function nextQ(){
+ hideSheet();
+ S.i++;if(S.i>=S.probs.length)return finish();
+ var p=S.probs[S.i],m=MIUYA[S.d];
+ S.cur=p;S.input='';S.choice=-1;S.hint=false;S.answered=false;
+ S.mt=p.par*(m.lo+Math.random()*(m.hi-m.lo))*(p.kind==='calc'?0.9:1);S.mt=Math.round(S.mt*10)/10;
+ S.mOk=Math.random()<m.acc;S.mDone=false;S.mShown=0;S.lastSay=0;
+ S.limit=store.settings.timer?Math.round(p.par*2):0;
+ $('#qno').textContent='第 '+(S.i+1)+' / 10 题';
+ $('#qTopic').textContent=p.topicName;$('#qKind').textContent=KIND_NAME[p.kind];
+ $('#qtext').textContent=p.text;$('#qfig').innerHTML=renderFig(p.fig);$('#scr-game').classList.toggle('hasfig',!!p.fig);
+ $('[data-act="hint"]').innerHTML=IC.bulb+'提示';$('[data-act="hint"]').style.display='';
+ $('#hintbox').classList.remove('show');$('#qcard').scrollTop=0;
+ $('#miuyaBox').classList.remove('done');$('#mBar').style.transition='none';$('#mBar').style.width='0%';
+ $('#mSay').innerHTML='<span class="dotty">'+esc(pickOne(TXT.think))+'</span>';
+ renderInput();paintRace();checkMore();
+ S.t0=performance.now();clearInterval(tickT);tickT=setInterval(tick,100);tick();
+}
+/* 手机上题目+配图放不下时，在卡片底部提示“往下滑”，滑到底就隐藏 */
+function checkMore(){var c=$('#qcard');if(!c)return;c.classList.toggle('more',c.scrollHeight-c.clientHeight-c.scrollTop>24);}
+function renderInput(){
+ var p=S.cur,h;
+ if(p.choices){
+  var cls=p.choices.length===2?'two':p.choices.length===3?'three':'';
+  h='<div class="choices '+cls+'">'+p.choices.map(function(c,i){return '<button data-choice="'+i+'">'+esc(c)+'</button>';}).join('')+'</div>'+
+    '<div class="choices-foot" style="margin-top:10px"><button class="btn ghost" data-act="skip">跳过</button><button class="btn primary" data-act="submit">提交答案</button></div>';
+ }else{
+  h='<div class="ansrow"><span class="lab">答：</span><div class="ansbox" id="ansbox"></div><span class="unit">'+esc(p.unit||'')+'</span></div>'+
+    '<div class="pad" style="margin-top:8px">'+
+    ['7','8','9','del','4','5','6','ok','1','2','3','.','0','clr','skip'].map(function(k){
+      if(k==='del')return '<button class="fn" data-k="del" aria-label="退格"><svg viewBox="0 0 32 24" width="30" height="22"><path d="M10 3h18a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H10L2 12z" fill="#e6ddff" stroke="#6a4bd8" stroke-width="2" stroke-linejoin="round"/><path d="M15 8l8 8M23 8l-8 8" stroke="#6a4bd8" stroke-width="2.4" stroke-linecap="round"/></svg></button>';
+      if(k==='clr')return '<button class="fn" data-k="clr">清空</button>';
+      if(k==='ok')return '<button class="ok" data-act="submit">提交</button>';
+      if(k==='skip')return '<button class="skip" data-act="skip">跳过</button>';
+      return '<button data-k="'+k+'">'+k+'</button>';}).join('')+'</div>';
+ }
+ $('#inputArea').innerHTML=h;paintAns();
+}
+function paintAns(){var b=$('#ansbox');if(!b)return;b.innerHTML=S.input?esc(S.input)+'<span class="caret"></span>':'<span class="caret"></span><span class="ph">&nbsp;点数字键输入答案</span>';}
+function press(k){
+ if(!S||S.answered||S.cur.choices)return;SFX.tap();
+ if(k==='del')S.input=S.input.slice(0,-1);
+ else if(k==='clr')S.input='';
+ else if(k==='.'){if(S.input.indexOf('.')<0&&S.input.length<9)S.input=(S.input||'0')+'.';}
+ else if(/^\d$/.test(k)&&S.input.replace('.','').length<9){if(S.input==='0')S.input=k;else S.input+=k;}
+ paintAns();
+}
+function tick(){
+ if(!S||S.answered)return;
+ var el=(performance.now()-S.t0)/1000,prog=Math.min(1,el*SPEED/S.mt);
+ $('#mBar').style.width=(prog*100).toFixed(1)+'%';
+ if(prog>=1&&!S.mDone){S.mDone=true;$('#miuyaBox').classList.add('done');$('#mSay').textContent=pickOne(TXT.done);SFX.miuya();}
+ else if(!S.mDone&&el-S.lastSay>2.6){S.lastSay=el;$('#mSay').innerHTML='<span class="dotty">'+esc(pickOne(TXT.think))+'</span>';var sc=$('#scribble');sc.textContent=pickOne(SCRIB);sc.classList.remove('fly');void sc.offsetWidth;sc.classList.add('fly');}
+ if(S.limit){var left=Math.max(0,Math.ceil(S.limit-el)),t=$('#timer');t.classList.add('show');t.textContent='还剩 '+left+' 秒';t.classList.toggle('low',left<=10);if(left<=0)submit(true);}
+ else $('#timer').classList.remove('show');
+}
+function submit(timeout,skipped){
+ if(!S||S.answered)return;var p=S.cur;
+ if(!timeout&&!skipped){
+  if(p.choices&&S.choice<0){toast('先选一个答案哦～');return;}
+  if(!p.choices&&(S.input===''||isNaN(G.parseNum(S.input)))){var b=$('#ansbox');b.classList.remove('shake');void b.offsetWidth;b.classList.add('shake');toast('先输入答案哦～');return;}
+ }
+ S.answered=true;clearInterval(tickT);
+ var t=Math.round((performance.now()-S.t0)/100)/10;
+ var ok=!timeout&&!skipped&&G.check(p,p.choices?S.choice:S.input);
+ var me=S.me;me.streak=ok?me.streak+1:0;me.maxStreak=Math.max(me.maxStreak,me.streak);if(ok)me.correct++;
+ var sc=scoreOf(ok,t,p.par,me.streak,S.hint);me.score+=sc.total;
+ var shown=timeout?'（时间到）':skipped?'（跳过）':(p.choices?p.choices[S.choice]:S.input);
+ me.res.push({ok:ok,t:t,input:shown,hint:S.hint,sc:sc});
+ if(ok&&p.kind==='app'&&t<10)S.fast=true;
+ var mi=S.mi;mi.streak=S.mOk?mi.streak+1:0;mi.maxStreak=Math.max(mi.maxStreak,mi.streak);if(S.mOk)mi.correct++;
+ var msc=scoreOf(S.mOk,S.mt,p.par,mi.streak,false);mi.score+=msc.total;mi.res.push({ok:S.mOk,t:S.mt,sc:msc});
+ var mb=$('#mBar');mb.style.transition='width .5s';mb.style.width='100%';$('#miuyaBox').classList.add('done');
+ $('#mSay').textContent=ok&&S.mOk?pickOne(TXT.both):ok?pickOne(TXT.meOnly):S.mOk?pickOne(TXT.miOnly):pickOne(TXT.none);
+ $('#timer').classList.remove('show');
+ paintRace();
+ if(ok){SFX.ok();if(me.streak>=3)toast('连对 '+me.streak+' 题，势不可挡！');}else SFX.no();
+ showFeedback(ok,timeout,skipped,t,sc,msc);
+}
+function ansWithUnit(p,input){return (!p.choices&&p.unit&&/^[\d.]+$/.test(input))?input+' '+p.unit:input;}
+function stepsHTML(p){return '<div class="steps"><h4>'+IC.bulb+'解题思路</h4><ol>'+p.steps.map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ol></div>';}
+function showFeedback(ok,timeout,skipped,t,sc,msc){
+ var p=S.cur,last=S.i===S.probs.length-1;
+ var msg=ok?pickOne(TXT.ok):timeout?TXT.timeout[0]:skipped?'跳过也没关系，看看怎么做吧～':pickOne(TXT.no);
+ var pts=ok?'<span>答对 +'+sc.base+'</span>'+(sc.speed?'<span>速度 +'+sc.speed+'</span>':'')+(sc.combo?'<span>连对 +'+sc.combo+'</span>':''):'';
+ var h='<div class="fb-head '+(ok?'ok':'no')+'">'+(ok?IC.ok:IC.hug)+'<div><div class="big">'+(ok?'答对啦！':'再接再厉！')+'</div><div class="fb-msg">'+esc(msg)+'</div></div></div>'+
+  '<div class="fb-grid"><div class="fb-cell">你的答案<b>'+esc(ansWithUnit(p,S.me.res[S.i].input))+'</b></div><div class="fb-cell">正确答案<b style="color:#138a66">'+esc(G.fmtAnswer(p))+(p.choices?'':' '+esc(p.unit||''))+'</b></div>'+
+  '<div class="fb-cell">你的用时<b>'+t+' 秒</b></div><div class="fb-cell">Miuya<b style="color:'+(S.mi.res[S.i].ok?'#138a66':'#e0705e')+'">'+(S.mi.res[S.i].ok?'答对':'答错')+' · '+S.mt+' 秒</b></div></div>'+
+  (pts?'<div class="pts">'+pts+'</div>':'')+
+  (ok?'<button class="toggle-steps" data-act="togglesteps">看看解题思路 ▾</button><div id="fbSteps" style="display:none">'+stepsHTML(p)+'</div>':stepsHTML(p))+
+  '<div class="fb-actions"><button class="btn '+(last?'purple':'primary')+'" data-act="next">'+(last?'看比赛结果':'下一题')+'</button></div>';
+ var sh=$('#sheet');sh.innerHTML=h;sh.scrollTop=0;$('#mask').classList.add('show');sh.classList.add('show');
+}
+function hideSheet(){$('#sheet').classList.remove('show');$('#mask').classList.remove('show');}
+
+/* ---------- 结算 ---------- */
+function award(id,list){if(!store.badges[id]){store.badges[id]=Date.now();list.push(id);}}
+function finish(){
+ clearInterval(tickT);hideSheet();
+ var me=S.me,mi=S.mi,res=me.score>mi.score?'win':me.score<mi.score?'lose':'tie',stars=me.correct>=9?3:me.correct>=6?2:1;
+ var gained=Math.round(me.score/10)+(res==='win'?30:10)+stars*5,before=levelInfo(store.xp);
+ store.xp+=gained;var after=levelInfo(store.xp);
+ var st=store.stats;st.rounds++;if(res==='win'){st.wins++;if(S.topic!=='all')st.topicWins[S.topic]=(st.topicWins[S.topic]||0)+1;}
+ st.correct+=me.correct;st.total+=10;
+ var rec={date:Date.now(),d:S.d,topic:S.topic,score:me.score,mscore:mi.score,correct:me.correct,res:res,stars:stars};
+ store.history.unshift(rec);store.history=store.history.slice(0,30);
+ store.best.push(rec);store.best.sort(function(a,b){return b.score-a.score;});store.best=store.best.slice(0,10);
+ var isBest=store.best[0]===rec&&store.best.length>1;
+ var nb=[];award('first_round',nb);
+ if(res==='win'){award('first_win',nb);if(S.d===2)award('win_mid',nb);if(S.d===3)award('win_hard',nb);if(S.topic!=='all')award('t_'+S.topic,nb);}
+ if(me.correct===10)award('perfect',nb);if(me.maxStreak>=5)award('combo5',nb);if(me.maxStreak>=8)award('combo8',nb);if(S.fast)award('speed',nb);
+ if(st.rounds>=10)award('rounds10',nb);if(st.wins>=5)award('wins5',nb);
+ if(Object.keys(G.TOPICS).every(function(k){return st.topicWins[k];}))award('all_topics',nb);
+ save();S.result={res:res,stars:stars,gained:gained,nb:nb,lvup:after.lv>before.lv?after:null,isBest:isBest};
+ renderResult();show('result');
+ if(res==='win'){SFX.win();confetti(70);}else SFX.lose();
+ [0,1,2].forEach(function(i){setTimeout(function(){var s=$$('#resStars svg')[i];if(s&&i<stars){s.classList.add('lit');SFX.star(i);}},500+i*350);});
+ if(nb.length)setTimeout(SFX.badge,1700);
+}
+function renderResult(){
+ var me=S.me,mi=S.mi,r=S.result,wrong=me.res.filter(function(x){return !x.ok;}).length;
+ var title={win:'你赢啦！',lose:'只差一点点！',tie:'平局！'}[r.res];
+ var say={win:'Miuya：心服口服～你太厉害啦！',lose:'Miuya：你进步好快！下一局你一定能赢我！',tie:'Miuya：我们旗鼓相当，再来一局定胜负！'}[r.res];
+ var avgT=me.res.reduce(function(a,x){return a+x.t;},0)/me.res.length;avgT=avgT<10?Math.round(avgT*10)/10:Math.round(avgT);
+ var starMsg=r.stars===3?'三颗星！超级棒！':r.stars===2?'两颗星！继续加油冲三星！':'完成挑战就有星星！多练练会更棒哦～';
+ var h='<div class="res-grid"><div class="card">'+
+  '<div class="res-banner"><div class="trophy">'+(r.res==='win'?IC.trophy:r.res==='tie'?IC.party:'<div style="width:120px;height:120px;margin:0 auto">'+AV.miuya+'</div>')+'</div><h2>'+title+'</h2><p>'+esc(say)+'</p></div>'+
+  '<div class="stars" id="resStars">'+IC.star+IC.star+IC.star+'</div><div style="text-align:center;color:var(--ink2);font-size:14px">'+starMsg+'</div>'+
+  '<div class="vsbox"><div class="side '+(r.res==='win'?'win':'')+'">'+(r.res==='win'?'<span class="crown">'+IC.crown+'</span>':'')+'<div class="av" style="margin:0 auto">'+AV.me+'</div><div>'+esc(store.name||'我')+'</div><div class="num">'+me.score+'</div></div><div class="vs" style="font-size:26px">VS</div>'+
+  '<div class="side '+(r.res==='lose'?'win':'')+'">'+(r.res==='lose'?'<span class="crown">'+IC.crown+'</span>':'')+'<div class="av" style="margin:0 auto">'+AV.miuya+'</div><div>Miuya</div><div class="num">'+mi.score+'</div></div></div>'+
+  '</div><div class="card">'+
+  '<div class="statg"><div>答对<b>'+me.correct+'/10</b></div><div>最高连对<b>'+me.maxStreak+'</b></div><div>平均用时<b>'+avgT+'秒</b></div><div>经验<b>+'+r.gained+'</b></div></div>'+
+  (r.isBest?'<div class="lvup">刷新个人最高分！</div>':'')+
+  (r.lvup?'<div class="lvup">升级啦！Lv.'+r.lvup.lv+' '+r.lvup.title+'</div>':'')+
+  (r.nb.length?'<div class="sec-title" style="justify-content:center">获得新徽章</div><div class="newbadges">'+r.nb.map(function(id){var b=badgeById(id);return '<div class="mini-badge">'+badgeSVG(b)+b[2]+'</div>';}).join('')+'</div>':'')+
+  '<div class="res-actions"><button class="btn purple wide" data-act="review">'+(wrong?'错题回顾（'+wrong+' 题）':'本局题目回顾')+'</button><button class="btn primary" data-act="again">再来一局</button><button class="btn ghost" data-act="home">回首页</button></div>'+
+  '</div></div>';
+ $('#resultWrap').innerHTML=h;
+}
+var rvMode='wrong';
+function renderReview(){
+ var items=S.probs.map(function(p,i){return {p:p,r:S.me.res[i],i:i};}),wrong=items.filter(function(x){return !x.r.ok;});
+ if(!wrong.length)rvMode='all';
+ var list=rvMode==='wrong'?wrong:items;
+ var h='<div class="pagehead"><button class="iconbtn" data-act="toResult" aria-label="返回">'+IC.back+'</button><h2>'+(rvMode==='wrong'?'错题回顾':'本局题目回顾')+'</h2></div>'+
+  '<div class="rv-filter"><button data-rv="wrong" class="'+(rvMode==='wrong'?'on':'')+'">只看错题（'+wrong.length+'）</button><button data-rv="all" class="'+(rvMode==='all'?'on':'')+'">全部 10 题</button></div>';
+ if(!wrong.length&&rvMode==='all')h+='<div class="card allgood">'+IC.party+'<h3>全部答对，太厉害啦！</h3><p style="color:var(--ink2)">下面是本局的题目和思路，可以再回味一下～</p></div><div style="height:12px"></div>';
+ else if(rvMode==='wrong')h+='<div class="bubble" style="margin-bottom:12px;max-width:none">Miuya：每道错题都是一次变强的机会，我们一起看看吧～</div>';
+ h+=list.map(function(x){var p=x.p,u=p.choices?'':' '+(p.unit||'');return '<div class="card rv"><div class="qtags"><span class="tag pink">第 '+(x.i+1)+' 题 · '+esc(p.topicName)+'</span><span class="tag">'+KIND_NAME[p.kind]+'</span>'+(x.r.ok?'<span class="tag mint">答对</span>':'')+'</div>'+
+  '<div class="qtext">'+esc(p.text)+'</div>'+(p.fig?'<div class="fig">'+renderFig(p.fig)+'</div>':'')+
+  (p.choices?'<div class="qtext" style="font-size:15px;color:var(--ink2);margin-top:6px">选项：'+p.choices.map(esc).join(' / ')+'</div>':'')+
+  '<div class="rv-ans">'+(x.r.ok?'':'<span class="me">你的答案：'+esc(ansWithUnit(p,x.r.input))+'</span>')+'<span class="right">正确答案：'+esc(G.fmtAnswer(p))+esc(u)+'</span></div>'+stepsHTML(p)+'</div>';}).join('');
+ h+='<div class="res-actions"><button class="btn primary" data-act="again">再来一局</button><button class="btn ghost" data-act="home">回首页</button></div>';
+ $('#reviewWrap').innerHTML=h;
+}
+function renderBadges(){
+ var h='<div class="pagehead"><button class="iconbtn" data-act="home" aria-label="返回">'+IC.back+'</button><h2>徽章墙</h2><span class="tag sun">'+Object.keys(store.badges).length+' / '+BADGES.length+'</span></div><div class="bgrid">'+
+  BADGES.map(function(b){var got=store.badges[b[0]];return '<div class="badge '+(got?'':'lock')+'">'+badgeSVG(got?b:[b[0],'?','',b[3],'#bbb','#ddd'])+'<b>'+b[2]+'</b><small>'+b[3]+(got?'<br>'+new Date(got).toLocaleDateString('zh-CN'):'')+'</small></div>';}).join('')+'</div>';
+ $('#badgesWrap').innerHTML=h;
+}
+function fmtDate(t){var d=new Date(t);return (d.getMonth()+1)+'/'+d.getDate()+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);}
+function topicName(t){return t==='all'?'综合':G.TOPICS[t];}
+function renderRecords(){
+ var st=store.stats,acc=st.total?Math.round(st.correct/st.total*100):0;
+ var h='<div class="pagehead"><button class="iconbtn" data-act="home" aria-label="返回">'+IC.back+'</button><h2>成绩记录</h2></div>'+
+  '<div class="sumg"><div>总局数<b>'+st.rounds+'</b></div><div>赢 Miuya<b>'+st.wins+'</b></div><div>正确率<b>'+acc+'%</b></div><div>等级<b>Lv.'+levelInfo(store.xp).lv+'</b></div></div>'+
+  '<div class="card"><h3 style="margin-bottom:6px">最高分排行</h3>'+(store.best.length?'<table class="rec"><tr><th>#</th><th>得分</th><th>难度·专题</th><th>答对</th><th>日期</th></tr>'+store.best.map(function(r,i){return '<tr><td>'+(i+1)+'</td><td><b>'+r.score+'</b></td><td>'+DIFF_NAME[r.d]+'·'+topicName(r.topic)+'</td><td>'+r.correct+'/10</td><td>'+fmtDate(r.date)+'</td></tr>';}).join('')+'</table>':'<div class="empty">还没有成绩，快去和 Miuya 比一比吧！</div>')+'</div><div style="height:12px"></div>'+
+  '<div class="card"><h3 style="margin-bottom:6px">最近对战</h3>'+(store.history.length?'<table class="rec"><tr><th>时间</th><th>结果</th><th>比分</th><th>难度·专题</th></tr>'+store.history.slice(0,20).map(function(r){return '<tr><td>'+fmtDate(r.date)+'</td><td class="'+{win:'w',lose:'l',tie:'t'}[r.res][0]+'">'+{win:'胜',lose:'惜败',tie:'平'}[r.res]+'</td><td>'+r.score+' : '+r.mscore+'</td><td>'+DIFF_NAME[r.d]+'·'+topicName(r.topic)+'</td></tr>';}).join('')+'</table>':'<div class="empty">暂无记录</div>')+'</div>'+
+  '<div style="text-align:center;margin-top:14px"><button class="btn ghost" data-act="clear" style="font-size:14px">清空记录</button></div>';
+ $('#recordsWrap').innerHTML=h;
+}
+
+/* ---------- 事件 ---------- */
+document.addEventListener('click',function(e){
+ var t=e.target.closest('button');if(!t)return;
+ if(t.dataset.k){press(t.dataset.k);return;}
+ if(t.dataset.diff){store.settings.diff=+t.dataset.diff;save();SFX.tap();renderHome();return;}
+ if(t.dataset.topic){store.settings.topic=t.dataset.topic;save();SFX.tap();renderHome();return;}
+ if(t.dataset.choice!==undefined){if(!S||S.answered)return;S.choice=+t.dataset.choice;SFX.tap();$$('[data-choice]').forEach(function(b){b.classList.toggle('sel',+b.dataset.choice===S.choice);});return;}
+ if(t.dataset.rv){rvMode=t.dataset.rv;renderReview();window.scrollTo(0,0);return;}
+ var a=t.dataset.act;if(!a)return;
+ switch(a){
+  case 'mute':store.settings.sound=!store.settings.sound;save();paintMute();$('[data-act="sound"]').classList.toggle('on',store.settings.sound);if(store.settings.sound)SFX.tap();break;
+  case 'sound':store.settings.sound=!store.settings.sound;save();renderHome();SFX.tap();break;
+  case 'timer':store.settings.timer=!store.settings.timer;save();renderHome();SFX.tap();toast(store.settings.timer?'已开启每题限时，加油！':'已关闭限时，慢慢想～');break;
+  case 'start':case 'again':SFX.tap();startRound();break;
+  case 'submit':submit(false,false);break;
+  case 'skip':confirmBox('要跳过这道题吗？跳过算答错，但能马上看到解题思路哦～','跳过','再想想',function(y){if(y)submit(false,true);});break;
+  case 'next':SFX.tap();nextQ();break;
+  case 'hint':if(!S||S.answered)return;S.hint=true;$('#hintbox').innerHTML='<b>提示：</b>'+esc(S.cur.steps[0]);$('#hintbox').classList.add('show');t.style.display='none';checkMore();toast('用了提示，本题答对得 70 分');break;
+  case 'togglesteps':var fs=$('#fbSteps');fs.style.display=fs.style.display==='none'?'block':'none';break;
+  case 'quit':confirmBox('要退出这一局吗？本局成绩不会保存哦。','退出','继续答题',function(y){if(y){clearInterval(tickT);hideSheet();S=null;renderHome();show('home');}});break;
+  case 'home':hideSheet();renderHome();show('home');break;
+  case 'review':rvMode='wrong';renderReview();show('review');break;
+  case 'toResult':show('result');$$('#resStars svg').forEach(function(s,i){if(i<S.result.stars)s.classList.add('lit');});break;
+  case 'badges':renderBadges();show('badges');break;
+  case 'records':renderRecords();show('records');break;
+  case 'clear':confirmBox('确定要清空成绩记录吗？（等级和徽章会保留）','清空','不了',function(y){if(y){store.best=[];store.history=[];save();renderRecords();toast('记录已清空');}});break;
+ }
+});
+$('#pname').addEventListener('change',function(){store.name=this.value.trim().slice(0,8)||'我';this.value=store.name;save();toast('你好，'+store.name+'！');});
+$('#pname').addEventListener('keydown',function(e){if(e.key==='Enter')this.blur();e.stopPropagation();});
+document.addEventListener('keydown',function(e){
+ if($('#modal').classList.contains('show')){if(e.key==='Escape')$('#modalNo').click();if(e.key==='Enter')$('#modalYes').click();return;}
+ if(!$('#scr-game').classList.contains('active')||!S)return;
+ if(S.answered){if(e.key==='Enter'||e.key===' '){e.preventDefault();nextQ();}return;}
+ if(S.cur.choices){var n=parseInt(e.key,10);if(n>=1&&n<=S.cur.choices.length){var b=$$('[data-choice]')[n-1];if(b)b.click();}if(e.key==='Enter')submit(false,false);return;}
+ var k=null;if(/^\d$/.test(e.key))k=e.key;else if(e.key==='.'||e.key==='Decimal')k='.';else if(e.key==='Backspace')k='del';else if(e.key==='Escape'||e.key==='Delete')k='clr';
+ if(k){e.preventDefault();press(k);var btn=$('[data-k="'+k+'"]');if(btn){btn.classList.add('press');setTimeout(function(){btn.classList.remove('press');},120);}}
+ else if(e.key==='Enter'){e.preventDefault();submit(false,false);}
+});
+$('#mask').addEventListener('click',function(){/* 需点“下一题”，防误触 */});
+$('#qcard').addEventListener('scroll',checkMore,{passive:true});
+window.addEventListener('resize',function(){if(S&&$('#scr-game').classList.contains('active'))checkMore();});
+
+/* ---------- 启动 ---------- */
+$$('[data-act="quit"]').forEach(function(b){b.innerHTML=IC.close;});
+paintAvatars();renderHome();
+window.MathPK={get state(){return S;},get store(){return store;},gen:G,reset:function(){store=defStore();save();renderHome();}};
+})();
+</script>
+</body>
+</html>
