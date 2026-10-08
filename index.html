@@ -242,6 +242,103 @@ table.rec td{padding:8px 4px;border-bottom:1px solid #f5f0fb}
 .confetti{position:fixed;inset:0;pointer-events:none;z-index:30;overflow:hidden}
 .confetti i{position:absolute;top:-20px;width:10px;height:14px;border-radius:3px;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+/* ======================= 思路训练 / 每日逻辑小关卡 ======================= */
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mode-card{display:flex;align-items:center;gap:10px;text-align:left;border-radius:20px;padding:12px;min-height:86px;box-shadow:0 4px 0 rgba(67,49,94,.1);border:3px solid transparent}
+.mode-card.think{background:linear-gradient(135deg,#e9fbf4,#fff)}.mode-card.daily{background:linear-gradient(135deg,#fff6dc,#fff)}
+.mode-card b{display:block;font-size:17px}.mode-card small{display:block;color:var(--ink2);font-size:12.5px;margin-top:3px;line-height:1.35}
+.mc-ic{width:44px;height:44px;flex:none}.mc-ic svg{width:100%;height:100%}
+.home-links.three{grid-template-columns:repeat(3,1fr)}.home-links.three .btn{font-size:15px;padding:12px 6px}
+@media(max-width:420px){.mode-card{flex-direction:column;align-items:flex-start;gap:6px;min-height:0}.mc-ic{width:36px;height:36px}}
+.t-intro{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}.t-intro .av{width:58px;height:58px;flex:none}
+.t-intro .bubble{max-width:none;flex:1;font-size:15px;line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{border-radius:99px;padding:9px 14px;font-weight:800;font-size:15px;background:#fff;box-shadow:0 3px 0 rgba(67,49,94,.08);border:2px solid transparent}
+.chips button.on{border-color:var(--mint);background:#effcf7;color:#138a66}
+.t-grid{display:flex;flex-direction:column;gap:10px}
+@media(min-width:900px){.t-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:18px;align-items:start}.t-left{position:sticky;top:12px}}
+.t-prob .qtext{font-size:18px}
+@media(min-width:900px){.t-prob .qtext{font-size:20px}}
+.dis-note{font-size:12px;color:var(--ink2);margin-top:4px}
+.tf{display:flex;justify-content:center;margin-top:8px}
+.tf svg{width:100%;max-width:360px;height:auto;max-height:190px}
+@media(min-width:900px){.tf svg{max-height:260px;max-width:420px}}
+.tf text{font-family:inherit}
+.tf .hl rect,.tf .hl path,.tf .hl line,.tf .hl circle.hc{stroke:#ff4d8d!important;stroke-width:3.2!important}
+.tf .hl rect.seg{fill:#ffd9e8!important}.tf .hl.p-shape path,.tf .hl.p-shape rect{fill:#ffe3ee!important}
+.tf .hl text{fill:#e23d78!important;font-weight:900}
+.tf .hl{animation:hlpulse 1.4s ease-in-out infinite}
+@keyframes hlpulse{50%{opacity:.72}}
+.t-track{display:flex;gap:6px;margin-top:2px}
+.t-track span{flex:1;text-align:center;font-size:12.5px;font-weight:800;padding:6px 2px;border-radius:12px;background:#fff;color:#a497bb;box-shadow:0 2px 0 rgba(67,49,94,.06);white-space:nowrap}
+.t-track span.cur{background:var(--purple);color:#fff}.t-track span.done{background:var(--mint2);color:#138a66}
+.t-step{position:relative}
+.t-stephead{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.t-no{font-weight:900;font-size:16px;color:#6a4bd8}
+.t-q{display:flex;gap:8px;align-items:flex-start;margin-bottom:10px}
+.t-q .av{width:40px;height:40px;flex:none}
+.t-q .bubble{max-width:none;flex:1;font-size:17px;font-weight:700;line-height:1.5;background:#f7f3ff;box-shadow:none}
+.t-opts{display:grid;gap:9px}
+.t-opts button{text-align:left;min-height:52px;border-radius:16px;background:#fff;font-size:16px;font-weight:700;line-height:1.45;padding:10px 14px;border:3px solid #eee6fb;box-shadow:0 3px 0 rgba(67,49,94,.08)}
+.t-opts button.no{border-color:#ffc9bf;background:#fff6f4;color:#b9877d;text-decoration:line-through;text-decoration-color:rgba(214,96,80,.5)}
+.t-opts button.ok{border-color:var(--mint);background:#effcf7;color:#0f7a59}
+.t-opts button:disabled{cursor:default}
+.t-eq{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:22px;font-weight:800;margin:4px 0 8px}
+.t-eq .ansbox{min-width:120px;flex:1;max-width:220px}
+.t-cq{font-size:15px;color:var(--ink2);font-weight:700}
+.t-pad{grid-template-columns:repeat(4,1fr)}.t-pad button{height:48px}.t-pad .ok{grid-row:span 3}
+.t-fb{display:none;margin-top:10px;border-radius:16px;padding:10px 12px;font-size:15.5px;line-height:1.6}
+.t-fb.show{display:block;animation:fadein .2s}
+.t-fb.good{background:#effcf7;border:2px solid #b9eedc}.t-fb.soft{background:#fff7f2;border:2px dashed #ffcdb8}.t-fb.show-ans{background:#f6f2ff;border:2px solid #ddd0ff}
+.t-fb b.h{display:block;font-size:16px;margin-bottom:2px}
+.t-fb .btn{width:100%;margin-top:10px}
+.t-chain{margin:8px 0 4px;padding:0;list-style:none;counter-reset:ch}
+.t-chain li{position:relative;padding:8px 10px 8px 40px;border-radius:14px;background:#faf7ff;margin-bottom:8px;font-size:15.5px;line-height:1.6;counter-increment:ch}
+.t-chain li:before{content:counter(ch);position:absolute;left:10px;top:9px;width:22px;height:22px;border-radius:50%;background:var(--purple);color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.t-chain li .tag{margin-right:6px;font-size:12px}
+.t-chain li.extra-dis{background:#fff8e6}
+.abar{display:grid;grid-template-columns:5.2em 1fr 3.6em;align-items:center;gap:8px;margin:9px 0;font-size:14px;font-weight:700}
+.abar .trk{height:16px;border-radius:99px;background:#f1ecf8;overflow:hidden}
+.abar .trk i{display:block;height:100%;border-radius:99px;transition:width .6s}
+.abar .pct{text-align:right;font-weight:900}.abar small{color:var(--ink2);font-weight:600}
+.atip{background:#fff8e6;border-radius:14px;padding:10px 12px;font-size:14.5px;line-height:1.6;margin-top:8px}
+.spark{display:flex;align-items:flex-end;gap:5px;height:60px;margin-top:6px}
+.spark i{flex:1;max-width:22px;border-radius:6px 6px 2px 2px;background:linear-gradient(180deg,#a68bff,#d9ccff)}
+.d-strip{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.flame{display:inline-flex;align-items:center;gap:4px;background:#fff1e0;color:#d9681c;font-weight:900;border-radius:99px;padding:5px 12px;font-size:15px}
+.flame svg{width:18px;height:20px}
+.d-dots{display:flex;gap:6px;margin-left:auto}.d-dots i{width:14px;height:14px;border-radius:50%;background:#e9e2f5}
+.d-dots i.ok{background:var(--mint)}.d-dots i.no{background:#ffc2b5}.d-dots i.cur{background:#ffe08a;box-shadow:0 0 0 2px #ffcf4a inset}
+.d-intro{font-size:16px;line-height:1.7;margin:4px 0}
+.d-clues{margin:8px 0;padding:0;list-style:none}
+.d-clues li{background:#f7f3ff;border-radius:12px;padding:7px 12px;margin-bottom:6px;font-size:16px;line-height:1.55}
+.d-cond{background:#fff1c7;border-radius:12px;padding:7px 12px;font-weight:800;color:#8a5d00;margin:6px 0}
+.d-prompt{font-size:18px;font-weight:900;margin:10px 0 8px}
+.seqrow{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.seqrow span{min-width:44px;height:44px;border-radius:12px;background:#f7f3ff;border:2px solid #e2d8fb;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;padding:0 6px}
+.seqrow span.q{background:#fff1f6;border:2px dashed var(--pink);color:var(--pink)}
+.seqrow span svg{width:30px;height:30px}
+.d-opts{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.d-opts.four{grid-template-columns:repeat(4,1fr)}
+.d-opts button{min-height:52px;border-radius:16px;background:#fff;font-size:18px;font-weight:800;border:3px solid #eee6fb;box-shadow:0 3px 0 rgba(67,49,94,.08);padding:6px}
+.d-opts button svg{width:34px;height:34px}
+.d-opts button.no{border-color:#ffc9bf;background:#fff6f4;color:#c69a92}.d-opts button.ok{border-color:var(--mint);background:#effcf7;color:#0f7a59}
+.wgrid{border-collapse:separate;border-spacing:4px;margin:6px 0 2px}
+.wgrid th{font-size:13px;color:var(--ink2);font-weight:800;padding:2px 4px}
+.wgrid td button{width:46px;height:38px;border-radius:10px;background:#fbf9ff;border:2px solid #e8e0f7;font-size:18px;font-weight:900;color:#c9503e}
+.wgrid td button.yes{color:#138a66;background:#effcf7;border-color:#b9eedc}
+.wgrid-cap{font-size:12.5px;color:var(--ink2)}
+.sd{display:grid;gap:0;margin:8px auto;border:3px solid #6a4bd8;border-radius:12px;overflow:hidden;width:min(100%,340px);background:#fff}
+.sd button{aspect-ratio:1/1;font-size:24px;font-weight:900;background:#fff;border-right:1px solid #ddd3f3;border-bottom:1px solid #ddd3f3;color:#4a8dff;border-radius:0;padding:0}
+.sd button.given{color:var(--ink);background:#f7f3ff}
+.sd button.sel{background:#fff1c7}.sd button.bad{background:#ffe3de;color:#d4513f}.sd button.hintc{background:#d6f7ec}
+.sd button.br{border-right:3px solid #6a4bd8}.sd button.bb{border-bottom:3px solid #6a4bd8}
+.sd-pad{display:grid;gap:8px;margin-top:8px}
+.sd-pad button{height:48px;border-radius:14px;background:#fff;font-size:22px;font-weight:900;box-shadow:0 3px 0 rgba(67,49,94,.1)}
+.sd-pad .fn{font-size:15px;white-space:nowrap;padding:0 4px;background:#f4efff;color:#6a4bd8}
+.d-grid>.card+.card{margin-top:10px}
+.d-actions{display:flex;gap:10px;margin-top:10px}.d-actions .btn{flex:1}
+@media(min-width:900px){.d-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;align-items:start}.d-grid>.card+.card{margin-top:0}.sd{width:360px}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -267,6 +364,11 @@ table.rec td{padding:8px 4px;border-bottom:1px solid #f5f0fb}
      </div>
      <div style="text-align:center"><div style="font-size:12px;color:var(--ink2)">徽章</div><b id="badgeCount" style="font-size:20px">0</b></div>
     </div>
+    <div class="sec-title">动动脑 · 慢慢想</div>
+    <div class="modes">
+     <button class="mode-card think" data-act="think"><span class="mc-ic" id="icThink"></span><span><b>思路训练</b><small>一步一步拆开想，不计时</small></span></button>
+     <button class="mode-card daily" data-act="daily"><span class="mc-ic" id="icDaily"></span><span><b>每日逻辑小关卡</b><small id="dailySub">今天的 5 关等你来</small></span></button>
+    </div>
    </div>
    <div>
     <div class="sec-title">选择难度</div>
@@ -283,9 +385,10 @@ table.rec td{padding:8px 4px;border-bottom:1px solid #f5f0fb}
      <button class="tgl" data-act="sound"><span>音效</span><span class="sw"></span></button>
     </div>
     <button class="btn primary go" data-act="start">开始 PK！</button>
-    <div class="home-links">
+    <div class="home-links three">
      <button class="btn ghost" data-act="badges"></button>
      <button class="btn ghost" data-act="records"></button>
+     <button class="btn ghost" data-act="ability"></button>
     </div>
    </div>
   </div>
@@ -336,6 +439,10 @@ table.rec td{padding:8px 4px;border-bottom:1px solid #f5f0fb}
 <section id="scr-badges" class="screen"><div class="wrap" id="badgesWrap"></div></section>
 <!-- 记录 -->
 <section id="scr-records" class="screen"><div class="wrap" id="recordsWrap"></div></section>
+<!-- 思路训练 / 思维能力 / 每日逻辑小关卡 -->
+<section id="scr-think" class="screen"><div class="wrap" id="thinkWrap"></div></section>
+<section id="scr-ability" class="screen"><div class="wrap" id="abilityWrap"></div></section>
+<section id="scr-daily" class="screen"><div class="wrap" id="dailyWrap"></div></section>
 </div>
 <div class="mask" id="mask"></div>
 <div class="sheet" id="sheet" role="dialog" aria-live="polite"></div>
@@ -927,9 +1034,681 @@ function fmtAnswer(p){if(p.choices)return p.choices[p.answer];return p.round?p.a
 function parseNum(s){s=String(s).trim();if(!/^\d*\.?\d*$/.test(s)||s===''||s==='.')return NaN;return parseFloat(s);}
 function check(p,input){if(p.choices)return Number(input)===p.answer;var v=parseNum(input);return !isNaN(v)&&Math.abs(v-p.answer)<1e-9;}
 
-root.MathGen={TOPICS:TOPICS,TPL:TPL,setSeed:setSeed,makeProblem:makeProblem,makeRound:makeRound,templatesFor:templatesFor,fmtAnswer:fmtAnswer,check:check,parseNum:parseNum,F:F,R:R};
+root.MathGen={TOPICS:TOPICS,TPL:TPL,setSeed:setSeed,makeProblem:makeProblem,makeRound:makeRound,templatesFor:templatesFor,fmtAnswer:fmtAnswer,check:check,parseNum:parseNum,F:F,R:R,
+  U:{ri:ri,pick:pick,chance:chance,shuffle:shuffle,isInt:isInt,NAMES:NAMES}}; // U：给思路训练模块复用同一个（可设种子的）随机数
 })(typeof window!=='undefined'?window:globalThis);
 /*GEN-END*/
+/*THINK-START*/
+/* ======================= 思路训练：把应用题拆成“读问题 → 找条件 → 想方法 → 算一算 → 写答案” ======================= */
+(function(root){
+'use strict';
+var G=root.MathGen,U=G.U,F=G.F,R=G.R,ri=U.ri,pick=U.pick,chance=U.chance,shuffle=U.shuffle;
+var CATS={understand:'理解题意',facts:'找条件',method:'选方法',calc:'计算'};
+var CAT_KEYS=['understand','facts','method','calc'];
+var TOPICS={dm:'小数乘法',dd:'小数除法',eq:'简易方程',ar:'多边形的面积',tr:'植树问题'};
+var KIND_TITLE={ask:'读问题',facts:'找条件',method:'想方法',calc:'算一算',final:'写答案'};
+var KIND_NO={ask:'①',facts:'②',method:'③',calc:'④',final:'⑤'};
+
+/* ---------- 干扰条件：和问题无关的“多余的数” ---------- */
+var DIS=[
+ function(){var n=ri(18,32);return {t:'这天的气温是'+n+'℃。',s:'气温是'+n+'℃',n:n,u:'℃'};},
+ function(){var n=ri(3,9),nm=pick(U.NAMES);return {t:nm+'的文具盒里有'+n+'支铅笔。',s:nm+'有'+n+'支铅笔',n:n,u:'支'};},
+ function(){var n=ri(10,12),nm=pick(U.NAMES);return {t:nm+'今年'+n+'岁。',s:nm+'今年'+n+'岁',n:n,u:'岁'};},
+ function(){var n=ri(36,48);return {t:'五（1）班有'+n+'名同学。',s:'五（1）班有'+n+'名同学',n:n,u:'名'};},
+ function(){var n=ri(2,6);return {t:'窗台上摆着'+n+'盆花。',s:'窗台上有'+n+'盆花',n:n,u:'盆'};}
+];
+function numsOf(s){return (s.match(/\d+(\.\d+)?/g)||[]);}
+function makeDistractor(text){
+ for(var i=0;i<30;i++){var d=pick(DIS)();
+  if(text.indexOf(d.u)>=0)continue;                    // 单位撞车（比如题目本身就在说“岁”）就换一个
+  if(numsOf(text).indexOf(String(d.n))>=0)continue;     // 数字撞车也换
+  var nm=d.t.match(/^(.{2})(的|今年)/);if(nm&&text.indexOf(nm[1])>=0)continue; // 别和题里的人重名
+  return d;}
+ return null;
+}
+
+/* ---------- 小工具 ---------- */
+function opt(t,ok,why){return {t:t,ok:!!ok,why:why||''};}
+function givenWhy(t,g){return '「'+t+'」题目里已经告诉我们了'+(g?'（'+g+'）':'')+'，是已知的条件，不用再求。看看问号那句话问的是什么～';}
+function midWhy(t,target){return '「'+t+'」是中间要先算的，可它不是最后要问的。问号那句话问的是「'+target+'」。';}
+function C(q,expr,ans,unit,hl,hint){return {q:q,expr:expr,ans:R(ans),unit:unit||'',hl:hl||[],hint:hint||''};}
+function cr(c,r){c.r=r;return c;} // 回顾卡片里换一种更顺的说法
+function answerSentence(p){var a=p.steps.filter(function(s){return s.indexOf('答：')===0;});return a.length?a[a.length-1]:'答：'+F(p.answer)+' '+p.unit+'。';}
+function qPart(text){var i=Math.max(text.lastIndexOf('，'),text.lastIndexOf('。',text.length-2));return text.slice(i+1).replace(/[？?]$/,'');}
+
+/* ---------- 配图数据（SVG 由界面层绘制；ids 列出可以高亮的部分） ---------- */
+function bars(rows,groups,right,note){
+ var ids={};rows.forEach(function(r){r.segs.forEach(function(s){if(s.id)ids[s.id]=1;});});
+ (groups||[]).forEach(function(g){ids[g.id]=1;});if(right)ids[right.id]=1;if(note)ids[note.id]=1;
+ return {type:'bars',rows:rows,groups:groups||[],right:right||null,note:note||null,ids:Object.keys(ids)};
+}
+function units(n,id,txt){var a=[];for(var i=0;i<n;i++)a.push({w:1,id:id,txt:txt||''});return a;}
+function hourSegs(t,id){var a=[],k=Math.floor(t),rest=R(t-k);for(var i=0;i<k;i++)a.push({w:1,id:i===0?'speed':id});if(rest>0)a.push({w:rest,id:k===0?'speed':id});return a;}
+function shape(type,o,ids){o.type=type;o.ids=ids;return o;}
+function trees(ends,k,gap,total,word){return {type:'trees',ends:ends,k:k,gap:gap,total:total,word:word,ids:['gap','trees','ends','total']};}
+
+/* ---------- 各题型的“拆题”数据：B[模板id](p, v, d) ---------- */
+var B={};
+B.dm_speed=function(p,v,d){
+ if(v.t2===undefined){var s=R(v.v*v.t);
+  return {target:'汽车一共行驶了多少千米（路程）',others:[opt('汽车每小时行驶多少千米（速度）',0,givenWhy('每小时行驶多少千米','每小时'+v.v+'千米')),opt('汽车行驶了几小时（时间）',0,givenWhy('行驶了几小时',F(v.t)+'小时'))],
+   facts:[['速度','每小时'+v.v+'千米'],['时间',F(v.t)+'小时']],swap:true,
+   methodQ:'求路程，要用哪个数量关系？',method:'路程 = 速度 × 时间',mwrong:[opt('路程 = 速度 ÷ 时间',0,'每小时走'+v.v+'千米，走了'+F(v.t)+'小时，走的路比'+v.v+'千米还多，要用乘法。'),opt('路程 = 速度 + 时间',0,'“千米”和“小时”不是同一种量，不能直接相加。')],
+   mhint:'想一想：1小时走'+v.v+'千米，2小时走多少？是不是 '+v.v+' × 2？',
+   calcs:[C('路程 = 速度 × 时间',v.v+' × '+F(v.t),s,'千米',['total'],'先算 '+v.v+' × '+String(v.t).replace('.','')+'，再看因数一共有几位小数。')],
+   wrongUnit:['小时','路程的单位是“千米”，“小时”是时间的单位。'],wrongVal:[R(v.v+v.t),'这是把速度和时间加起来了，路程要用乘法算。'],
+   fig:bars([{name:'',segs:hourSegs(v.t,'time')}],[{row:0,from:0,to:0,txt:'每小时'+v.v+'千米',id:'speed',pos:'top',lv:0},{row:0,from:0,to:-1,txt:F(v.t)+'小时',id:'time',pos:'top',lv:1},{row:0,from:0,to:-1,txt:'? 千米',id:'total',pos:'bot',lv:0}]),
+   hl:{ask:['total'],facts:['speed','time'],method:['speed','time','total']}};}
+ var tt=R(v.t+v.t2),tot=R(v.v*tt);
+ return {target:'这一天一共行驶了多少千米',others:[opt('上午行驶了多少千米',0,'上午的路程只是一部分，问号那句话问的是「这一天一共」行驶了多少千米。'),opt('汽车每小时行驶多少千米',0,givenWhy('每小时行驶多少千米','每小时'+v.v+'千米'))],
+  facts:[['速度','每小时'+v.v+'千米'],['上午',F(v.t)+'小时'],['下午',F(v.t2)+'小时']],
+  methodQ:'第一步先算什么？',method:'先算一共行驶了几小时，再用 速度 × 时间',mwrong:[opt('只算 '+v.v+' × '+F(v.t),0,'这样只算了上午的路程，下午的还没算呢。'),opt('先算 '+v.v+' + '+F(v.t),0,'速度和时间不是同一种量，不能相加。')],
+  mhint:'上午和下午的速度一样，可以先把两段时间合起来。',
+  calcs:[C('一共行驶的时间',F(v.t)+' + '+F(v.t2),tt,'小时',['am','pm']),C('路程 = 速度 × 时间',v.v+' × '+F(tt),tot,'千米',['total'])],
+  wrongUnit:['小时','问的是路程，单位是“千米”。'],wrongVal:[tt,'这是一共行驶的时间，还要乘速度才是路程。'],
+  fig:bars([{name:'',segs:[{w:v.t,id:'am',txt:'上午'},{w:v.t2,id:'pm',txt:'下午'}]}],[{row:0,from:0,to:0,txt:F(v.t)+'小时',id:'am',pos:'top',lv:0},{row:0,from:1,to:1,txt:F(v.t2)+'小时',id:'pm',pos:'top',lv:0},{row:0,from:0,to:-1,txt:'? 千米',id:'total',pos:'bot',lv:0}],null,{txt:'每小时都行驶'+v.v+'千米',id:'speed'}),
+  hl:{ask:['total'],facts:['speed','am','pm'],method:['am','pm']}};
+};
+B.dm_price=function(p,v,d){
+ var f=p.text.match(/里(.+?)每千克/)[1],t=R(v.p*v.w);
+ if(!v.pay)return {target:'一共要付多少元（总价）',others:[opt(f+'每千克多少元（单价）',0,givenWhy(f+'每千克多少元','每千克'+F(v.p)+'元')),opt('妈妈买了多少千克（数量）',0,givenWhy('买了多少千克',F(v.w)+'千克'))],
+  facts:[['单价','每千克'+F(v.p)+'元'],['数量',F(v.w)+'千克']],swap:true,
+  methodQ:'求总价，要用哪个数量关系？',method:'总价 = 单价 × 数量',mwrong:[opt('总价 = 单价 ÷ 数量',0,'买得越多，付的钱越多，要用乘法。'),opt('总价 = 单价 + 数量',0,'“元”和“千克”不是同一种量，不能相加。')],
+  mhint:'1千克'+F(v.p)+'元，买'+F(v.w)+'千克，就是求'+F(v.w)+'个'+F(v.p)+'是多少。',
+  calcs:[C('总价 = 单价 × 数量',F(v.p)+' × '+F(v.w),t,'元',[])],
+  wrongUnit:['千克','问的是钱数，单位是“元”。'],wrongVal:[R(v.p+v.w),'这是把单价和数量加起来了，总价要用乘法。'],fig:null,hl:{}};
+ var ans=R(v.pay-t);
+ return {target:'应找回多少元',others:[opt('一共要付多少元',0,midWhy('一共要付多少元','应找回多少元')),opt(f+'每千克多少元',0,givenWhy(f+'每千克多少元','每千克'+F(v.p)+'元'))],
+  facts:[['单价','每千克'+F(v.p)+'元'],['数量',F(v.w)+'千克'],['付了',v.pay+'元']],
+  methodQ:'第一步先算什么？',method:'先算一共要付多少元，再算 付的钱 − 要付的钱',mwrong:[opt('直接算 '+v.pay+' − '+F(v.p),0,F(v.p)+'元只是1千克的价钱，妈妈买了'+F(v.w)+'千克，要先算一共多少钱。'),opt('先算 '+v.pay+' ÷ '+F(v.w),0,'找回的钱 = 付的钱 − 要付的钱，这里用不到除法。')],
+  mhint:'要知道找回多少，得先知道一共该付多少。',
+  calcs:[C('一共要付的钱：单价 × 数量',F(v.p)+' × '+F(v.w),t,'元',[]),C('应找回的钱：付的钱 − 要付的钱',v.pay+' − '+F(t),ans,'元',[])],
+  wrongUnit:['千克','问的是钱数，单位是“元”。'],wrongVal:[t,'这是一共要付的钱，还要用付的'+v.pay+'元减去它。'],fig:null,hl:{}};
+};
+B.dm_taxi=function(p,v,d){
+ var ex=v.km-3,c=R(ex*v.r),ans=R(v.b+c);
+ return {target:'妈妈应付车费多少元',others:[opt('超过3千米的部分有多少千米',0,midWhy('超过3千米的部分有多少千米','应付车费多少元')),opt('超过3千米后每千米收多少元',0,givenWhy('每千米收多少元',F(v.r)+'元'))],
+  facts:[['起步价','3千米以内收'+v.b+'元'],['超出部分','每千米'+F(v.r)+'元'],['路程',v.km+'千米']],
+  fwrong:['起步价：每千米'+v.b+'元',"起步价是“3千米以内一共收"+v.b+"元”，不是每千米"+v.b+"元。"],
+  methodQ:'第一步先算什么？',method:'先算超过3千米的部分有多少千米',mwrong:[opt('直接算 '+v.km+' × '+F(v.r),0,'前3千米已经包含在起步价'+v.b+'元里了，不能再按每千米'+F(v.r)+'元收。'),opt('先算 '+v.b+' × '+v.km,0,'起步价是3千米以内一共'+v.b+'元，不是每千米'+v.b+'元。')],
+  mhint:'看图：车费分成两段，前3千米一段，剩下的一段。',
+  calcs:[C('超过3千米的部分',v.km+' − 3',ex,'千米',['extra']),C('超出部分的车费',F(v.r)+' × '+ex,c,'元',['extra']),C('再加上起步价',v.b+' + '+F(c),ans,'元',['base','extra'])],
+  wrongUnit:['千米','问的是车费，单位是“元”。'],wrongVal:[c,'这只是超出部分的车费，别忘了加上起步价'+v.b+'元。'],
+  fig:bars([{name:'',segs:[{w:3,id:'base',txt:'3千米'},{w:Math.max(ex,2.5),id:'extra',txt:ex+'千米'}]}],[{row:0,from:0,to:0,txt:'起步价'+v.b+'元',id:'base',pos:'top',lv:0},{row:0,from:1,to:1,txt:'每千米'+F(v.r)+'元',id:'extra',pos:'top',lv:0},{row:0,from:0,to:-1,txt:'一共'+v.km+'千米',id:'total',pos:'bot',lv:0}]),
+  hl:{ask:['base','extra'],facts:['base','extra','total'],method:['base','extra']}};
+};
+B.dm_rect=function(p,v,d){
+ if(v.k===undefined)return null;
+ var s=R(v.a*v.b),ans=R(s*v.k);
+ return {target:'这块地一共要施肥多少千克',others:[opt('这块菜地的面积是多少平方米',0,midWhy('菜地的面积','一共要施肥多少千克')),opt('每平方米施肥多少千克',0,givenWhy('每平方米施肥多少千克',F(v.k)+'千克'))],
+  facts:[['长',F(v.a)+'米'],['宽',v.b+'米'],['每平方米施肥',F(v.k)+'千克']],swap:true,
+  methodQ:'第一步先算什么？',method:'先算菜地的面积，再算 面积 × 每平方米施肥量',mwrong:[opt('直接算 '+F(v.a)+' × '+F(v.k),0,'每平方米施'+F(v.k)+'千克，要先知道一共有多少平方米，不能只用长。'),opt('先算面积，再算 面积 ÷ '+F(v.k),0,'地越大，用的化肥越多，要用乘法。')],
+  mhint:'化肥是按“每平方米”施的，所以要先知道有多少平方米。',
+  calcs:[C('长方形的面积 = 长 × 宽',F(v.a)+' × '+v.b,s,'平方米',['shape']),C('化肥 = 面积 × 每平方米施肥量',F(s)+' × '+F(v.k),ans,'千克',['shape'])],
+  wrongUnit:['平方米','问的是化肥有多重，单位是“千克”。'],wrongVal:[s,'这是菜地的面积，还要乘每平方米施肥的量。'],
+  fig:shape('rect',{a:F(v.a)+'米',b:v.b+'米'},['len','wid','shape']),hl:{ask:['shape'],facts:['len','wid'],method:['shape']}};
+};
+B.dd_speed=function(p,v,d){
+ var veh=p.text.match(/^(一辆汽车|一列高铁|一辆自行车)/)[1],sp=R(v.s/v.t);
+ if(v.s2===undefined)return {target:'平均每小时行驶多少千米（速度）',others:[opt(veh+'一共行驶了多少千米',0,givenWhy('一共行驶了多少千米',F(v.s)+'千米')),opt(veh+'行驶了几小时',0,givenWhy('行驶了几小时',F(v.t)+'小时'))],
+  facts:[['路程',F(v.s)+'千米'],['时间',F(v.t)+'小时']],swap:true,
+  methodQ:'求速度，要用哪个数量关系？',method:'速度 = 路程 ÷ 时间',mwrong:[opt('速度 = 路程 × 时间',0,'每小时行的路一定比总路程少，用乘法会越算越大。'),opt('速度 = 时间 ÷ 路程',0,'是把总路程平均分到每个小时里，要用 路程 ÷ 时间。')],
+  mhint:'把'+F(v.s)+'千米平均分到'+F(v.t)+'个小时里，每小时行多少？',
+  calcs:[C('速度 = 路程 ÷ 时间',F(v.s)+' ÷ '+F(v.t),sp,'千米',['speed'],'除数是小数，先把除数和被除数同时扩大到原来的10倍，变成整数再除。')],
+  wrongUnit:['小时','问的是每小时行多少千米，单位是“千米”。'],wrongVal:[R(v.s*v.t),'这是用了乘法。速度 = 路程 ÷ 时间。'],
+  fig:bars([{name:'',segs:hourSegs(v.t,'time')}],[{row:0,from:0,to:0,txt:'每小时 ? 千米',id:'speed',pos:'top',lv:0},{row:0,from:0,to:-1,txt:F(v.t)+'小时',id:'time',pos:'top',lv:1},{row:0,from:0,to:-1,txt:F(v.s)+'千米',id:'total',pos:'bot',lv:0}]),
+  hl:{ask:['speed'],facts:['time','total'],method:['total','time','speed']}};
+ return {target:'行驶'+F(v.s2)+'千米需要多少小时',others:[opt('平均每小时行驶多少千米',0,midWhy('每小时行驶多少千米','行驶'+F(v.s2)+'千米需要多少小时')),opt(F(v.t)+'小时行驶了多少千米',0,givenWhy(F(v.t)+'小时行驶了多少千米',F(v.s)+'千米'))],
+  facts:[['时间',F(v.t)+'小时'],['路程',F(v.s)+'千米'],['要行驶',F(v.s2)+'千米']],
+  methodQ:'第一步先算什么？',method:'先算平均每小时行驶多少千米（速度）',mwrong:[opt('直接算 '+F(v.s2)+' ÷ '+F(v.t),0,'要先知道每小时能行多少千米，才能算出'+F(v.s2)+'千米要几小时。'),opt('先算 '+F(v.s)+' + '+F(v.s2),0,'把两段路程加起来没有用，问的是行驶'+F(v.s2)+'千米的时间。')],
+  mhint:'“照这样的速度”——先把速度求出来。',
+  calcs:[C('速度 = 路程 ÷ 时间',F(v.s)+' ÷ '+F(v.t),sp,'千米',[]),C('时间 = 路程 ÷ 速度',F(v.s2)+' ÷ '+F(sp),p.answer,'小时',[])],
+  wrongUnit:['千米','问的是“需要多少小时”，单位是“小时”。'],wrongVal:[sp,'这是每小时行驶的千米数，还要再算时间。'],fig:null,hl:{}};
+};
+B.dd_unit=function(p,v,d){
+ var g=p.text.match(/千克(.+?)卖/)[1],pr=R(v.m/v.w);
+ if(v.M===undefined)return {target:'买'+v.w2+'千克'+g+'要多少元',others:[opt('每千克'+g+'多少元',0,midWhy('每千克多少元','买'+v.w2+'千克要多少元')),opt(F(v.w)+'千克'+g+'卖多少元',0,givenWhy(F(v.w)+'千克卖多少元',F(v.m)+'元'))],
+  facts:[['数量',F(v.w)+'千克'],['总价',F(v.m)+'元'],['要买',v.w2+'千克']],
+  fwrong:['总价：每千克'+F(v.m)+'元',F(v.m)+'元是'+F(v.w)+'千克一共的价钱，不是1千克的价钱。'],
+  methodQ:'第一步先算什么？',method:'先算每千克多少元（单价）',mwrong:[opt('直接算 '+F(v.m)+' × '+v.w2,0,F(v.m)+'元是'+F(v.w)+'千克的价钱，不是1千克的价钱。'),opt('先算 '+F(v.w)+' × '+v.w2,0,'千克乘千克没有意义，要先求出1千克多少元。')],
+  mhint:'“照这样的价格”——先求出1千克多少元。',
+  calcs:[C('单价 = 总价 ÷ 数量',F(v.m)+' ÷ '+F(v.w),pr,'元',[]),C('总价 = 单价 × 数量',F(pr)+' × '+v.w2,p.answer,'元',[])],
+  wrongUnit:['千克','问的是钱数，单位是“元”。'],wrongVal:[pr,'这是1千克的价钱，还要乘'+v.w2+'。'],fig:null,hl:{}};
+ return {target:F(v.M)+'元可以买多少千克'+g,others:[opt('每千克'+g+'多少元',0,midWhy('每千克多少元',F(v.M)+'元可以买多少千克')),opt(F(v.w)+'千克'+g+'卖多少元',0,givenWhy(F(v.w)+'千克卖多少元',F(v.m)+'元'))],
+  facts:[['数量',F(v.w)+'千克'],['总价',F(v.m)+'元'],['带了',F(v.M)+'元']],
+  fwrong:['总价：每千克'+F(v.m)+'元',F(v.m)+'元是'+F(v.w)+'千克一共的价钱，不是1千克的价钱。'],
+  methodQ:'第一步先算什么？',method:'先算每千克多少元（单价）',mwrong:[opt('直接算 '+F(v.M)+' ÷ '+F(v.w),0,'要先知道1千克多少元，才能算'+F(v.M)+'元能买几千克。'),opt('先算 '+F(v.M)+' − '+F(v.m),0,'两笔钱相减没有用，要先求出1千克多少元。')],
+  mhint:'“照这样的价格”——先求出1千克多少元。',
+  calcs:[C('单价 = 总价 ÷ 数量',F(v.m)+' ÷ '+F(v.w),pr,'元',[]),C('数量 = 总价 ÷ 单价',F(v.M)+' ÷ '+F(pr),p.answer,'千克',[])],
+  wrongUnit:['元','问的是能买多少千克，单位是“千克”。'],wrongVal:[pr,'这是1千克的价钱，还要再算能买几千克。'],fig:null,hl:{}};
+};
+var CEILCTX=[['香油',['一共有香油',F,'千克'],['每个瓶子最多装',F,'千克'],'瓶子','个'],['货物',['一批货物重',F,'吨'],['每次最多运',F,'吨'],'次数','次'],['一桶水',['一桶水有',F,'升'],['每个水壶最多装',F,'升'],'水壶','个'],
+ ['衣服',['一共有布',F,'米'],['做一套衣服用布',F,'米'],'套数','套'],['月饼',['一共有月饼',F,'千克'],['每盒装',F,'千克'],'盒数','盒'],['礼盒',['一共有彩带',F,'米'],['包装一个礼盒用',F,'米'],'礼盒','个']];
+B.dd_ceil=function(p,v,d){
+ var cx=CEILCTX.filter(function(c){return p.text.indexOf(c[0])>=0;})[0],q=Math.floor(R(v.T/v.c)),tq=qPart(p.text);
+ var tot=cx[1][0]+F(v.T)+cx[1][2],per=cx[2][0]+F(v.c)+cx[2][2];
+ var c0=C('先算 '+F(v.T)+' ÷ '+F(v.c)+'，商的整数部分是几？',F(v.T)+' ÷ '+F(v.c),q,'',[],'先把除数变成整数：两个数都乘10，再算商的整数部分。');c0.floor=true;var calcs=[c0];
+ if(v.up)calcs.push(C('剩下的也要装（运），再加 1',q+' + 1',q+1,cx[4],[]));
+ return {target:tq,others:[opt(cx[2][0]+'多少'+cx[2][2],0,givenWhy(cx[2][0]+'多少',F(v.c)+cx[2][2])),opt(cx[1][0]+'多少'+cx[1][2],0,givenWhy(cx[1][0]+'多少',F(v.T)+cx[1][2]))],
+  facts:[['总量',tot],['每份',per]],swap:true,
+  methodQ:'用什么方法算？',method:'总量 ÷ 每份的量，看看能分成几份',mwrong:[opt('总量 × 每份的量',0,'是要看'+F(v.T)+'里面有几个'+F(v.c)+'，用除法。'),opt('总量 − 每份的量',0,'减一次只是拿走了一份，要看能分成几份，用除法。')],
+  mhint:'“'+F(v.T)+'里面有几个'+F(v.c)+'”，用什么算？',
+  calcs:calcs,
+  extra:{after:0,q:'除不尽，剩下了一点。剩下的部分怎么办？',opts:v.up?[opt('剩下的也要装（运），再加1个（进一法）',1),opt('剩下的不够一份，直接舍去（去尾法）',0,'剩下的'+cx[0]+'也得有地方放（要运走），不能扔掉，所以要再加1。')]:[opt('剩下的不够做一份，直接舍去（去尾法）',1),opt('剩下的也算一份，再加1（进一法）',0,'剩下的不够做成完整的一份，不能算进去。')],
+   hint:v.up?'想一想：剩下的'+cx[0]+'能不管吗？':'想一想：剩下的够不够再做（装满）一份？',why:v.up?'剩下的也要装（运），所以用“进一法”，商的整数部分再加1。':'剩下的不够一份，所以用“去尾法”，只取商的整数部分。'},
+  wrongUnit:null,wrongVal:[v.up?q:q+1,v.up?'剩下的部分也要装（运），所以要再加1。':'剩下的不够一份，不能再加1。'],fig:null,hl:{}};
+};
+var TIMESCTX=[['科技书','故事书','本'],['梨树','苹果树','棵'],['蓝丝带','红丝带','米'],['舞蹈队','合唱队','人']];
+B.eq_times=function(p,v,d){
+ var c=TIMESCTX.filter(function(x){return p.text.indexOf(x[1])>=0;})[0],sm=c[0],bg=c[1],u=c[2],k=v.k,x=p.answer;
+ if(!v.sum&&k===2)return null; // 2x − x = x，太直接，不适合拆步骤
+ var rel=v.sum?'两者一共有'+F(v.tot)+u:bg+'比'+sm+'多'+F(v.tot)+u;
+ var big=R(k*x);
+ var o={target:sm+'有多少'+u,others:[opt(bg+'有多少'+u,0,'问的是'+sm+'，不是'+bg+'。先求出'+sm+'，'+bg+'也就知道了。'),opt(v.sum?'两者一共有多少'+u:bg+'比'+sm+'多多少'+u,0,givenWhy(v.sum?'一共有多少':'多多少',F(v.tot)+u))],
+  facts:[['倍数',bg+'是'+sm+'的'+k+'倍'],[v.sum?'和':'差',rel]],
+  fwrong:['倍数：'+sm+'是'+bg+'的'+k+'倍','看清楚：是'+bg+'是'+sm+'的'+k+'倍，不是反过来。'],
+  methodQ:'设'+sm+'有 x '+u+'，方程怎么列？',
+  method:v.sum?'x + '+k+'x = '+F(v.tot):k+'x − x = '+F(v.tot),
+  mwrong:v.sum?[opt('x + '+k+' = '+F(v.tot),0,k+'倍不是“多'+k+'”。'+bg+'有'+k+'个 x，要写成 '+k+'x。'),opt(k+'x = '+F(v.tot),0,k+'x 只是'+bg+'，一共还要加上'+sm+'的 x。')]
+   :[opt(k+'x + x = '+F(v.tot),0,'“多'+F(v.tot)+u+'”说的是相差多少，要用减法。'),opt('x − '+k+' = '+F(v.tot),0,bg+'是'+k+'个 x，写成 '+k+'x；而且是'+bg+'比'+sm+'多，要用 '+k+'x 减 x。')],
+  mhint:'看线段图：'+sm+'是1份（x），'+bg+'是'+k+'份（'+k+'x）。',
+  calcs:[cr(C('合并：'+(v.sum?'x + '+k+'x':k+'x − x')+' = □x，□是几？',v.sum?'1 + '+k:k+' − 1',v.sum?k+1:k-1,'',['x','kx']),'合并：'+(v.sum?'x + '+k+'x = '+(k+1)+'x':k+'x − x = '+(k-1)+'x')),C('x = '+F(v.tot)+' ÷ '+(v.sum?k+1:k-1),F(v.tot)+' ÷ '+(v.sum?k+1:k-1),x,u,['x'])],
+  wrongUnit:null,wrongVal:[big,'这是'+bg+'的数量，问的是'+sm+'。'],
+  fig:bars([{name:sm,segs:[{w:1,id:'x',txt:'x'}]},{name:bg,segs:units(k,'kx','x')}],v.sum?[]:[{row:1,from:1,to:-1,txt:'多'+F(v.tot)+u,id:'total',pos:'bot',lv:0}],v.sum?{txt:'一共\n'+F(v.tot)+u,id:'total'}:null),
+  hl:{ask:['x'],facts:['kx','total'],method:['x','kx','total']}};
+ return o;
+};
+B.eq_more=function(p,v,d){
+ var k=v.k,c=v.c,M=v.M,x=p.answer,kx=R(k*x),o;
+ if(p.text.indexOf('妈妈今年')===0){var n=p.text.match(/比(.+?)年龄/)[1];
+  o={target:n+'今年几岁',others:[opt('妈妈今年几岁',0,givenWhy('妈妈今年几岁',M+'岁')),opt(n+'年龄的'+k+'倍是多少岁',0,midWhy(n+'年龄的'+k+'倍',n+'今年几岁'))],
+   facts:[['妈妈',M+'岁'],['关系','比'+n+'年龄的'+k+'倍还多'+c+'岁']],fwrong:['关系：比'+n+'年龄的'+k+'倍少'+c+'岁','题目说的是“还多'+c+'岁”，不是“少”。'],
+   methodQ:'设'+n+'今年 x 岁，方程怎么列？',method:k+'x + '+c+' = '+M,mwrong:[opt(k+'x − '+c+' = '+M,0,'“还多'+c+'岁”：'+n+'年龄的'+k+'倍再加上'+c+'，才是妈妈的年龄，要用加法。'),opt('x + '+c+' = '+M,0,'别忘了是'+n+'年龄的'+k+'倍，要写成 '+k+'x。')],
+   who:'妈妈',u:'岁',sm:n};}
+ else if(p.text.indexOf('爸爸的体重')===0){var n2=p.text.match(/比(.+?)体重/)[1];
+  o={target:n2+'的体重是多少千克',others:[opt('爸爸的体重是多少千克',0,givenWhy('爸爸的体重',F(M)+'千克')),opt(n2+'体重的2倍是多少千克',0,midWhy(n2+'体重的2倍',n2+'的体重'))],
+   facts:[['爸爸',F(M)+'千克'],['关系','比'+n2+'体重的2倍少'+c+'千克']],fwrong:['关系：比'+n2+'体重的2倍多'+c+'千克','题目说的是“少'+c+'千克”，不是“多”。'],
+   methodQ:'设'+n2+'的体重是 x 千克，方程怎么列？',method:'2x − '+c+' = '+F(M),mwrong:[opt('2x + '+c+' = '+F(M),0,'“少'+c+'千克”：2倍再减去'+c+'才是爸爸的体重，要用减法。'),opt('x − '+c+' = '+F(M),0,'别忘了是'+n2+'体重的2倍，要写成 2x。')],
+   who:'爸爸',u:'千克',sm:n2,less:true};}
+ else{o={target:'一条裤子多少元',others:[opt('一件上衣多少元',0,givenWhy('一件上衣多少元',F(M)+'元')),opt('裤子价钱的'+k+'倍是多少元',0,midWhy('裤子价钱的'+k+'倍','一条裤子多少元'))],
+   facts:[['上衣',F(M)+'元'],['关系','比裤子的'+k+'倍还多'+F(c)+'元']],fwrong:['关系：比裤子的'+k+'倍少'+F(c)+'元','题目说的是“还多'+F(c)+'元”，不是“少”。'],
+   methodQ:'设一条裤子 x 元，方程怎么列？',method:k+'x + '+F(c)+' = '+F(M),mwrong:[opt(k+'x − '+F(c)+' = '+F(M),0,'“还多'+F(c)+'元”：裤子的'+k+'倍再加上'+F(c)+'才是上衣的价钱，要用加法。'),opt('x + '+F(c)+' = '+F(M),0,'别忘了是裤子价钱的'+k+'倍，要写成 '+k+'x。')],
+   who:'上衣',u:'元',sm:'裤子'};}
+ var mid=o.less?R(M+c):R(M-c);
+ o.mhint='看线段图：'+o.sm+'是1份（x），'+o.who+'差不多是'+k+'份，再'+(o.less?'减去':'加上')+'一小段。';
+ o.calcs=[cr(C('方程两边同时'+(o.less?'加上 ':'减去 ')+F(c)+'：'+k+'x = ?',F(M)+(o.less?' + ':' − ')+F(c),mid,'',['M','c']),'方程两边同时'+(o.less?'加上 ':'减去 ')+F(c)+'：'+k+'x = '+F(M)+(o.less?' + ':' − ')+F(c)+' = '+F(mid)),C('x = '+F(mid)+' ÷ '+k,F(mid)+' ÷ '+k,x,o.u,['x'])];
+ o.wrongUnit=null;o.wrongVal=[mid,'这是 '+k+'x 的值，还要再除以 '+k+'。'];
+ var segs=units(k,'kx','x');
+ if(o.less){segs[k-1]={w:0.72,id:'kx',txt:''};segs.push({w:0.28,id:'c',txt:'',style:'dash'});}else segs.push({w:0.45,id:'c',txt:''});
+ var gs=[{row:1,from:0,to:o.less?k-1:-1,txt:F(M)+o.u,id:'M',pos:'top',lv:0},{row:1,from:segs.length-1,to:segs.length-1,txt:(o.less?'少':'多')+F(c),id:'c',pos:'bot',lv:0}];
+ o.fig=bars([{name:o.sm,segs:[{w:1,id:'x',txt:'x'}]},{name:o.who,segs:segs}],gs);
+ o.hl={ask:['x'],facts:['M','c','kx'],method:['x','kx','c','M']};
+ return o;
+};
+B.eq_meet=function(p,v,d){
+ var b=p.answer,sum=R(v.a+b);
+ return {target:'另一辆车每小时行多少千米',others:[opt('两辆车每小时一共行多少千米',0,midWhy('两辆车每小时一共行多少千米','另一辆车每小时行多少千米')),opt('甲、乙两地相距多少千米',0,givenWhy('两地相距多少千米',F(v.dist)+'千米'))],
+  facts:[['全程',F(v.dist)+'千米'],['相遇时间',F(v.t)+'小时'],['一辆车','每小时'+v.a+'千米']],swap:false,
+  fwrong:['相遇时间：'+F(v.t)+'千米','“'+F(v.t)+'”后面是“小时”，它是时间，不是路程。'],
+  methodQ:'设另一辆车每小时行 x 千米，方程怎么列？',method:'('+v.a+' + x) × '+F(v.t)+' = '+F(v.dist),
+  mwrong:[opt(v.a+' + x × '+F(v.t)+' = '+F(v.dist),0,'两辆车都走了'+F(v.t)+'小时，要先把两车的速度加起来，再乘时间，记得加括号。'),opt('('+v.a+' − x) × '+F(v.t)+' = '+F(v.dist),0,'两车相对开出，合起来走完全程，速度要相加。')],
+  mhint:'看图：两辆车一起走，'+F(v.t)+'小时合起来正好走完全程。',
+  calcs:[C('两车速度和：'+v.a+' + x = '+F(v.dist)+' ÷ '+F(v.t),F(v.dist)+' ÷ '+F(v.t),sum,'千米',['total']),C('x = '+sum+' − '+v.a,sum+' − '+v.a,b,'千米',['x'])],
+  wrongUnit:['小时','问的是每小时行多少千米，单位是“千米”。'],wrongVal:[sum,'这是两辆车的速度和，还要减去'+v.a+'。'],
+  fig:bars([{name:'',segs:[{w:1,id:'a',txt:'→'},{w:1,id:'x',txt:'←'}]}],[{row:0,from:0,to:0,txt:'每小时'+v.a+'千米',id:'a',pos:'top',lv:0},{row:0,from:1,to:1,txt:'每小时 x 千米',id:'x',pos:'top',lv:0},{row:0,from:0,to:-1,txt:F(v.dist)+'千米（'+F(v.t)+'小时相遇）',id:'total',pos:'bot',lv:0}]),
+  hl:{ask:['x'],facts:['a','total'],method:['a','x','total']}};
+};
+B.eq_buy=function(p,v,d){
+ var k=v.k,x=p.answer,o;
+ if(v.mode==='buy'){var rest=R(v.tot-v.b);
+  o={target:'每支钢笔多少元',others:[opt('一个笔袋多少元',0,givenWhy('笔袋多少元',F(v.b)+'元')),opt(k+'支钢笔一共多少元',0,midWhy(k+'支钢笔一共多少元','每支钢笔多少元'))],
+   facts:[['钢笔',k+'支'],['笔袋',F(v.b)+'元'],['一共',F(v.tot)+'元']],
+   methodQ:'设每支钢笔 x 元，方程怎么列？',method:k+'x + '+F(v.b)+' = '+F(v.tot),mwrong:[opt('x + '+F(v.b)+' = '+F(v.tot),0,'买的是'+k+'支钢笔，钢笔的钱是 '+k+'x。'),opt(k+'x − '+F(v.b)+' = '+F(v.tot),0,'钢笔的钱加上笔袋的钱，才是一共花的钱，要用加法。')],
+   mhint:'一共花的钱 = '+k+'支钢笔的钱 + 笔袋的钱。',
+   calcs:[C(k+'x = '+F(v.tot)+' − '+F(v.b),F(v.tot)+' − '+F(v.b),rest,'元',['total','b']),C('x = '+F(rest)+' ÷ '+k,F(rest)+' ÷ '+k,x,'元',['x'])],
+   wrongVal:[rest,'这是'+k+'支钢笔一共的钱，还要除以'+k+'。'],
+   fig:bars([{name:'',segs:units(k,'x','x').concat([{w:1.4,id:'b',txt:'笔袋'}])}],[{row:0,from:k,to:k,txt:F(v.b)+'元',id:'b',pos:'top',lv:0},{row:0,from:0,to:-1,txt:'一共'+F(v.tot)+'元',id:'total',pos:'bot',lv:0}]),
+   hl:{ask:['x'],facts:['x','b','total'],method:['x','b','total']}};}
+ else{var spent=R(v.m-v.ch);
+  o={target:'每本笔记本多少元',others:[opt('找回多少元',0,givenWhy('找回多少元',F(v.ch)+'元')),opt(k+'本笔记本一共多少元',0,midWhy(k+'本笔记本一共多少元','每本笔记本多少元'))],
+   facts:[['带了',v.m+'元'],['买了',k+'本笔记本'],['找回',F(v.ch)+'元']],
+   methodQ:'设每本笔记本 x 元，方程怎么列？',method:v.m+' − '+k+'x = '+F(v.ch),mwrong:[opt(v.m+' − x = '+F(v.ch),0,'买了'+k+'本，花的钱是 '+k+'x。'),opt(v.m+' + '+k+'x = '+F(v.ch),0,'带去的钱花掉一部分才剩下找回的钱，要用减法。')],
+   mhint:'带的钱 − 花掉的钱 = 找回的钱。',
+   calcs:[C(k+'x = '+v.m+' − '+F(v.ch),v.m+' − '+F(v.ch),spent,'元',['x']),C('x = '+F(spent)+' ÷ '+k,F(spent)+' ÷ '+k,x,'元',['x'])],
+   wrongVal:[spent,'这是'+k+'本一共花的钱，还要除以'+k+'。'],
+   fig:bars([{name:'',segs:units(k,'x','x').concat([{w:1.6,id:'ch',txt:'找回'}])}],[{row:0,from:k,to:k,txt:F(v.ch)+'元',id:'ch',pos:'top',lv:0},{row:0,from:0,to:-1,txt:'带了'+v.m+'元',id:'total',pos:'bot',lv:0}]),
+   hl:{ask:['x'],facts:['ch','total','x'],method:['x','ch','total']}};}
+ o.wrongUnit=null;return o;
+};
+function areaCommon(kind,p,v,d){
+ var u=p.unit.replace('平方',''),nm=p.text.match(/^(.+?)的/)[1];
+ return {u:u,nm:nm,target:nm+'的面积是多少'+p.unit,perim:opt(nm+'的周长是多少'+u,0,'问的是面积，不是周长。面积是图形的大小，周长是一圈的长度。')};
+}
+B.ar_para=function(p,v,d){var a=areaCommon('para',p,v,d),s=R(v.a*v.h);
+ return {target:a.target,others:[a.perim,opt('平行四边形的底是多少'+a.u,0,givenWhy('底是多少',F(v.a)+a.u))],
+  facts:[['底',F(v.a)+a.u],['高',F(v.h)+a.u]],swap:true,
+  methodQ:'用哪个公式？',method:'平行四边形的面积 = 底 × 高',mwrong:[opt('平行四边形的面积 = 底 × 高 ÷ 2',0,'“÷ 2”是三角形的面积公式。平行四边形可以剪拼成长方形，面积 = 底 × 高。'),opt('平行四边形的面积 = (底 + 高) × 2',0,'这是在算一圈的长度，不是面积。')],
+  mhint:'平行四边形沿着高剪开，可以拼成一个长方形。',
+  calcs:[C('面积 = 底 × 高',F(v.a)+' × '+F(v.h),s,p.unit,['shape'])],
+  wrongUnit:[a.u,'面积的单位要用“'+p.unit+'”。'],wrongVal:[R(v.a*v.h/2),'这是又除以了2，平行四边形的面积不用 ÷ 2。'],
+  fig:shape('para',{b:F(v.a)+a.u,h:F(v.h)+a.u},['base','height','shape']),hl:{ask:['shape'],facts:['base','height'],method:['base','height']}};};
+B.ar_tri=function(p,v,d){var a=areaCommon('tri',p,v,d),ah=R(v.a*v.h),s=R(ah/2);
+ return {target:a.target,others:[a.perim,opt('三角形的高是多少'+a.u,0,givenWhy('高是多少',F(v.h)+a.u))],
+  facts:[['底',F(v.a)+a.u],['高',F(v.h)+a.u]],swap:true,
+  methodQ:'用哪个公式？',method:'三角形的面积 = 底 × 高 ÷ 2',mwrong:[opt('三角形的面积 = 底 × 高',0,'两个一样的三角形才能拼成一个平行四边形，所以别忘了 ÷ 2。'),opt('三角形的面积 = 底 + 高',0,'底和高相加得到的是长度，不是面积。')],
+  mhint:'两个完全一样的三角形能拼成一个平行四边形。',
+  calcs:[C('先算 底 × 高',F(v.a)+' × '+F(v.h),ah,'',['base','height']),C('再除以 2',F(ah)+' ÷ 2',s,p.unit,['shape'])],
+  wrongUnit:[a.u,'面积的单位要用“'+p.unit+'”。'],wrongVal:[ah,'这是同底等高的平行四边形的面积，三角形还要 ÷ 2。'],
+  fig:shape('tri',{b:F(v.a)+a.u,h:F(v.h)+a.u},['base','height','shape']),hl:{ask:['shape'],facts:['base','height'],method:['base','height','shape']}};};
+B.ar_trap=function(p,v,d){var a=areaCommon('trap',p,v,d),ab=R(v.a+v.b),abh=R(ab*v.h),s=R(abh/2);
+ return {target:a.target,others:[a.perim,opt('梯形的下底是多少'+a.u,0,givenWhy('下底是多少',F(v.b)+a.u))],
+  facts:[['上底',F(v.a)+a.u],['下底',F(v.b)+a.u],['高',F(v.h)+a.u]],swap:true,
+  methodQ:'用哪个公式？',method:'梯形的面积 = (上底 + 下底) × 高 ÷ 2',mwrong:[opt('梯形的面积 = (上底 + 下底) × 高',0,'两个一样的梯形才拼成一个平行四边形，别忘了 ÷ 2。'),opt('梯形的面积 = 上底 × 下底 × 高',0,'上底和下底要先相加，不是相乘。')],
+  mhint:'两个完全一样的梯形，能拼成一个平行四边形，它的底是“上底 + 下底”。',
+  calcs:[C('先算 上底 + 下底',F(v.a)+' + '+F(v.b),ab,a.u,['top','bottom']),C('再乘高',F(ab)+' × '+F(v.h),abh,'',['height']),C('最后除以 2',F(abh)+' ÷ 2',s,p.unit,['shape'])],
+  wrongUnit:[a.u,'面积的单位要用“'+p.unit+'”。'],wrongVal:[abh,'还没有 ÷ 2 哦。'],
+  fig:shape('trap',{a:F(v.a)+a.u,b:F(v.b)+a.u,h:F(v.h)+a.u},['top','bottom','height','shape']),hl:{ask:['shape'],facts:['top','bottom','height'],method:['top','bottom','height']}};};
+B.ar_combo=function(p,v,d){
+ if(v.shape==='house'){var r1=v.w*v.h1,wh=v.w*v.h2,t1=wh/2,s=r1+t1;
+  return {target:'这个图形的面积是多少平方米',others:[opt('长方形部分的面积是多少平方米',0,midWhy('长方形部分的面积','整个图形的面积')),opt('三角形的高是多少米',0,givenWhy('三角形的高',v.h2+'米'))],
+   facts:[['长方形','长'+v.w+'米，宽'+v.h1+'米'],['三角形','底'+v.w+'米，高'+v.h2+'米']],fwrong:['三角形：底'+v.h1+'米，高'+v.h2+'米','三角形的底和长方形的长相等，是'+v.w+'米。'],
+   methodQ:'怎样算这个组合图形？',method:'分成一个长方形和一个三角形，分别算面积再相加',mwrong:[opt('把它看成一个大长方形，算 '+v.w+' × '+(v.h1+v.h2),0,'上面是三角形，不是长方形，不能直接当成大长方形算。'),opt('只算长方形的面积',0,'上面的三角形也是这个图形的一部分，不能漏掉。')],
+   mhint:'看图：“小房子”是由哪两个图形拼成的？',
+   calcs:[C('长方形：长 × 宽',v.w+' × '+v.h1,r1,'平方米',['rect']),C('三角形：先算 底 × 高',v.w+' × '+v.h2,wh,'',['roof']),C('三角形：再除以 2',wh+' ÷ 2',t1,'平方米',['roof']),C('合起来',r1+' + '+F(t1),s,'平方米',['shape'])],
+   wrongUnit:['米','面积的单位要用“平方米”。'],wrongVal:[r1+wh,'三角形的面积还要 ÷ 2。'],
+   fig:shape('house',{w:v.w+'米',h1:v.h1+'米',h2:v.h2+'米'},['rect','roof','shape']),hl:{ask:['shape'],facts:['rect','roof'],method:['rect','roof']}};}
+ var big=v.W*v.H,pq=v.p*v.q,cut=pq/2,s2=big-cut;
+ return {target:'剩下部分的面积是多少平方分米',others:[opt('剪去的三角形面积是多少平方分米',0,midWhy('剪去的三角形面积','剩下部分的面积')),opt('长方形铁皮的面积是多少平方分米',0,midWhy('长方形铁皮的面积','剩下部分的面积'))],
+  facts:[['长方形','长'+v.W+'分米，宽'+v.H+'分米'],['剪去的三角形','直角边'+v.p+'分米和'+v.q+'分米']],
+  fwrong:['长方形：长'+v.W+'分米，宽'+v.p+'分米','长方形的宽是'+v.H+'分米，'+v.p+'分米是三角形的直角边。'],
+  methodQ:'剩下的面积怎么算？',method:'剩下的面积 = 长方形面积 − 三角形面积',mwrong:[opt('剩下的面积 = 长方形面积 + 三角形面积',0,'三角形被剪去了，要减掉，不是加上。'),opt('剩下的面积 = 长方形面积 − 两条直角边相乘',0,'直角三角形的面积 = 两条直角边相乘再 ÷ 2，别忘了 ÷ 2。')],
+  mhint:'从一整块里剪掉一块，剩下的用什么算？',
+  calcs:[C('长方形：长 × 宽',v.W+' × '+v.H,big,'平方分米',['rect']),C('三角形：先算 '+v.p+' × '+v.q,v.p+' × '+v.q,pq,'',['tri']),C('三角形：再除以 2',pq+' ÷ 2',cut,'平方分米',['tri']),C('剩下的面积',big+' − '+F(cut),s2,'平方分米',['shape'])],
+  wrongUnit:['分米','面积的单位要用“平方分米”。'],wrongVal:[big,'这是整块铁皮的面积，还要减去剪掉的三角形。'],
+  fig:shape('cut',{w:v.W+'分米',h:v.H+'分米',p:v.p+'分米',q:v.q+'分米',W:v.W,H:v.H,P:v.p,Q:v.q},['rect','tri','shape']),hl:{ask:['shape'],facts:['rect','tri'],method:['rect','tri']}};
+};
+B.ar_field=function(p,v,d){
+ var nm=['平行四边形','三角形','梯形'][v.sh],what=p.text.match(/^一块(.+?)的(.+?)，/)[2],k=v.k,money=p.unit==='元';
+ var per=p.text.match(/(平均)?每平方米[^，]+/)[0],tq=qPart(p.text);
+ var s,cs,dims,fig,ids;
+ if(v.sh===0){s=v.a*v.h;dims=[['底',v.a+'米'],['高',v.h+'米']];cs=[C('面积 = 底 × 高',v.a+' × '+v.h,s,'平方米',['base','height'])];fig=shape('para',{b:v.a+'米',h:v.h+'米'},['base','height','shape']);}
+ else if(v.sh===1){var ah=v.a*v.h;s=ah/2;dims=[['底',v.a+'米'],['高',v.h+'米']];cs=[C('先算 底 × 高',v.a+' × '+v.h,ah,'',['base','height']),C('再除以 2，得到面积',ah+' ÷ 2',s,'平方米',['shape'])];fig=shape('tri',{b:v.a+'米',h:v.h+'米'},['base','height','shape']);}
+ else{var ab=v.a+v.b,abh=ab*v.h;s=abh/2;dims=[['上底',v.a+'米'],['下底',v.b+'米'],['高',v.h+'米']];cs=[C('先算 上底 + 下底',v.a+' + '+v.b,ab,'米',['top','bottom']),C('再乘高',ab+' × '+v.h,abh,'',['height']),C('再除以 2，得到面积',abh+' ÷ 2',s,'平方米',['shape'])];fig=shape('trap',{a:v.a+'米',b:v.b+'米',h:v.h+'米'},['top','bottom','height','shape']);}
+ var ans=R(s*k);cs.push(C('总数 = 面积 × 每平方米的量',s+' × '+F(k),ans,p.unit,['shape']));
+ return {target:tq,others:[opt('这块'+what+'的面积是多少平方米',0,midWhy(what+'的面积',tq)),opt(per.replace(/[\d.]+(元|千克)$/,'多少$1'),0,givenWhy(per.replace(/[\d.]+(元|千克)$/,'多少$1'),F(k)+p.unit))],
+  facts:dims.concat([['每平方米',F(k)+p.unit]]),swap:true,
+  methodQ:'第一步先算什么？',method:'先算这块'+what+'的面积，再算 面积 × 每平方米的量',mwrong:[opt('直接算 '+v.a+' × '+F(k),0,'要先求出整块地有多少平方米，不能只用底。'),opt('先算面积，再算 面积 ÷ '+F(k),0,(money?'每平方米要'+F(k)+'元，地越大花的钱越多':'每平方米收'+F(k)+'千克，地越大收得越多')+'，要用乘法。')],
+  mhint:'“每平方米……”说明要先知道一共有多少平方米。',
+  calcs:cs,wrongUnit:['平方米','问的是'+(money?'钱数，单位是“元”':'收了多重，单位是“千克”')+'。'],wrongVal:[s,'这是这块地的面积，还要乘每平方米的量。'],
+  fig:fig,hl:{ask:['shape'],facts:fig.ids.filter(function(i){return i!=='shape';}),method:['shape']}};
+};
+B.tr_both=function(p,v,d){
+ var k=v.L/v.g,n1=k+1,ans=n1*v.sides,lamp=p.unit==='盏',w=p.unit,verb=lamp?'装':'种',km=lamp?F(v.L/1000)+'千米':v.L+'米';
+ var facts=[['路长',km],['间隔','每隔'+v.g+'米'+verb+'一'+w],[verb+'法','两端都'+verb]];if(v.sides===2)facts.push(['两边','路的两边都'+verb]);
+ var calcs=[];if(lamp)calcs.push(C('先把 '+km+' 换算成米',F(v.L/1000)+' × 1000',v.L,'米',['total']));
+ calcs.push(C('间隔数 = 路长 ÷ 间隔长',v.L+' ÷ '+v.g,k,'个',['gap']));
+ calcs.push(C('两端都'+verb+'：'+w+'数 = 间隔数 + 1',k+' + 1',n1,w,['trees','ends']));
+ if(v.sides===2)calcs.push(C('两边都'+verb+'：再乘 2',n1+' × 2',ans,w,['trees']));
+ return {target:'一共要'+verb+'多少'+w+(lamp?'路灯':'树'),others:[opt('一共有多少个间隔',0,midWhy('间隔数','一共要'+verb+'多少'+w+(lamp?'路灯':'树'))),opt(lamp?'公路有多长':'小路有多长',0,givenWhy('路有多长',km))],
+  facts:facts,fwrong:[verb+'法：两端都不'+verb,'题目说“两端都'+verb+'”，路的两头都有。'],
+  methodQ:'两端都'+verb+'，'+w+'数和间隔数有什么关系？',method:w+'数 = 间隔数 + 1',mwrong:[opt(w+'数 = 间隔数',0,'画一画就知道：两头都'+verb+'时，'+w+'数比间隔数多 1。'),opt(w+'数 = 间隔数 − 1',0,'两端都不'+verb+'的时候才是 − 1。')],
+  mhint:'看图数一数：3个间隔，两头都'+verb+'，一共有几'+w+'？',
+  calcs:calcs,wrongUnit:null,wrongVal:[v.sides===2?n1:k,v.sides===2?'这只是一边的数量，两边都'+verb+'要乘 2。':'这是间隔数，两端都'+verb+'还要加 1。'],
+  fig:trees('both',k,v.g+'米',km,w),hl:{ask:['trees'],facts:['gap','total','ends'],method:['gap','trees']}};
+};
+B.tr_none=function(p,v,d){
+ var k=v.L/v.g,n=k-1,ans=n*v.sides;
+ var facts=[['距离',v.L+'米'],['间隔','每隔'+v.g+'米栽一棵'],['栽法','两端都不栽']];if(v.sides===2)facts.push(['两边','小路两边都栽']);
+ var calcs=[C('间隔数 = 距离 ÷ 间隔长',v.L+' ÷ '+v.g,k,'个',['gap']),C('两端都不栽：棵数 = 间隔数 − 1',k+' − 1',n,'棵',['trees'])];
+ if(v.sides===2)calcs.push(C('两边都栽：再乘 2',n+' × 2',ans,'棵',['trees']));
+ return {target:'一共要栽多少棵树',others:[opt('一共有多少个间隔',0,midWhy('间隔数','一共要栽多少棵树')),opt('两栋楼相距多少米',0,givenWhy('两栋楼相距多少米',v.L+'米'))],
+  facts:facts,fwrong:['栽法：两端都栽','题目说靠近楼的两端都不栽。'],
+  methodQ:'两端都不栽，棵数和间隔数有什么关系？',method:'棵数 = 间隔数 − 1',mwrong:[opt('棵数 = 间隔数 + 1',0,'两端都栽的时候才是 + 1。这题两头靠着楼，不栽。'),opt('棵数 = 间隔数',0,'只栽一端的时候才和间隔数相等。')],
+  mhint:'看图数一数：3个间隔，两头不栽，中间有几棵？',
+  calcs:calcs,wrongUnit:null,wrongVal:[v.sides===2?n:k,v.sides===2?'这只是一边的棵数，两边都栽要乘 2。':'这是间隔数，两端都不栽要减 1。'],
+  fig:trees('none',k,v.g+'米',v.L+'米','棵'),hl:{ask:['trees'],facts:['gap','total','ends'],method:['gap','trees']}};
+};
+B.tr_one=function(p,v,d){
+ var k=v.L/v.g;
+ return {target:'一共要放多少盆花',others:[opt('相邻两盆花相距多少米',0,givenWhy('相距多少米',v.g+'米')),opt('这条路长多少米',0,givenWhy('路长多少米',v.L+'米'))],
+  facts:[['路长',v.L+'米'],['间隔','每隔'+v.g+'米放一盆'],['放法','学校门口放，公园门口不放']],fwrong:['放法：两端都放','公园门口已经有花坛，不用放，所以只放一端。'],
+  methodQ:'只放一端，盆数和间隔数有什么关系？',method:'盆数 = 间隔数',mwrong:[opt('盆数 = 间隔数 + 1',0,'两端都放才 + 1。这题公园门口不放。'),opt('盆数 = 间隔数 − 1',0,'两端都不放才 − 1。这题学校门口要放。')],
+  mhint:'看图：每个间隔的开头放一盆，最后一头不放。',
+  calcs:[C('间隔数 = 路长 ÷ 间隔长',v.L+' ÷ '+v.g,k,'个',['gap','trees'])],
+  wrongUnit:null,wrongVal:[k+1,'只放一端，盆数和间隔数一样多，不用加 1。'],
+  fig:trees('one',k,v.g+'米',v.L+'米','盆'),hl:{ask:['trees'],facts:['gap','total','ends'],method:['gap','trees']}};
+};
+B.tr_saw=function(p,v,d){
+ if(v.mode!==1)return null;var c=v.n-1,ans=c*v.t;
+ return {target:'锯完一共要用多少分钟',others:[opt('一共要锯几次',0,midWhy('锯几次','一共要用多少分钟')),opt('锯一次要用几分钟',0,givenWhy('锯一次要几分钟',v.t+'分钟'))],
+  facts:[['锯法','锯成'+v.n+'段'],['每次','锯一次用'+v.t+'分钟']],fwrong:['锯法：锯'+v.n+'次','题目说的是“锯成'+v.n+'段”，段数和次数不一样哦。'],
+  methodQ:'第一步先算什么？',method:'先算要锯几次：次数 = 段数 − 1',mwrong:[opt('直接算 '+v.n+' × '+v.t,0,'锯1次变成2段，锯2次变成3段……锯的次数比段数少1，不是'+v.n+'次。'),opt('先算次数：次数 = 段数 + 1',0,'锯的次数比段数少，不是多。看图数一数锯口。')],
+  mhint:'看图数一数：木头上有几道锯口？',
+  calcs:[C('锯的次数 = 段数 − 1',v.n+' − 1',c,'次',['cuts']),C('时间 = 每次的时间 × 次数',v.t+' × '+c,ans,'分钟',['cuts'])],
+  wrongUnit:null,wrongVal:[v.n*v.t,'锯成'+v.n+'段只要锯'+c+'次，不是'+v.n+'次。'],
+  fig:{type:'log',n:v.n,ids:['pieces','cuts']},hl:{ask:['pieces'],facts:['pieces'],method:['cuts','pieces']}};
+};
+/* 可以做思路训练的模板（都是应用题） */
+var TPL_IDS=Object.keys(B);
+var LV={dm_rect:[3,3]}; // 只有这些难度下，题目才是适合拆步骤的那种问法
+function supported(id,d){var t=G.TPL.filter(function(x){return x.id===id;})[0],lv=LV[id]||t.lv;return t&&d>=Math.max(lv[0],t.lv[0])&&d<=Math.min(lv[1],t.lv[1]);}
+
+/* ---------- 组装成一步一步的题目 ---------- */
+function shuffleOpts(list){return shuffle(list);}
+function factText(f){return f[0]+'：'+f[1];}
+function assemble(p,b,dis){
+ var steps=[],target=b.target;
+ // ① 读问题
+ steps.push({kind:'ask',cat:'understand',q:'这道题要求的是什么？',opts:shuffleOpts([opt(target,1)].concat(b.others)),
+  hint:'找到带问号的那句话，“多少”“几”后面跟着的，就是要求的东西。',why:'对！这题要求的是「'+target+'」。',hl:b.hl.ask||[]});
+ // ② 找条件
+ var right=b.facts.map(factText).join('；'),wr=[];
+ if(dis)wr.push(opt(right+'；'+dis.s,0,'「'+dis.s+'」和要求的问题没有关系，它是来捣乱的小陷阱！'));
+ if(b.fwrong){var fw=b.facts.slice(),cut=b.fwrong[0].indexOf('：'),wf=[b.fwrong[0].slice(0,cut),b.fwrong[0].slice(cut+1)],idx=-1;
+  fw.forEach(function(f,i){if(f[0]===wf[0])idx=i;});if(idx>=0)fw[idx]=wf;else fw.push(wf);   // 把同名条件换成“说错了”的版本
+  wr.push(opt(fw.map(factText).join('；'),0,b.fwrong[1]));}
+ if(b.swap&&b.facts.length>=2){var sw=b.facts.map(function(f){return f.slice();}),i0=0,i1=1,t=sw[i0][1].replace(/[^\d.]/g,''),t1=sw[i1][1].replace(/[^\d.]/g,'');
+  if(t&&t1&&t!==t1){sw[i0][1]=b.facts[i0][1].replace(t,t1);sw[i1][1]=b.facts[i1][1].replace(t1,t);
+   wr.push(opt(sw.map(factText).join('；'),0,'数字对错位置了：'+b.facts[i0][0]+'是'+b.facts[i0][1]+'，'+b.facts[i1][0]+'是'+b.facts[i1][1]+'。看清每个数后面跟着什么～'));}}
+ var mi=ri(0,b.facts.length-1);
+ wr.push(opt(b.facts.filter(function(_,i){return i!==mi;}).map(factText).join('；'),0,'少了「'+factText(b.facts[mi])+'」，只靠剩下的条件算不出来哦。'));
+ // 去重、最多留 2 个错误选项（有干扰数时一定保留它）
+ var seen={},wr2=[];wr.forEach(function(o){if(!seen[o.t]&&o.t!==right){seen[o.t]=1;wr2.push(o);}});
+ var keep=dis?[wr2[0]].concat(shuffle(wr2.slice(1)).slice(0,1)):shuffle(wr2).slice(0,2);
+ steps.push({kind:'facts',cat:'facts',q:'解这道题，要用到哪些条件？',opts:shuffleOpts([opt(right,1)].concat(keep)),
+  hint:dis?'题目里有一个数和问题没关系。把每个数圈出来，问问自己：它和要求的问题有关系吗？':'要算出答案，需要知道哪些数？少一个都不行，多一个也不对。',
+  why:'找对啦！要用到：'+b.facts.map(function(f){return f[1];}).join('、')+'。'+(dis?'「'+dis.s+'」和问题没关系，不用管它。':''),hl:b.hl.facts||[]});
+ // ③ 想方法
+ steps.push({kind:'method',cat:'method',q:b.methodQ,opts:shuffleOpts([opt(b.method,1)].concat(b.mwrong)),hint:b.mhint,why:'没错！'+b.method+'。',hl:b.hl.method||[]});
+ // ④ 算一算（每次只算一步）
+ b.calcs.forEach(function(c,i){
+  steps.push({kind:'calc',cat:'calc',q:c.q,expr:c.expr,ans:c.ans,unit:c.unit,hl:c.hl,hint:c.hint||'先看清是加、减、乘还是除，再一位一位地算，最后检查小数点的位置。',
+   floor:!!c.floor,why:(c.floor?c.expr+' 除不尽，商的整数部分是 '+F(c.ans):c.expr+' = '+F(c.ans))+(c.unit?'（'+c.unit+'）':'')});
+  if(b.extra&&b.extra.after===i)steps.push({kind:'method',cat:'method',q:b.extra.q,opts:shuffleOpts(b.extra.opts.slice()),hint:b.extra.hint,why:b.extra.why,hl:[]});
+ });
+ // ⑤ 写答案
+ var ansTxt=F(p.answer)+' '+p.unit,fo=[opt(ansTxt,1)];
+ if(b.wrongVal&&R(b.wrongVal[0])!==R(p.answer))fo.push(opt(F(b.wrongVal[0])+' '+p.unit,0,b.wrongVal[1]));
+ if(b.wrongUnit)fo.push(opt(F(p.answer)+' '+b.wrongUnit[0],0,b.wrongUnit[1]));
+ [-1,1,2].forEach(function(dv){var alt=R(p.answer+dv),t=F(alt)+' '+p.unit;if(fo.length<3&&alt>0&&!fo.some(function(o){return o.t===t;}))fo.push(opt(t,0,'再看看最后一步算出来的数是多少。'));});
+ steps.push({kind:'final',cat:'calc',q:'最后，这道题的答案是多少？',opts:shuffleOpts(fo),hint:'答案就是最后一步算出来的数，还要带上正确的单位。',why:answerSentence(p),hl:(b.hl.ask||[])});
+ // 回顾：这题的思路
+ var recap=[{tag:'读问题',t:'要求的是「'+target+'」。'},{tag:'找条件',t:b.facts.map(factText).join('；')+'。'+(dis?'（「'+dis.s+'」是多余的）':'')},{tag:'想方法',t:b.method+'。'}];
+ b.calcs.forEach(function(c,i){recap.push({tag:'算一算',t:c.r?c.r:c.q.indexOf(c.expr)>=0?c.q+' = '+F(c.ans)+(c.unit?'（'+c.unit+'）':''):c.q.replace(/[，：]?[^，：]*[?？]$/,'')+'：'+(c.floor?c.expr+' 的商的整数部分是 '+F(c.ans):c.expr+' = '+F(c.ans))+(c.unit?'（'+c.unit+'）':'')});
+  if(b.extra&&b.extra.after===i)recap.push({tag:'想方法',t:b.extra.why});});
+ recap.push({tag:'写答案',t:answerSentence(p)});
+ return {steps:steps,recap:recap};
+}
+
+/* ---------- 出一道思路训练题 ---------- */
+function make(id,d,opts){
+ opts=opts||{};
+ for(var i=0;i<200;i++){
+  var p=G.makeProblem(id,d),b=B[id](p,p.v,d);if(!b)continue;
+  var dis=null,text=p.text;
+  if(chance(opts.disP==null?0.35:opts.disP)){
+   var used={};b.calcs.forEach(function(c){numsOf(c.expr).forEach(function(n){used[n]=1;});used[F(c.ans)]=1;}); // 干扰数也别和中间结果撞上
+   for(var j=0;j<10;j++){dis=makeDistractor(p.text);if(!dis||!used[String(dis.n)])break;dis=null;}
+   if(dis)text=dis.t+p.text;}
+  var a=assemble(p,b,dis);
+  return {id:id,topic:p.topic,topicName:TOPICS[p.topic],d:d,text:text,baseText:p.text,answer:p.answer,unit:p.unit,dis:dis,fig:b.fig||null,steps:a.steps,recap:a.recap,target:b.target};
+ }
+ throw new Error('think make failed '+id+' d'+d);
+}
+function idsFor(topic,d){return TPL_IDS.filter(function(id){var t=G.TPL.filter(function(x){return x.id===id;})[0];return (topic==='all'||t.topic===topic)&&supported(id,d);});}
+/* 智能推荐：错得多的专题、步骤多出题；“找条件”弱就多放干扰数 */
+function pickNext(stats,topic,d,lastId){
+ var pool=idsFor(topic,d);if(!pool.length)pool=idsFor('all',d);
+ var w=pool.map(function(id){var tp=G.TPL.filter(function(x){return x.id===id;})[0].topic,s=stats&&stats.topic&&stats.topic[tp];
+  var miss=s&&s.n?1-s.ok/s.n:0.5;return (id===lastId?0.15:1)*(0.6+2.4*miss);});
+ var tot=w.reduce(function(a,b){return a+b;},0),r=U.ri(0,9999)/10000*tot,k=0;
+ for(;k<pool.length-1;k++){r-=w[k];if(r<0)break;}
+ var fs=stats&&stats.cat&&stats.cat.facts,disP=fs&&fs.n>=3&&fs.ok/fs.n<0.7?0.75:0.4;
+ return make(pool[k],d,{disP:disP});
+}
+function checkNum(step,input){var x=G.parseNum(input);return !isNaN(x)&&Math.abs(x-step.ans)<1e-9;}
+
+root.MathThink={CATS:CATS,CAT_KEYS:CAT_KEYS,TOPICS:TOPICS,KIND_TITLE:KIND_TITLE,KIND_NO:KIND_NO,TPL_IDS:TPL_IDS,make:make,idsFor:idsFor,pickNext:pickNext,checkNum:checkNum,supported:supported};
+})(typeof window!=='undefined'?window:globalThis);
+/*THINK-END*/
+/*LOGIC-START*/
+/* ======================= 每日逻辑小关卡：按日期生成（同一天同一套），每道题都验证过唯一解 ======================= */
+(function(root){
+'use strict';
+function hash(s){var h=2166136261>>>0;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0;}return h>>>0;}
+function RNG(seed){var a=seed>>>0;return function(){a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+var rnd=Math.random;
+function ri(a,b){return a+Math.floor(rnd()*(b-a+1));}
+function pick(a){return a[Math.floor(rnd()*a.length)];}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(rnd()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function perms(n){var out=[];(function go(cur,used){if(cur.length===n){out.push(cur.slice());return;}for(var i=0;i<n;i++)if(!used[i]){used[i]=1;cur.push(i);go(cur,used);cur.pop();used[i]=0;}})([],{});return out;}
+var NAMES=['小丽','朵朵','乐乐','小明','笑笑','天天','甜甜','阳阳','小华','豆豆'];
+var TYPE_NAME={pattern:'找规律',reason:'简单推理',sudoku:'数独',order:'逻辑排序'};
+
+/* ================= 找规律：数列 ================= */
+/* 规律家族：所有和已给出的数相符的家族，都必须推出同一个“下一个数”，才算唯一答案 */
+function diffs(a){var d=[];for(var i=1;i<a.length;i++)d.push(a[i]-a[i-1]);return d;}
+function allEq(a){for(var i=1;i<a.length;i++)if(a[i]!==a[0])return false;return a.length>0;}
+var FAM={
+ arith:function(a){var d=diffs(a);return allEq(d)?a[a.length-1]+d[0]:null;},
+ geom:function(a){if(a.some(function(x){return x<=0;}))return null;var r=a[1]/a[0];if(r!==Math.round(r)||r<2)return null;for(var i=1;i<a.length;i++)if(a[i]!==a[i-1]*r)return null;return a[a.length-1]*r;},
+ alt2:function(a){var d=diffs(a);if(d.length<4)return null;for(var i=2;i<d.length;i++)if(d[i]!==d[i-2])return null;return a[a.length-1]+d[d.length%2];},
+ incdiff:function(a){var d=diffs(a),dd=diffs(d);if(dd.length<3||!allEq(dd))return null;return a[a.length-1]+d[d.length-1]+dd[0];},
+ fib:function(a){if(a.length<4)return null;for(var i=2;i<a.length;i++)if(a[i]!==a[i-1]+a[i-2])return null;return a[a.length-1]+a[a.length-2];},
+ inter:function(a){if(a.length<6)return null;var o=[],e=[];a.forEach(function(x,i){(i%2?o:e).push(x);});if(!allEq(diffs(o))||!allEq(diffs(e)))return null;var nx=a.length%2?o:e;return nx[nx.length-1]+(nx[1]-nx[0]);}
+};
+function predict(a){var s={};Object.keys(FAM).forEach(function(k){var v=FAM[k](a);if(v!==null)s[v]=(s[v]||[]).concat(k);});return s;}
+function numPattern(L){
+ for(var tries=0;tries<500;tries++){
+  var fam,seq=[],n,i,expl,hint;
+  var choices=L<=1?['arith']:L===2?['arith','geom','alt2']:L===3?['alt2','incdiff','geom','arith']:L===4?['incdiff','fib','inter','alt2']:['inter','fib','incdiff','geom'];
+  fam=pick(choices);
+  if(fam==='arith'){var d=ri(2,L<=1?6:12),down=L>=2&&rnd()<0.4,s0=down?ri(40,90):ri(1,20);n=5;for(i=0;i<n;i++)seq.push(s0+(down?-d:d)*i);
+   hint='算一算：相邻两个数相差多少？';expl='每次都'+(down?'减少 ':'增加 ')+d+'，所以下一个数是 '+seq[n-1]+(down?' − ':' + ')+d+' = ';}
+  else if(fam==='geom'){var r=L>=5&&rnd()<0.5?3:2,g0=ri(1,r===3?3:6);n=5;for(i=0;i<n;i++)seq.push(g0*Math.pow(r,i));
+   hint='后一个数是前一个数的几倍？';expl='后一个数都是前一个数的 '+r+' 倍，所以下一个数是 '+seq[n-1]+' × '+r+' = ';}
+  else if(fam==='alt2'){var p1=ri(1,9),p2=ri(1,9);if(p1===p2)continue;var a0=ri(1,15);n=6;seq=[a0];for(i=1;i<n;i++)seq.push(seq[i-1]+(i%2?p1:p2));
+   hint='写出相邻两个数的差，是不是两个数轮流出现？';expl='相邻两个数的差是 '+p1+'、'+p2+' 轮流出现：+'+p1+'，+'+p2+'，+'+p1+'……下一个该 +'+(n%2?p1:p2)+'，所以是 '+seq[n-1]+' + '+(n%2?p1:p2)+' = ';}
+  else if(fam==='incdiff'){var d0=ri(1,5),k=ri(1,L>=4?3:2),b0=ri(1,12);n=6;seq=[b0];for(i=1;i<n;i++)seq.push(seq[i-1]+d0+k*(i-1));
+   var ds=diffs(seq);hint='把相邻两个数的差写出来，这些差有什么规律？';expl='相邻两个数的差是 '+ds.join('、')+'，每次多 '+k+'。下一个差是 '+(ds[ds.length-1]+k)+'，所以是 '+seq[n-1]+' + '+(ds[ds.length-1]+k)+' = ';}
+  else if(fam==='fib'){var f0=ri(1,4),f1=ri(f0,6);n=6;seq=[f0,f1];for(i=2;i<n;i++)seq.push(seq[i-1]+seq[i-2]);
+   hint='每个数和它前面的两个数有什么关系？';expl='从第3个数起，每个数都等于前两个数的和，所以下一个数是 '+seq[n-2]+' + '+seq[n-1]+' = ';}
+  else{var e0=ri(1,9),ed=ri(1,5),o0=ri(10,30),od=ri(2,6)*(rnd()<0.5?-1:1);n=7;for(i=0;i<n;i++)seq.push(i%2?o0+od*((i-1)/2):e0+ed*(i/2));
+   if(od===ed)continue;hint='隔一个看一个：第1、3、5……个数一组，第2、4、6……个数一组。';
+   var odd=seq.filter(function(_,i){return i%2===1;}),evn=seq.filter(function(_,i){return i%2===0;});
+   expl='分成两组看：第1、3、5、7个数是 '+evn.join('、')+'（每次 +'+ed+'）；第2、4、6个数是 '+odd.join('、')+'（每次 '+(od>0?'+':'−')+Math.abs(od)+'）。下一个是第8个数，属于第二组：'+odd[odd.length-1]+(od>0?' + ':' − ')+Math.abs(od)+' = ';}
+  if(seq.some(function(x){return x<0||x>200;}))continue;
+  var pr=predict(seq),keys=Object.keys(pr);if(keys.length!==1)continue;
+  var ans=+keys[0];if(ans<0||ans>300)continue;expl+=ans+'。';
+  var last=seq[seq.length-1],dl=last-seq[seq.length-2],cand=shuffle([ans+1,ans-1,ans+2,ans-2,last+dl,ans+dl,ans-dl,last*2,ans+10]).filter(function(x){return x>=0&&x!==ans&&!pr[x];});
+  var opts=[ans];cand.forEach(function(x){if(opts.length<4&&opts.indexOf(x)<0)opts.push(x);});if(opts.length<4)continue;
+  opts=shuffle(opts);
+  return {type:'pattern',sub:'num',title:'找规律填数',prompt:'按规律，“?”处应该填几？',seq:seq,options:opts.map(String),answer:opts.indexOf(ans),hint:hint,explain:[expl],fam:fam,check:{seq:seq,ans:ans}};
+ }
+ throw new Error('numPattern failed');
+}
+/* ================= 找规律：图形 ================= */
+var SHAPES=['circle','square','triangle','star','heart','diamond'],SHAPE_CN={circle:'圆',square:'正方形',triangle:'三角形',star:'星星',heart:'爱心',diamond:'菱形'};
+var COLORS=[['#ff6fa5','粉'],['#8e6bff','紫'],['#2fbf94','绿'],['#ffc93c','黄'],['#4a8dff','蓝']];
+function tokName(t){if(t.indexOf('arrow:')===0)return {0:'向上的箭头',90:'向右的箭头',180:'向下的箭头',270:'向左的箭头'}[t.split(':')[1]];var p=t.split(':');return COLORS.filter(function(c){return c[0]===p[1];})[0][1]+'色'+SHAPE_CN[p[0]];}
+function minPeriodPredict(seq){var n=seq.length,pred={};for(var q=1;q<=Math.floor(n/2);q++){var ok=true;for(var i=q;i<n;i++)if(seq[i]!==seq[i-q]){ok=false;break;}if(ok)pred[seq[n-q]]=1;}return Object.keys(pred);}
+function shapePattern(L){
+ for(var tries=0;tries<300;tries++){
+  var cyc,expl,hint;
+  if(L>=2&&rnd()<0.35){var dir=rnd()<0.5?90:270,st=ri(0,3)*90;cyc=[0,1,2,3].map(function(i){return 'arrow:'+((st+dir*i)%360+360)%360;});
+   hint='看看箭头每次是怎么转的？';expl='箭头每次都'+(dir===90?'顺时针':'逆时针')+'转四分之一圈（90°），4个一组重复。';}
+  else{var p=L<=1?ri(2,3):ri(3,4),sh=shuffle(SHAPES),co=shuffle(COLORS),mode=L<=1?'shape':pick(['shape','both']);
+   cyc=[];for(var i=0;i<p;i++)cyc.push(sh[i]+':'+(mode==='shape'?co[0][0]:co[i][0]));
+   hint='找一找：从哪里开始重复？几个图形是一组？';expl='每 '+p+' 个图形一组，按「'+cyc.map(tokName).join('、')+'」的顺序重复出现。';}
+  var P=cyc.length,n=2*P+ri(1,P-1),seq=[];for(var j=0;j<n;j++)seq.push(cyc[j%P]);
+  var ans=cyc[n%P],pr=minPeriodPredict(seq);if(pr.length!==1||pr[0]!==ans)continue;
+  var pool=cyc.filter(function(t){return t!==ans;});
+  if(ans.indexOf('arrow')<0){var ap=ans.split(':');pool.push(SHAPES.filter(function(s){return s!==ap[0]&&cyc.every(function(c){return c.split(':')[0]!==s;});})[0]+':'+ap[1]);
+   pool.push(ap[0]+':'+COLORS.filter(function(c){return c[0]!==ap[1];})[ri(0,3)][0]);}
+  else{['arrow:0','arrow:90','arrow:180','arrow:270'].forEach(function(t){if(t!==ans)pool.push(t);});}
+  var opts=[ans];shuffle(pool).forEach(function(t){if(opts.length<4&&opts.indexOf(t)<0)opts.push(t);});if(opts.length<4)continue;opts=shuffle(opts);
+  return {type:'pattern',sub:'shape',title:'找规律画图形',prompt:'按规律，“?”处应该是哪一个？',seq:seq,options:opts,answer:opts.indexOf(ans),hint:hint,explain:[expl,'第 '+(n+1)+' 个应该是：'+tokName(ans)+'。'],check:{seq:seq,ans:ans}};
+ }
+ throw new Error('shapePattern failed');
+}
+
+/* ================= 简单推理 A：谁是谁（排除法） ================= */
+var WHO=[{cat:'宠物',items:['小猫','小狗','小兔','金鱼'],is:'养的是',not:'养的不是',by:'养',intro:'养了',q:'养的是什么'},
+ {cat:'兴趣班',items:['画画','钢琴','跳舞','围棋'],is:'学的是',not:'学的不是',by:'学',intro:'在学',q:'学的是什么'},
+ {cat:'水果',items:['苹果','香蕉','葡萄','西瓜'],is:'最爱吃的是',not:'最爱吃的不是',by:'最爱吃',intro:'最爱吃',q:'最爱吃什么'},
+ {cat:'衣服',items:['红衣服','黄衣服','蓝衣服','绿衣服'],is:'穿的是',not:'穿的不是',by:'穿',intro:'穿着',q:'穿的是什么颜色的衣服'}];
+function whoSolveCount(n,cons){var c=0,sol=null;perms(n).forEach(function(pm){if(cons.every(function(k){return k.t==='not'?pm[k.p]!==k.x:pm[k.p]===k.x;})){c++;sol=pm;}});return {count:c,sol:sol};}
+/* 只用“排除”推理（一行只剩一个 / 一列只剩一个），记录每一步 */
+function whoPropagate(n,cons,people,items,C){
+ var cand=[];for(var i=0;i<n;i++){cand.push([]);for(var j=0;j<n;j++)cand[i].push(true);}
+ cons.forEach(function(k){if(k.t==='not')cand[k.p][k.x]=false;else for(var j=0;j<n;j++)cand[k.p][j]=j===k.x;});
+ var asg=[],steps=[],order=[];for(i=0;i<n;i++)asg.push(-1);
+ cons.forEach(function(k){if(k.t==='is'&&asg[k.p]<0){asg[k.p]=k.x;order.push(k.p);steps.push('题目直接告诉我们：'+people[k.p]+C.is+items[k.x]+'。');}});
+ for(var guard=0;guard<50;guard++){
+  var moved=false;
+  for(i=0;i<n;i++)if(asg[i]>=0)for(var o=0;o<n;o++)if(o!==i)cand[o][asg[i]]=false;
+  for(i=0;i<n&&!moved;i++){if(asg[i]>=0)continue;var left=[];for(j=0;j<n;j++)if(cand[i][j])left.push(j);
+   if(left.length===1){asg[i]=left[0];order.push(i);moved=true;var out=[];for(j=0;j<n;j++)if(j!==left[0])out.push(items[j]);steps.push(people[i]+'不可能是'+out.join('、')+'，只剩下「'+items[left[0]]+'」，所以'+people[i]+C.is+items[left[0]]+'。');}}
+  for(j=0;j<n&&!moved;j++){if(asg.indexOf(j)>=0)continue;var can=[];for(i=0;i<n;i++)if(asg[i]<0&&cand[i][j])can.push(i);
+   if(can.length===1){asg[can[0]]=j;order.push(can[0]);moved=true;steps.push('「'+items[j]+'」只可能属于'+people[can[0]]+'了，所以'+people[can[0]]+C.is+items[j]+'。');}}
+  if(!moved)break;
+ }
+ return {solved:asg.every(function(x){return x>=0;}),asg:asg,steps:steps,order:order};
+}
+function clueText(k,people,items,C){
+ if(k.t==='is')return people[k.p]+C.is+items[k.x]+'。';
+ if(k.form==='by')return C.by+items[k.x]+'的不是'+people[k.p]+'。';
+ return people[k.p]+C.not+items[k.x]+'。';
+}
+function reasonWho(L){
+ var n=L<=2?3:4;
+ for(var tries=0;tries<400;tries++){
+  var C=pick(WHO),people=shuffle(NAMES).slice(0,n),items=shuffle(C.items).slice(0,n),truth=shuffle(perms(n))[0];
+  var pool=[];for(var p=0;p<n;p++)for(var x=0;x<n;x++)if(truth[p]!==x)pool.push({t:'not',p:p,x:x,form:rnd()<0.35?'by':'p'});
+  if(n===4)for(p=0;p<n;p++)if(rnd()<0.3)pool.push({t:'is',p:p,x:truth[p]});
+  pool=shuffle(pool);var cons=[];
+  for(var i=0;i<pool.length;i++){cons.push(pool[i]);var r=whoSolveCount(n,cons);if(r.count===1&&whoPropagate(n,cons,people,items,C).solved)break;}
+  // 去掉多余的线索（仍然唯一、仍能只靠排除推出来）
+  for(i=cons.length-1;i>=0;i--){var trial=cons.slice(0,i).concat(cons.slice(i+1));if(whoSolveCount(n,trial).count===1&&whoPropagate(n,trial,people,items,C).solved)cons=trial;}
+  // 同一个人的两条“不是”合并成一句，读起来更顺
+  var texts=[],used={};
+  cons.forEach(function(k,a){if(used[a])return;if(k.t==='not'&&k.form==='p'){for(var b=a+1;b<cons.length;b++){var m=cons[b];if(!used[b]&&m.t==='not'&&m.form==='p'&&m.p===k.p){used[b]=1;texts.push(people[k.p]+C.not+items[k.x]+'，也不是'+items[m.x]+'。');return;}}}texts.push(clueText(k,people,items,C));});
+  if(cons.length<2||cons.length>7)continue;
+  var pg=whoPropagate(n,cons,people,items,C),ask=pg.order[pg.order.length-1];
+  if(cons.some(function(k){return k.t==='is'&&k.p===ask;}))continue;
+  return {type:'reason',sub:'who',title:'谁'+C.by+'了什么？',intro:people.join('、')+(n===3?'三':'四')+'个小朋友，分别'+C.intro+items.join('、')+'中的一种，每人都不一样。',
+   clues:shuffle(texts),prompt:people[ask]+C.q+'？',options:items.slice(),answer:truth[ask],people:people,items:items,
+   hint:'用下面的表格：确定“不是”的格子点成 ✗。哪一行只剩一个空格，那个就是答案；哪一列只剩一个空格，也一样！',
+   explain:pg.steps.concat(['所以，'+people[ask]+C.is+items[truth[ask]]+'。']),check:{n:n,cons:cons.map(function(k){return {t:k.t,p:k.p,x:k.x};}),truth:truth,ask:ask}};
+ }
+ throw new Error('reasonWho failed');
+}
+/* ================= 简单推理 B：谁说了真话 ================= */
+var CASES=[['偷吃了蛋糕','吃的'],['打碎了花瓶','打碎的'],['在黑板上画了一只小猫','画的'],['把 Miuya 的铅笔藏起来了','藏的'],['给花浇了水','浇的']];
+function liarTruth(st,c){return st.k==='is'?c===st.t:c!==st.t;}
+function stmtText(st,people,verb){var who=st.t===st.s?'我':people[st.t];return st.k==='is'?'是'+who+verb+'。':'不是'+who+verb+'。';}
+function reasonLiar(L){
+ var n=L<=3?3:4;
+ for(var tries=0;tries<500;tries++){
+  var cs=pick(CASES),people=shuffle(NAMES).slice(0,n),mode=rnd()<0.5?'oneTrue':'oneFalse',sts=[];
+  for(var s=0;s<n;s++){var r=rnd(),t;if(r<0.4)sts.push({s:s,k:'not',t:s});else{do{t=ri(0,n-1);}while(t===s);sts.push({s:s,k:r<0.75?'is':'not',t:t});}}
+  var fits=[],rows=[];
+  for(var c=0;c<n;c++){var tr=sts.filter(function(st){return liarTruth(st,c);}).length,ok=mode==='oneTrue'?tr===1:tr===n-1;if(ok)fits.push(c);rows.push({c:c,tr:tr,ok:ok});}
+  if(fits.length!==1)continue;
+  var culprit=fits[0],cond=mode==='oneTrue'?'只有一个人说了真话':'只有一个人说了假话';
+  var expl=rows.map(function(r){return '假设是'+people[r.c]+cs[1].replace('的','')+'的：'+sts.map(function(st){return people[st.s]+(liarTruth(st,r.c)?'说真话':'说假话');}).join('，')+'。真话有 '+r.tr+' 句，'+(r.ok?'符合“'+cond+'”。':'不符合。');});
+  return {type:'reason',sub:'liar',title:'谁说了真话？',intro:'有人'+cs[0]+'。老师问是谁'+cs[1].replace('的','')+'的，'+people.join('、')+'是这样说的：',
+   clues:sts.map(function(st){return people[st.s]+'：“'+stmtText(st,people,cs[1])+'”';}),cond:'他们之中'+cond+'。',prompt:'是谁'+cs[0]+'？',options:people.slice(),answer:culprit,people:people,
+   hint:'一个一个假设：如果是第一个人做的，数一数谁说了真话、谁说了假话，看看符不符合条件。',explain:expl.concat(['所以是'+people[culprit]+'。']),
+   check:{n:n,mode:mode,sts:sts.map(function(st){return {s:st.s,k:st.k,t:st.t};}),culprit:culprit}};
+ }
+ throw new Error('reasonLiar failed');
+}
+/* ================= 数独（4×4 / 6×6） ================= */
+function boxDims(n){return n===4?[2,2]:[2,3];}
+function sdCount(g,n,limit){ // 回溯计数，最多数到 limit
+ var br=boxDims(n)[0],bc=boxDims(n)[1],cnt=0;
+ (function go(){if(cnt>=limit)return;var idx=g.indexOf(0);if(idx<0){cnt++;return;}var r=Math.floor(idx/n),c=idx%n;
+  for(var v=1;v<=n;v++){var ok=true;for(var k=0;k<n&&ok;k++){if(g[r*n+k]===v||g[k*n+c]===v)ok=false;}
+   var r0=r-r%br,c0=c-c%bc;for(var a=0;a<br&&ok;a++)for(var b=0;b<bc&&ok;b++)if(g[(r0+a)*n+c0+b]===v)ok=false;
+   if(ok){g[idx]=v;go();g[idx]=0;if(cnt>=limit)return;}}})();
+ return cnt;
+}
+function sdCands(g,n,idx){var br=boxDims(n)[0],bc=boxDims(n)[1],r=Math.floor(idx/n),c=idx%n,seen={};
+ for(var k=0;k<n;k++){seen[g[r*n+k]]=1;seen[g[k*n+c]]=1;}var r0=r-r%br,c0=c-c%bc;for(var a=0;a<br;a++)for(var b=0;b<bc;b++)seen[g[(r0+a)*n+c0+b]]=1;
+ var out=[];for(var v=1;v<=n;v++)if(!seen[v])out.push(v);return out;}
+function sudoku(L){
+ var n=L<=2?4:L===3?(rnd()<0.5?4:6):6,br=boxDims(n)[0],bc=boxDims(n)[1];
+ var target={1:10,2:8,3:n===4?6:24,4:21,5:18}[L];
+ for(var tries=0;tries<50;tries++){
+  var sol=[],r,c;for(r=0;r<n;r++)for(c=0;c<n;c++)sol.push(((r%br)*bc+Math.floor(r/br)+c)%n+1);
+  // 打乱：数字换名、带内换行、换带、栈内换列、换栈
+  var sym=shuffle(range(n)).map(function(x){return x+1;}),g2=sol.map(function(v){return sym[v-1];});
+  var bandOrder=shuffle(range(n/br)),rows=[];bandOrder.forEach(function(b){shuffle(range(br)).forEach(function(k){rows.push(b*br+k);});});
+  var stackOrder=shuffle(range(n/bc)),cols=[];stackOrder.forEach(function(s){shuffle(range(bc)).forEach(function(k){cols.push(s*bc+k);});});
+  var full=[];for(r=0;r<n;r++)for(c=0;c<n;c++)full.push(g2[rows[r]*n+cols[c]]);
+  var puz=full.slice(),order=shuffle(range(n*n));
+  for(var i=0;i<order.length&&countGiven(puz)>target;i++){var keep=puz[order[i]];puz[order[i]]=0;if(sdCount(puz.slice(),n,2)!==1)puz[order[i]]=keep;}
+  if(countGiven(puz)>target+2)continue;
+  return {type:'sudoku',title:n+'×'+n+' 数独',prompt:'每一行、每一列、每个粗线框里，1～'+n+' 都只能出现一次。把空格填满吧！',n:n,box:[br,bc],puzzle:puz,solution:full,
+   hint:'找一个空格，看看它所在的行、列和粗线框里已经有哪些数，剩下的那个就是答案。',explain:['小窍门：先找“只差一个数”的行、列或粗线框，最容易填。','完整答案已经显示在格子里啦。'],check:{n:n,puzzle:puz,solution:full}};
+ }
+ throw new Error('sudoku failed');
+}
+function range(n){var a=[];for(var i=0;i<n;i++)a.push(i);return a;}
+function countGiven(g){return g.filter(function(x){return x;}).length;}
+function sdHint(grid,n){ // 找一个“只能填一个数”的空格
+ for(var i=0;i<n*n;i++)if(!grid[i]){var c=sdCands(grid,n,i);if(c.length===1)return {idx:i,v:c[0]};}
+ return null;
+}
+/* ================= 逻辑排序 ================= */
+var CMP=[{adj:'高',opp:'矮',top:'最高',bot:'最矮',x:function(a,b){return a+'比'+b+'高';},y:function(a,b){return b+'比'+a+'矮';},intro:'比身高'},
+ {adj:'跑得快',opp:'跑得慢',top:'跑得最快',bot:'跑得最慢',x:function(a,b){return a+'比'+b+'跑得快';},y:function(a,b){return b+'比'+a+'跑得慢';},intro:'赛跑'},
+ {adj:'重',opp:'轻',top:'最重',bot:'最轻',x:function(a,b){return a+'比'+b+'重';},y:function(a,b){return b+'比'+a+'轻';},intro:'称体重'},
+ {adj:'年龄大',opp:'年龄小',top:'年龄最大',bot:'年龄最小',x:function(a,b){return a+'比'+b+'大';},y:function(a,b){return b+'比'+a+'小';},intro:'比年龄'}];
+function orderCount(n,cons){var c=0,sol=null;perms(n).forEach(function(pm){ // pm[k] = 排第 k 位（从“最……”开始）的人
+  var pos=[];pm.forEach(function(p,k){pos[p]=k;});
+  if(cons.every(function(k){return k.t==='gt'?pos[k.a]<pos[k.b]:k.t==='nottop'?pos[k.a]!==0:pos[k.a]!==n-1;})){c++;sol=pm;}});return {count:c,sol:sol};}
+function orderPuzzle(L){
+ var n=L<=2?3:4;
+ for(var tries=0;tries<300;tries++){
+  var cm=pick(CMP),people=shuffle(NAMES).slice(0,n),truth=shuffle(range(n)),pos=[];truth.forEach(function(p,k){pos[p]=k;});
+  var pool=[];for(var a=0;a<n;a++)for(var b=0;b<n;b++)if(pos[a]<pos[b])pool.push({t:'gt',a:a,b:b,flip:rnd()<0.4});
+  if(L>=4)for(a=0;a<n;a++){if(pos[a]!==0)pool.push({t:'nottop',a:a});if(pos[a]!==n-1)pool.push({t:'notbot',a:a});}
+  pool=shuffle(pool);var cons=[];
+  for(var i=0;i<pool.length;i++){cons.push(pool[i]);if(orderCount(n,cons).count===1)break;}
+  for(i=cons.length-1;i>=0;i--){var tr=cons.slice(0,i).concat(cons.slice(i+1));if(orderCount(n,tr).count===1)cons=tr;}
+  var texts=cons.map(function(k){if(k.t==='gt')return (k.flip?cm.y(people[k.a],people[k.b]):cm.x(people[k.a],people[k.b]))+'。';return people[k.a]+(k.t==='nottop'?'不是'+cm.top+'的':'不是'+cm.bot+'的')+'。';});
+  var askK=L<=2?0:ri(0,n-1),qtxt=askK===0?'谁'+cm.top+'？':askK===n-1?'谁'+cm.bot+'？':'按从'+cm.adj+'到'+cm.opp+'排队，第 '+(askK+1)+' 个是谁？';
+  var chain=truth.map(function(p){return people[p];}).join(' ＞ ');
+  return {type:'order',title:cm.intro,intro:people.join('、')+(n===3?'三':'四')+'个小朋友在'+cm.intro+'。',clues:texts,prompt:qtxt,options:people.slice(),answer:truth[askK],people:people,
+   hint:'把每句话变成“谁 ＞ 谁”，再把它们连成一串。比如“A比B'+cm.adj+'”就写 A ＞ B。',explain:['把关系连起来（从'+cm.adj+'到'+cm.opp+'）：'+chain+'。','所以答案是'+people[truth[askK]]+'。'],
+   check:{n:n,cons:cons.map(function(k){return {t:k.t,a:k.a,b:k.b};}),truth:truth,askK:askK}};
+ }
+ throw new Error('order failed');
+}
+
+/* ================= 每天 5 关 ================= */
+function pad(x){return ('0'+x).slice(-2);}
+function dateStr(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+function addDays(s,k){var p=s.split('-').map(Number),d=new Date(p[0],p[1]-1,p[2]+k);return dateStr(d);}
+function daily(date,level){
+ level=Math.max(1,Math.min(5,level||1));
+ var base=hash('mathpk-daily|'+date+'|L'+level),save=rnd,out=[];
+ try{
+  var gens=[function(){return numPattern(level);},function(){return orderPuzzle(level);},function(){return level<=1||(base%2===0&&level<=3)?reasonWho(level):reasonLiar(level);},function(){return sudoku(level);},
+   function(){return level<=2||base%3!==0?shapePattern(level):(base%2===0?reasonLiar(level):reasonWho(level));}];
+  gens.forEach(function(g,i){rnd=RNG(base+i*7919);var p=g();p.no=i+1;p.typeName=TYPE_NAME[p.type];out.push(p);});
+ }finally{rnd=save;}
+ return {date:date,level:level,puzzles:out};
+}
+/* 难度慢慢调整：一天里 4 关以上独立做对就升一级，只对 2 关以下就降一级 */
+function nextLevel(level,results){var good=results.filter(function(r){return r&&r.ok&&!r.hint;}).length;if(good>=4)return Math.min(5,level+1);if(good<=2)return Math.max(1,level-1);return level;}
+
+root.MathLogic={daily:daily,nextLevel:nextLevel,sdHint:sdHint,sdCands:sdCands,dateStr:dateStr,addDays:addDays,TYPE_NAME:TYPE_NAME,tokName:tokName,
+ _gen:{numPattern:numPattern,shapePattern:shapePattern,reasonWho:reasonWho,reasonLiar:reasonLiar,sudoku:sudoku,orderPuzzle:orderPuzzle,seed:function(s){rnd=s==null?Math.random:RNG(s);}}};
+})(typeof window!=='undefined'?window:globalThis);
+/*LOGIC-END*/
 </script>
 <script>
 /* ======================= 界面与游戏逻辑 ======================= */
@@ -1036,7 +1815,13 @@ var BADGES=[
  ['t_pos','位','位置小向导','在“位置”专题获胜','#3a9be0','#ffc2dc'],
  ['t_pr','猜','可能性小预言家','在“可能性”专题获胜','#b35cff','#ffd84d'],
  ['t_tr','树','植树小园丁','在“植树问题”专题获胜','#4caf50','#ffc2dc'],
- ['all_topics','全','全能小博士','7 个专题都赢过 Miuya','#ff5d98','#8e6bff']
+ ['all_topics','全','全能小博士','7 个专题都赢过 Miuya','#ff5d98','#8e6bff'],
+ ['think1','思','思路小侦探','完成第一道思路训练','#5b8def','#ffd84d'],
+ ['think10','拆','拆题小能手','完成 10 道思路训练','#e67e22','#c9b6ff'],
+ ['daily1','逻','逻辑新星','第一次完成每日逻辑小关卡','#9b59b6','#ffc2dc'],
+ ['streak3','坚','坚持三天','每日小关卡连续打卡 3 天','#16a085','#ffd84d'],
+ ['streak7','周','打卡一周','每日小关卡连续打卡 7 天','#d35400','#ffd84d'],
+ ['sudoku6','独','数独小达人','不看提示做对一个 6×6 数独','#34495e','#ffb3d0']
 ];
 function badgeById(id){return BADGES.filter(function(b){return b[0]===id;})[0];}
 function badgeSVG(b){return medalSVG(b[1],b[4],b[5]);}
@@ -1081,6 +1866,7 @@ function renderHome(){
  $('#homeSay').textContent='Miuya：'+pickOne(TXT.home);
  $('[data-act="badges"]').innerHTML=IC.medal+'徽章墙';$('[data-act="records"]').innerHTML=IC.chart+'成绩记录';
  paintMute();
+ if(window.MathPKExt&&window.MathPKExt.onHome)window.MathPKExt.onHome(); // 思路训练 / 每日小关卡 的首页入口
 }
 
 /* ---------- 一局游戏 ---------- */
@@ -1320,7 +2106,423 @@ window.addEventListener('resize',function(){if(S&&$('#scr-game').classList.conta
 /* ---------- 启动 ---------- */
 $$('[data-act="quit"]').forEach(function(b){b.innerHTML=IC.close;});
 paintAvatars();renderHome();
-window.MathPK={get state(){return S;},get store(){return store;},gen:G,reset:function(){store=defStore();save();renderHome();}};
+window.MathPK={get state(){return S;},get store(){return store;},gen:G,reset:function(){store=defStore();save();renderHome();},
+ // 给“思路训练 / 每日逻辑小关卡”模块共用的界面工具
+ ui:{esc:esc,AV:AV,IC:IC,SFX:SFX,show:show,toast:toast,confetti:confetti,confirmBox:confirmBox,badgeById:badgeById,badgeSVG:badgeSVG,paintAvatars:paintAvatars,renderHome:renderHome,
+  award:function(id){if(store.badges[id]||!badgeById(id))return false;store.badges[id]=Date.now();save();return true;}}};
+})();
+/* ======================= 界面：思路训练 / 思维能力 / 每日逻辑小关卡 ======================= */
+(function(){
+'use strict';
+var MP=window.MathPK,UI=MP.ui,G=window.MathGen,TH=window.MathThink,LG=window.MathLogic;
+var esc=UI.esc,$=function(s){return document.querySelector(s);},$$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s));};
+var QS=new URLSearchParams(location.search);
+function pickOne(a){return a[Math.floor(Math.random()*a.length)];}
+
+/* ---------- 图标 ---------- */
+var IC2={
+ think:'<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#c9f2e3"/><path d="M15 31c-3-2.5-4-6-3-9.5 1.2-4.6 5.6-7.5 10.8-7.5 6.4 0 11.2 4.2 11.2 9.6 0 3.4-1.8 6-4.6 7.6V36h-9v-3.2c-2 0-3.8-.7-5.4-1.8z" fill="#fff" stroke="#25b488" stroke-width="2.4" stroke-linejoin="round"/><path d="M19 22h4l2-3 2 6 2-3h3" fill="none" stroke="#ff6fa5" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ daily:'<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#ffe9b0"/><rect x="11" y="13" width="26" height="24" rx="5" fill="#fff" stroke="#e2a31a" stroke-width="2.4"/><path d="M11 20h26" stroke="#e2a31a" stroke-width="2.4"/><path d="M17 10v6M31 10v6" stroke="#e2a31a" stroke-width="2.6" stroke-linecap="round"/><path d="M18 28l4 4 8-8" fill="none" stroke="#25b488" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ brain:'<svg viewBox="0 0 24 24"><path d="M8 4a3 3 0 0 0-3 3 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 6 1V6a2 2 0 0 0-3-2zM16 4a3 3 0 0 1 3 3 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-6 1V6a2 2 0 0 1 3-2z" fill="#d6f7ec" stroke="#25b488" stroke-width="1.6" stroke-linejoin="round"/></svg>',
+ flame:'<svg viewBox="0 0 20 24"><path d="M10 1c1 4 6 6 6 13a6 6 0 0 1-12 0c0-3 1.5-5 3-6 0 2 1 3 2 3 0-4-1-6 1-10z" fill="#ff8a3d"/><path d="M10 13c.6 2 3 3 3 6a3 3 0 0 1-6 0c0-1.5.8-2.6 1.6-3 0 1 .6 1.5 1.4 1.5 0-2 .4-3 0-4.5z" fill="#ffd84d"/></svg>'
+};
+
+/* ---------- 本地存储（独立的 key，不影响 PK 赛数据） ---------- */
+var TKEY='mathpk_think_v1';
+function defT(){var c={};TH.CAT_KEYS.forEach(function(k){c[k]={ok:0,n:0};});
+ return {v:1,think:{level:1,sel:'auto',done:0,cat:c,topic:{},recent:[]},daily:{level:1,streak:0,best:0,lastDone:null,doneDays:0,days:{},types:{pattern:{ok:0,n:0},reason:{ok:0,n:0},sudoku:{ok:0,n:0},order:{ok:0,n:0}}}};}
+function loadT(){var d=defT();try{var s=JSON.parse(localStorage.getItem(TKEY)||'null');if(s&&s.v===1){d.think=Object.assign(d.think,s.think||{});d.daily=Object.assign(d.daily,s.daily||{});
+  TH.CAT_KEYS.forEach(function(k){if(!d.think.cat[k])d.think.cat[k]={ok:0,n:0};});}}catch(e){}return d;}
+var T=loadT();
+function saveT(){try{localStorage.setItem(TKEY,JSON.stringify(T));}catch(e){}}
+function today(){var q=QS.get('date');return q&&/^\d{4}-\d\d-\d\d$/.test(q)?q:LG.dateStr(new Date());}
+
+var PRAISE=['对啦！','想得真清楚！','这一步走对了！','你真会动脑筋！','很棒，继续～','一下就想到了，厉害！'];
+var SOFT=['再想一想～','差一点点！','别着急，看看这个：','我们换个角度想想：'];
+var KIND_FULL={ask:'① 读问题',facts:'② 找条件',method:'③ 想方法',calc:'④ 算一算',final:'⑤ 写答案'};
+
+/* ======================= 思路训练的配图（SVG，可高亮当前这一步要看的部分） ======================= */
+function cls(id,hl,base){return (base||'')+(hl.indexOf(id)>=0?' hl':'');}
+function tx(x,y,t,o){o=o||{};return '<text x="'+x+'" y="'+y+'" text-anchor="'+(o.a||'middle')+'" font-size="'+(o.s||13)+'" font-weight="'+(o.w||700)+'" fill="'+(o.c||'#5b3fd0')+'">'+esc(t)+'</text>';}
+function figBars(f,hl){
+ var W=360,hasName=f.rows.some(function(r){return r.name;}),x0=hasName?58:10,x1=W-(f.right?70:12),maxW=0;
+ f.rows.forEach(function(r){var s=r.segs.reduce(function(a,b){return a+b.w;},0);if(s>maxW)maxW=s;});
+ var sc=(x1-x0)/maxW,y=f.note?26:6,out='',barY=[];
+ if(f.note)out+='<g class="'+cls(f.note.id,hl)+'">'+tx(x0,16,f.note.txt,{a:'start',s:13})+'</g>';
+ f.rows.forEach(function(r,ri){
+  var gs=f.groups.filter(function(g){return g.row===ri;}),top=0,bot=0;gs.forEach(function(g){if(g.pos==='top')top=Math.max(top,g.lv+1);else bot=Math.max(bot,g.lv+1);});
+  var by=y+top*22+(top?4:0);barY.push(by);
+  if(r.name)out+=tx(x0-8,by+16,r.name,{a:'end',s:14,c:'#43315e'});
+  var x=x0,xs=[];
+  r.segs.forEach(function(s){var w=s.w*sc;xs.push([x,x+w]);
+   var dash=s.style==='dash'?' stroke-dasharray="4 3"':'';
+   out+='<g class="'+cls(s.id,hl)+'"><rect class="seg" x="'+x.toFixed(1)+'" y="'+by+'" width="'+w.toFixed(1)+'" height="22" rx="4" fill="'+(s.style==='dash'?'#fff':'#efe8ff')+'" stroke="#8e6bff" stroke-width="2"'+dash+'/>'+(s.txt&&w>16?tx(x+w/2,by+16,s.txt,{s:13,c:'#43315e'}):'')+'</g>';x+=w;});
+  gs.forEach(function(g){var a=xs[g.from][0]+2,b=xs[g.to<0?xs.length-1:g.to][1]-2,m=(a+b)/2,yy;
+   if(g.pos==='top'){yy=by-6-g.lv*22;out+='<g class="'+cls(g.id,hl)+'"><path d="M'+a+' '+(yy+5)+'V'+yy+'H'+b+'V'+(yy+5)+'" fill="none" stroke="#ff6fa5" stroke-width="1.8"/>'+tx(Math.min(Math.max(m,x0+20),W-30),yy-4,g.txt,{s:12.5})+'</g>';}
+   else{yy=by+28+g.lv*22;out+='<g class="'+cls(g.id,hl)+'"><path d="M'+a+' '+(yy-5)+'V'+yy+'H'+b+'V'+(yy-5)+'" fill="none" stroke="#ff6fa5" stroke-width="1.8"/>'+tx(Math.min(Math.max(m,x0+20),W-30),yy+14,g.txt,{s:12.5})+'</g>';}});
+  y=by+22+bot*22+(bot?10:0)+12;
+ });
+ if(f.right){var y1=barY[0],y2=barY[barY.length-1]+22,rx=x1+6,lines=f.right.txt.split('\n');
+  out+='<g class="'+cls(f.right.id,hl)+'"><path d="M'+rx+' '+y1+'H'+(rx+6)+'V'+y2+'H'+rx+'" fill="none" stroke="#ff6fa5" stroke-width="1.8"/>'+lines.map(function(l,i){return tx(rx+12,(y1+y2)/2+(i-(lines.length-1)/2)*16+4,l,{a:'start',s:13});}).join('')+'</g>';}
+ return '<svg viewBox="0 0 '+W+' '+Math.ceil(y)+'" role="img" aria-label="线段图">'+out+'</svg>';
+}
+function treeIcon(x,y,word){
+ if(word==='盏')return '<line x1="'+x+'" y1="'+y+'" x2="'+x+'" y2="'+(y-26)+'" stroke="#7a6a93" stroke-width="2.4"/><circle class="hc" cx="'+x+'" cy="'+(y-29)+'" r="6" fill="#ffd84d" stroke="#e2a31a" stroke-width="1.5"/>';
+ if(word==='盆')return '<path d="M'+(x-7)+' '+(y-12)+'h14l-3 12h-8z" fill="#e8a27c"/><circle class="hc" cx="'+x+'" cy="'+(y-17)+'" r="6" fill="#ff8dba" stroke="#e0558b" stroke-width="1.2"/>';
+ return '<rect x="'+(x-2)+'" y="'+(y-12)+'" width="4" height="12" fill="#a0703f"/><circle class="hc" cx="'+x+'" cy="'+(y-20)+'" r="9" fill="#5fd3a5" stroke="#25b488" stroke-width="1.5"/>';
+}
+function figTrees(f,hl){
+ var W=360,H=128,L=30,Rr=330,y=78,k=f.k,show=k<=6?k:5,ell=k>6,pos=[],i,unit;
+ if(!ell){unit=(Rr-L)/k;for(i=0;i<=k;i++)pos.push(L+i*unit);}
+ else{unit=(Rr-L)/(show+1.2);for(i=0;i<=3;i++)pos.push(L+i*unit);var gx=L+3*unit+1.2*unit;for(i=0;i<=2;i++)pos.push(gx+i*unit);}
+ var out='<line x1="'+L+'" y1="'+y+'" x2="'+Rr+'" y2="'+y+'" stroke="#c8bce6" stroke-width="4" stroke-linecap="round"/>';
+ if(ell)out+=tx(L+3.6*unit,y+5,'……',{s:16,c:'#9a8db0'});
+ pos.forEach(function(x){out+='<line x1="'+x+'" y1="'+(y-4)+'" x2="'+x+'" y2="'+(y+4)+'" stroke="#9a8db0" stroke-width="2"/>';});
+ // 两端
+ var first=0,last=pos.length-1,plant=pos.map(function(_,i){return f.ends==='both'?true:f.ends==='none'?(i!==first&&i!==last):(i!==last);});
+ var endsSvg='';
+ if(f.ends==='none'){endsSvg+='<rect x="'+(pos[0]-16)+'" y="'+(y-40)+'" width="16" height="40" rx="2" fill="#d9ccff" stroke="#8e6bff" stroke-width="2"/>'+tx(pos[0]-8,y-44,'楼',{s:11})+'<rect x="'+pos[last]+'" y="'+(y-40)+'" width="16" height="40" rx="2" fill="#d9ccff" stroke="#8e6bff" stroke-width="2"/>'+tx(pos[last]+8,y-44,'楼',{s:11});}
+ if(f.ends==='one'){endsSvg+=tx(pos[0],y+30,'学校',{s:11,c:'#7a6a93'})+'<rect x="'+(pos[last]-12)+'" y="'+(y-14)+'" width="24" height="14" rx="7" fill="#ffd1e3" stroke="#ff6fa5" stroke-width="2"/>'+tx(pos[last],y+30,'花坛',{s:11,c:'#7a6a93'});}
+ var tr='',endTr='';pos.forEach(function(x,i){if(!plant[i])return;var t=treeIcon(x,y-3,f.word);if(i===first||i===last)endTr+=t;else tr+=t;});
+ out+='<g class="'+cls('ends',hl)+'">'+endsSvg+endTr+'</g><g class="'+cls('trees',hl)+'">'+tr+(hl.indexOf('trees')>=0&&hl.indexOf('ends')<0?endTr:'')+'</g>';
+ out+='<g class="'+cls('gap',hl)+'"><path d="M'+(pos[0]+2)+' '+(y-48)+'V'+(y-53)+'H'+(pos[1]-2)+'V'+(y-48)+'" fill="none" stroke="#ff6fa5" stroke-width="1.8"/>'+tx((pos[0]+pos[1])/2,y-57,f.gap,{s:12.5})+'</g>';
+ out+='<g class="'+cls('total',hl)+'"><path d="M'+L+' '+(y+12)+'V'+(y+17)+'H'+Rr+'V'+(y+12)+'" fill="none" stroke="#ff6fa5" stroke-width="1.8"/>'+tx((L+Rr)/2,y+33,'全长 '+f.total,{s:13})+'</g>';
+ return '<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="植树示意图">'+out+'</svg>';
+}
+function figLog(f,hl){
+ var W=360,x0=20,x1=340,y=44,h=36,n=f.n,w=(x1-x0)/n,out='';
+ out+='<g class="'+cls('pieces',hl,'p-shape')+'"><rect x="'+x0+'" y="'+y+'" width="'+(x1-x0)+'" height="'+h+'" rx="12" fill="#f3d9b8" stroke="#b07a4a" stroke-width="2.4"/>';
+ for(var i=0;i<n;i++)out+=tx(x0+w*i+w/2,y+23,String(i+1),{s:13,c:'#8a5a2b'});
+ out+='</g>'+tx((x0+x1)/2,y-12,'锯成 '+n+' 段',{s:13});
+ var cuts='';for(i=1;i<n;i++)cuts+='<line x1="'+(x0+w*i)+'" y1="'+(y-6)+'" x2="'+(x0+w*i)+'" y2="'+(y+h+6)+'" stroke="#e0558b" stroke-width="2.2" stroke-dasharray="4 3"/>';
+ out+='<g class="'+cls('cuts',hl)+'">'+cuts+'</g>';
+ return '<svg viewBox="0 0 '+W+' 100" role="img" aria-label="锯木头示意图">'+out+'</svg>';
+}
+var SF='fill="#efe8ff" stroke="#8e6bff" stroke-width="2.5" stroke-linejoin="round"';
+function dl(x1,y1,x2,y2){return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="#ff6fa5" stroke-width="2" stroke-dasharray="5 4"/>';}
+function el(x1,y1,x2,y2){return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="transparent" stroke-width="3"/>';}
+function figShape(f,hl){
+ var s='';
+ if(f.type==='para')s='<svg viewBox="0 0 280 150"><g class="'+cls('shape',hl,'p-shape')+'"><path d="M40 118H190L230 38H80Z" '+SF+'/></g><g class="'+cls('base',hl)+'">'+el(40,118,190,118)+tx(115,138,f.b)+'</g><g class="'+cls('height',hl)+'">'+dl(100,38,100,118)+tx(106,84,f.h,{a:'start'})+'</g></svg>';
+ else if(f.type==='tri')s='<svg viewBox="0 0 260 150"><g class="'+cls('shape',hl,'p-shape')+'"><path d="M30 118H220L95 28Z" '+SF+'/></g><g class="'+cls('base',hl)+'">'+el(30,118,220,118)+tx(125,138,f.b)+'</g><g class="'+cls('height',hl)+'">'+dl(95,28,95,118)+tx(101,82,f.h,{a:'start'})+'</g></svg>';
+ else if(f.type==='trap')s='<svg viewBox="0 0 260 160"><g class="'+cls('shape',hl,'p-shape')+'"><path d="M25 122H235L175 42H75Z" '+SF+'/></g><g class="'+cls('top',hl)+'">'+el(75,42,175,42)+tx(125,34,f.a)+'</g><g class="'+cls('bottom',hl)+'">'+el(25,122,235,122)+tx(130,144,f.b)+'</g><g class="'+cls('height',hl)+'">'+dl(110,42,110,122)+tx(116,88,f.h,{a:'start'})+'</g></svg>';
+ else if(f.type==='rect')s='<svg viewBox="0 0 260 150"><g class="'+cls('shape',hl,'p-shape')+'"><rect x="40" y="25" width="170" height="95" rx="3" '+SF+'/></g><g class="'+cls('len',hl)+'">'+el(40,120,210,120)+tx(125,140,'长 '+f.a)+'</g><g class="'+cls('wid',hl)+'">'+el(210,25,210,120)+tx(216,77,'宽 '+f.b,{a:'start'})+'</g></svg>';
+ else if(f.type==='house')s='<svg viewBox="0 0 260 170"><g class="'+cls('shape',hl,'p-shape')+'"><g class="'+cls('rect',hl,'p-shape')+'"><path d="M70 65H190V135H70Z" '+SF+'/>'+tx(130,156,'长 '+f.w)+tx(196,104,'宽 '+f.h1,{a:'start'})+'</g><g class="'+cls('roof',hl,'p-shape')+'"><path d="M70 65L130 18L190 65Z" fill="#ffe4f0" stroke="#ff6fa5" stroke-width="2.5" stroke-linejoin="round"/>'+dl(130,18,130,65)+tx(136,48,'高 '+f.h2,{a:'start'})+'</g></g></svg>';
+ else if(f.type==='cut'){var W=180,H=110,px=Math.round(f.P/f.W*W),qy=Math.round(f.Q/f.H*H),x0=40,y0=24;
+  s='<svg viewBox="0 0 270 174"><g class="'+cls('rect',hl)+'"><rect x="'+x0+'" y="'+y0+'" width="'+W+'" height="'+H+'" fill="none" stroke="#c8bce6" stroke-width="1.5" stroke-dasharray="3 3"/>'+tx(x0+W/2,y0+H+22,'长 '+f.w)+tx(x0-6,y0+H/2+5,f.h,{a:'end'})+'</g>'+
+  '<g class="'+cls('shape',hl,'p-shape')+'"><path d="M'+x0+' '+y0+'H'+(x0+W-px)+'L'+(x0+W)+' '+(y0+qy)+'V'+(y0+H)+'H'+x0+'Z" '+SF+'/></g>'+
+  '<g class="'+cls('tri',hl,'p-shape')+'"><path d="M'+(x0+W-px)+' '+y0+'H'+(x0+W)+'V'+(y0+qy)+'Z" fill="#fff4f8" stroke="#ff6fa5" stroke-width="2" stroke-dasharray="5 4"/>'+tx(x0+W-px/2,y0-6,f.p)+tx(x0+W+6,y0+qy/2+5,f.q,{a:'start'})+'</g></svg>';}
+ return s;
+}
+function renderTFig(f,hl){if(!f)return '';hl=hl||[];if(f.type==='bars')return figBars(f,hl);if(f.type==='trees')return figTrees(f,hl);if(f.type==='log')return figLog(f,hl);return figShape(f,hl);}
+
+/* ======================= 思路训练 ======================= */
+var TS=null; // 当前这道题的状态
+var TOPIC_CHIPS=[['auto','智能推荐']].concat(Object.keys(TH.TOPICS).map(function(k){return [k,TH.TOPICS[k]];}));
+var LV_NAME={1:'基础',2:'提高',3:'挑战'};
+function thinkStart(){
+ var t=T.think;
+ var h='<div class="pagehead"><button class="iconbtn" data-act="home" aria-label="返回">'+UI.IC.back+'</button><h2>思路训练</h2><button class="btn ghost" data-act="ability" style="font-size:14px;padding:8px 12px">'+IC2.brain.replace('<svg','<svg width="18" height="18" style="vertical-align:-4px"')+' 思维能力</button></div>'+
+  '<div class="card"><div class="t-intro"><div class="av">'+UI.AV.miuya+'</div><div class="bubble">这里<b>不计时</b>，也<b>不比赛</b>。我们把一道应用题拆成几小步：先读懂问题，再找条件、想方法，最后一步一步算。想错了也没关系，我会给你提示～</div></div>'+
+  '<div class="sec-title">练哪一类题？</div><div class="chips" id="tTopics">'+TOPIC_CHIPS.map(function(c){return '<button data-ttopic="'+c[0]+'" class="'+(t.sel===c[0]?'on':'')+'">'+c[1]+'</button>';}).join('')+'</div>'+
+  '<div class="sec-title">难度</div><div class="chips" id="tLevels">'+[1,2,3].map(function(l){return '<button data-tlv="'+l+'" class="'+(t.level===l?'on':'')+'">'+LV_NAME[l]+'</button>';}).join('')+'</div>'+
+  '<div style="font-size:13px;color:var(--ink2);margin-top:8px">“智能推荐”会多出你容易想错的那类题；连续几题都想得很顺，难度会自动升一点。</div>'+
+  '<button class="btn mint go" data-act="t-go" style="letter-spacing:2px">开始拆题</button></div>';
+ $('#thinkWrap').innerHTML=h;UI.show('think');
+}
+function newThinkProblem(){
+ var t=T.think,topic=t.sel==='auto'?'all':t.sel,force=QS.get('tt');
+ var prob=force&&TH.TPL_IDS.indexOf(force)>=0?TH.make(force,TH.supported(force,t.level)?t.level:2,{disP:QS.get('tdis')==='1'?1:QS.get('tdis')==='0'?0:0.4}):TH.pickNext(t.sel==='auto'?t:null,topic,t.level,TS&&TS.prob&&TS.prob.id);
+ TS={prob:prob,si:0,miss:0,hint:false,input:'',locked:false,res:[],no:(TS?TS.no:0)+1};
+ renderThink();
+}
+function renderThink(){
+ var p=TS.prob,st=p.steps[TS.si],done=TS.si>=p.steps.length;
+ var kinds=['ask','facts','method','calc','final'],curKind=done?'':st.kind;
+ var doneKinds={};p.steps.slice(0,TS.si).forEach(function(s){doneKinds[s.kind]=1;});
+ var track='<div class="t-track">'+kinds.map(function(k){var cur=k===curKind,dn=done||(doneKinds[k]&&!cur&&kinds.indexOf(k)<kinds.indexOf(curKind));return '<span class="'+(cur?'cur':dn?'done':'')+'">'+(dn?'✓ ':'')+TH.KIND_TITLE[k]+'</span>';}).join('')+'</div>';
+ var hl=done?[]:st.hl||[];
+ var left='<div class="card t-prob"><div class="qtags"><span class="tag pink">'+esc(p.topicName)+'</span><span class="tag mint">第 '+TS.no+' 题</span><span class="tag">'+LV_NAME[p.d]+'</span></div><div class="qtext">'+esc(p.text)+'</div>'+(p.fig?'<div class="tf" id="tFig">'+renderTFig(p.fig,hl)+'</div>':'')+'</div>'+track;
+ var right=done?recapHTML():stepHTML(st);
+ var h='<div class="pagehead"><button class="iconbtn" data-act="t-back" aria-label="返回">'+UI.IC.back+'</button><h2>思路训练</h2><button class="btn ghost" data-act="ability" style="font-size:14px;padding:8px 12px">思维能力</button></div>'+
+  '<div class="t-grid"><div class="t-left">'+left+'</div><div class="t-right">'+right+'</div></div>';
+ $('#thinkWrap').innerHTML=h;UI.show('think');
+ paintTAns();
+}
+function stepHTML(st){
+ var h='<div class="card t-step" id="tStep"><div class="t-stephead"><span class="t-no">'+KIND_FULL[st.kind]+'</span><button class="hintbtn" data-act="t-hint" '+(TS.hint?'style="display:none"':'')+'>'+UI.IC.bulb+'我需要提示</button></div>'+
+  '<div class="t-q"><div class="av">'+UI.AV.miuya+'</div><div class="bubble">'+esc(st.q)+'</div></div>';
+ if(st.opts){h+='<div class="t-opts">'+st.opts.map(function(o,i){return '<button data-topt="'+i+'">'+esc(o.t)+'</button>';}).join('')+'</div>';}
+ else{h+='<div class="t-eq"><span>'+esc(st.expr)+(st.floor?' 的商的整数部分 =':' =')+'</span><div class="ansbox" id="tAns"></div><span class="unit">'+esc(st.unit)+'</span></div>'+
+  '<div class="pad t-pad">'+['7','8','9','del','4','5','6','ok','1','2','3','0','.','clr'].map(function(k){
+   if(k==='del')return '<button class="fn" data-tk="del" aria-label="退格">⌫</button>';if(k==='clr')return '<button class="fn" data-tk="clr">清空</button>';
+   if(k==='ok')return '<button class="ok" data-act="t-submit">确定</button>';return '<button data-tk="'+k+'">'+k+'</button>';}).join('')+'</div>';}
+ h+='<div class="hintbox'+(TS.hint?' show':'')+'" id="tHint"><b>提示：</b>'+esc(st.hint)+'</div><div class="t-fb" id="tFb"></div></div>';
+ return h;
+}
+function paintTAns(){var b=$('#tAns');if(!b)return;b.innerHTML=TS.input?esc(TS.input)+'<span class="caret"></span>':'<span class="caret"></span><span class="ph">&nbsp;输入得数</span>';}
+function tPress(k){if(!TS||TS.locked)return;var st=TS.prob.steps[TS.si];if(!st||st.opts)return;UI.SFX.tap();
+ if(k==='del')TS.input=TS.input.slice(0,-1);else if(k==='clr')TS.input='';
+ else if(k==='.'){if(TS.input.indexOf('.')<0&&TS.input.length<9)TS.input=(TS.input||'0')+'.';}
+ else if(/^\d$/.test(k)&&TS.input.replace('.','').length<9){if(TS.input==='0')TS.input=k;else TS.input+=k;}
+ paintTAns();}
+function fb(cls,html){var el=$('#tFb');el.className='t-fb show '+cls;el.innerHTML=html;setTimeout(function(){var s=$('#tFb');if(s&&s.getBoundingClientRect().bottom>window.innerHeight)s.scrollIntoView({block:'nearest',behavior:'smooth'});},30);}
+function stepDone(ok,html,cls){
+ var st=TS.prob.steps[TS.si];TS.locked=true;TS.res.push({kind:st.kind,cat:st.cat,ok:ok&&TS.miss===0&&!TS.hint});
+ var last=TS.si===TS.prob.steps.length-1,pad=$('.t-pad');if(pad)pad.style.display='none'; // 算完就收起键盘，让“下一步”按钮露出来
+ fb(cls,html+'<button class="btn '+(last?'purple':'mint')+'" data-act="t-next">'+(last?'看看这题的思路':'下一步 →')+'</button>');
+ var nb=$('[data-act="t-next"]');if(nb)nb.focus({preventScroll:true});
+}
+function chooseOpt(i){
+ if(!TS||TS.locked)return;var st=TS.prob.steps[TS.si],o=st.opts[i],btn=$('[data-topt="'+i+'"]');if(!o||btn.disabled)return;
+ if(o.ok){btn.classList.add('ok');$$('[data-topt]').forEach(function(b){b.disabled=true;});UI.SFX.ok();stepDone(true,'<b class="h">'+pickOne(PRAISE)+'</b>'+esc(st.why),'good');return;}
+ TS.miss++;btn.classList.add('no');btn.disabled=true;UI.SFX.no();
+ if(TS.miss>=2){var ci=st.opts.findIndex(function(x){return x.ok;});$('[data-topt="'+ci+'"]').classList.add('ok');$$('[data-topt]').forEach(function(b){b.disabled=true;});
+  stepDone(false,'<b class="h">没关系，我们一起看看～</b>'+esc(o.why)+'<br>正确的是：「'+esc(st.opts[ci].t)+'」。'+esc(st.why),'show-ans');}
+ else fb('soft','<b class="h">'+pickOne(SOFT)+'</b>'+esc(o.why)+(TS.hint?'':'<br><span style="color:var(--ink2);font-size:14px">还可以点右上角的“我需要提示”哦。</span>'));
+}
+function calcHint(st,v){
+ var a=st.ans;
+ if(!isNaN(v)&&v!==0&&[10,100,1000].some(function(m){return Math.abs(v*m-a)<1e-9||Math.abs(v/m-a)<1e-9;}))return '数字都对了，再看看小数点的位置～';
+ if(!isNaN(v)&&Math.abs(Math.round(v)-v)<1e-9&&Math.abs(v-a)<=2&&Math.abs(v-a)>0)return '很接近了！再仔细算一遍，检查一下进位和退位。';
+ return st.hint;
+}
+function submitCalc(){
+ if(!TS||TS.locked)return;var st=TS.prob.steps[TS.si];if(st.opts)return;
+ if(TS.input===''||isNaN(G.parseNum(TS.input))){var b=$('#tAns');b.classList.remove('shake');void b.offsetWidth;b.classList.add('shake');UI.toast('先输入得数哦～');return;}
+ if(TH.checkNum(st,TS.input)){UI.SFX.ok();stepDone(true,'<b class="h">'+pickOne(PRAISE)+'</b>'+esc(st.why),'good');return;}
+ TS.miss++;UI.SFX.no();var b2=$('#tAns');b2.classList.remove('shake');void b2.offsetWidth;b2.classList.add('shake');
+ if(TS.miss>=2){stepDone(false,'<b class="h">没关系，我们一起算：</b>'+esc(st.why)+'。<br>正确的得数是 <b>'+esc(G.F(st.ans))+'</b>，记住它，下一步要用哦。','show-ans');}
+ else{fb('soft','<b class="h">'+pickOne(SOFT)+'</b>'+esc(calcHint(st,G.parseNum(TS.input))));TS.input='';paintTAns();}
+}
+function thinkNext(){
+ TS.si++;TS.miss=0;TS.hint=false;TS.input='';TS.locked=false;
+ if(TS.si>=TS.prob.steps.length)finishThink();
+ renderThink();
+ var s=$('#tStep')||$('.t-recap');if(s&&window.innerWidth<900){var r=s.getBoundingClientRect();if(r.top<0||r.top>window.innerHeight*0.55)window.scrollTo({top:window.scrollY+r.top-(TS.si>=TS.prob.steps.length?12:Math.min(260,r.top)),behavior:'auto'});}
+}
+function finishThink(){
+ var t=T.think,p=TS.prob;t.done++;
+ TS.res.forEach(function(r){var c=t.cat[r.cat];c.n++;if(r.ok)c.ok++;});
+ var okN=TS.res.filter(function(r){return r.ok;}).length,tp=t.topic[p.topic]||(t.topic[p.topic]={ok:0,n:0});tp.n+=TS.res.length;tp.ok+=okN;
+ var rec={t:Date.now(),id:p.id,topic:p.topic,d:p.d,n:TS.res.length,ok:okN,cats:{}};TS.res.forEach(function(r){var c=rec.cats[r.cat]||(rec.cats[r.cat]=[0,0]);c[1]++;if(r.ok)c[0]++;});
+ t.recent.unshift(rec);t.recent=t.recent.slice(0,40);
+ // 难度慢慢调整
+ var r3=t.recent.slice(0,3),r2=t.recent.slice(0,2);TS.lvMsg='';
+ if(r3.length===3&&r3.every(function(r){return r.d===t.level&&r.ok/r.n>=0.8;})&&t.level<3&&!TS.lvChecked){t.level++;TS.lvMsg='你最近想得又快又对，下一题会稍微难一点点哦！';}
+ else if(r2.length===2&&r2.every(function(r){return r.d===t.level&&r.ok/r.n<=0.4;})&&t.level>1){t.level--;}
+ TS.newBadges=[];if(UI.award('think1'))TS.newBadges.push('think1');if(t.done>=10&&UI.award('think10'))TS.newBadges.push('think10');
+ saveT();
+ if(okN===TS.res.length)UI.confetti(40);
+ if(TS.newBadges.length)setTimeout(UI.SFX.badge,600);
+}
+function recapHTML(){
+ var p=TS.prob,okN=TS.res.filter(function(r){return r.ok;}).length,all=okN===TS.res.length;
+ var msg=all?'每一步都一次想对了，太厉害啦！':okN>=TS.res.length/2?'有 '+okN+' 步你一下就想对了，继续加油！':'这题有点难，不过你一步一步坚持做完了，真棒！';
+ return '<div class="card t-recap"><div class="t-intro"><div class="av">'+UI.AV.miuya+'</div><div class="bubble"><b>'+esc(msg)+'</b><br>把整条思路连起来读一遍吧：</div></div>'+
+  '<h3 style="margin:4px 0 2px">这题的思路</h3><ol class="t-chain">'+p.recap.map(function(r){return '<li><span class="tag '+(r.tag==='写答案'?'mint':r.tag==='算一算'?'sun':'')+'">'+esc(r.tag)+'</span>'+esc(r.t)+'</li>';}).join('')+'</ol>'+
+  (TS.lvMsg?'<div class="lvup">'+esc(TS.lvMsg)+'</div>':'')+
+  (TS.newBadges&&TS.newBadges.length?'<div class="sec-title" style="justify-content:center">获得新徽章</div><div class="newbadges">'+TS.newBadges.map(function(id){var b=UI.badgeById(id);return '<div class="mini-badge">'+UI.badgeSVG(b)+b[2]+'</div>';}).join('')+'</div>':'')+
+  '<div class="res-actions"><button class="btn mint wide" data-act="t-again">再来一题</button><button class="btn ghost" data-act="ability">思维能力</button><button class="btn ghost" data-act="home">回首页</button></div></div>';
+}
+
+/* ======================= 思维能力（给家长看） ======================= */
+function colorOf(p){return p>=0.8?'linear-gradient(90deg,#4fd6ad,#25b488)':p>=0.6?'linear-gradient(90deg,#ffd76b,#ffb400)':'linear-gradient(90deg,#ffab9c,#ff7b66)';}
+function abar(label,ok,n,sub){var p=n?ok/n:0;return '<div class="abar"><span>'+esc(label)+(sub?'<br><small>'+esc(sub)+'</small>':'')+'</span><span class="trk"><i style="width:'+(n?Math.max(4,Math.round(p*100)):0)+'%;background:'+colorOf(p)+'"></i></span><span class="pct">'+(n?Math.round(p*100)+'%':'—')+'</span></div>';}
+var TIPS={understand:'读题时先找到问号那句话，用自己的话说一说“这题要求什么”，再动笔。',facts:'容易被多余的数带偏，或者漏掉条件。可以让她把有用的条件圈出来，问一问：“这个数和问题有关系吗？”',
+ method:'知道条件，但不确定用什么关系。多画线段图，常用的数量关系（总价 = 单价 × 数量、路程 = 速度 × 时间）可以做成小卡片。',calc:'思路是对的，计算容易出错。算完用“估一估”检查，小数点的位置要特别留心。'};
+function renderAbility(){
+ var t=T.think,d=T.daily,cats=TH.CAT_KEYS,tot=cats.reduce(function(a,k){return a+t.cat[k].n;},0);
+ var h='<div class="pagehead"><button class="iconbtn" data-act="home" aria-label="返回">'+UI.IC.back+'</button><h2>思维能力</h2><span class="tag mint">家长看这里</span></div>';
+ h+='<div class="card"><h3 style="margin-bottom:2px">解题四步，哪一步最需要练？</h3><div style="font-size:13px;color:var(--ink2)">按“第一次就想对、没看提示”的比例统计（共 '+t.done+' 道思路训练题）</div>';
+ if(!tot)h+='<div class="empty">还没有数据。做几道思路训练题，这里就会画出图表～</div>';
+ else{h+=cats.map(function(k){return abar(TH.CATS[k],t.cat[k].ok,t.cat[k].n,t.cat[k].n+' 次');}).join('');
+  var weak=t.done<3?null:cats.filter(function(k){return t.cat[k].n>=3;}).sort(function(a,b){return t.cat[a].ok/t.cat[a].n-t.cat[b].ok/t.cat[b].n;})[0];
+  if(weak&&t.cat[weak].ok/t.cat[weak].n<0.85)h+='<div class="atip"><b>建议多练「'+TH.CATS[weak]+'」：</b>'+TIPS[weak]+'</div>';
+  else if(weak)h+='<div class="atip"><b>四步都掌握得不错！</b>可以把难度调高一级试试。</div>';
+  else h+='<div class="atip">再多做几道题，图表会更准，也能看出哪一步最需要练。</div>';}
+ h+='</div><div style="height:12px"></div>';
+ var tps=Object.keys(TH.TOPICS).filter(function(k){return t.topic[k]&&t.topic[k].n;});
+ h+='<div class="card"><h3 style="margin-bottom:2px">各类题目</h3>'+(tps.length?tps.map(function(k){return abar(TH.TOPICS[k],t.topic[k].ok,t.topic[k].n);}).join('')+'<div style="font-size:13px;color:var(--ink2)">“智能推荐”会自动多出百分比低的那类题。</div>':'<div class="empty">暂无数据</div>');
+ if(t.recent.length){var rc=t.recent.slice(0,12).reverse();h+='<div style="font-weight:800;margin-top:12px">最近 '+rc.length+' 题（柱子越高，一次想对的步骤越多）</div><div class="spark">'+rc.map(function(r){return '<i title="'+r.ok+'/'+r.n+'" style="height:'+Math.max(8,Math.round(r.ok/r.n*100))+'%"></i>';}).join('')+'</div>';}
+ h+='</div><div style="height:12px"></div>';
+ var ty=d.types,tn=Object.keys(ty).reduce(function(a,k){return a+ty[k].n;},0);
+ h+='<div class="card"><h3 style="margin-bottom:6px">每日逻辑小关卡</h3><div class="sumg" style="margin-bottom:6px"><div>连续打卡<b>'+shownStreak()+' 天</b></div><div>最长连续<b>'+d.best+' 天</b></div><div>完成天数<b>'+d.doneDays+'</b></div><div>当前难度<b>Lv.'+d.level+'</b></div></div>'+
+  (tn?Object.keys(ty).map(function(k){return abar(LG.TYPE_NAME[k],ty[k].ok,ty[k].n,ty[k].n+' 题');}).join(''):'<div class="empty">还没有闯过关</div>')+'</div>';
+ h+='<div class="res-actions"><button class="btn mint" data-act="think">去思路训练</button><button class="btn primary" data-act="daily">每日小关卡</button></div>';
+ $('#abilityWrap').innerHTML=h;UI.show('ability');
+}
+
+/* ======================= 每日逻辑小关卡 ======================= */
+var DS=null;
+function shownStreak(){var d=T.daily,td=today();return d.lastDone&&(d.lastDone===td||d.lastDone===LG.addDays(td,-1))?d.streak:0;}
+function dayRec(){var td=today(),d=T.daily;if(!d.days[td]){d.days[td]={level:d.level,idx:0,res:[],done:false};
+  var ks=Object.keys(d.days).sort();while(ks.length>30){delete d.days[ks.shift()];}saveT();}return d.days[td];}
+function openDaily(){
+ var rec=dayRec();DS={date:today(),rec:rec,set:LG.daily(today(),rec.level),pz:null};
+ if(rec.done)renderDailyDone(false);else startPuzzle();
+}
+function startPuzzle(){
+ var p=DS.set.puzzles[DS.rec.idx];
+ DS.pz={p:p,miss:0,hint:false,locked:false,sel:-1,grid:p.type==='sudoku'?p.puzzle.slice():null,checks:0,marks:{}};
+ renderDaily();
+}
+function shapeSVG(tok,size){size=size||30;
+ if(tok.indexOf('arrow:')===0){var a=+tok.split(':')[1];return '<svg viewBox="0 0 40 40" width="'+size+'" height="'+size+'"><g transform="rotate('+a+' 20 20)"><path d="M20 5L31 18H24V35H16V18H9Z" fill="#8e6bff" stroke="#5b3fd0" stroke-width="2" stroke-linejoin="round"/></g></svg>';}
+ var p=tok.split(':'),c=p[1],s=p[0],body;
+ if(s==='circle')body='<circle cx="20" cy="20" r="14"/>';else if(s==='square')body='<rect x="7" y="7" width="26" height="26" rx="3"/>';
+ else if(s==='triangle')body='<path d="M20 5L35 33H5Z"/>';else if(s==='diamond')body='<path d="M20 4L35 20L20 36L5 20Z"/>';
+ else if(s==='heart')body='<path d="M20 34S5 25 5 14a7.5 7.5 0 0 1 15-2 7.5 7.5 0 0 1 15 2c0 11-15 20-15 20z"/>';
+ else body='<path d="M20 4l4.7 10 10.8 1.3-8 7.4 2.1 10.7L20 28l-9.6 5.4 2.1-10.7-8-7.4L15.3 14z"/>';
+ return '<svg viewBox="0 0 40 40" width="'+size+'" height="'+size+'"><g fill="'+c+'" stroke="rgba(0,0,0,.18)" stroke-width="1.5" stroke-linejoin="round">'+body+'</g></svg>';
+}
+function dailyHead(){
+ var res=DS.rec.res,idx=DS.rec.idx;
+ return '<div class="pagehead"><button class="iconbtn" data-act="home" aria-label="返回">'+UI.IC.back+'</button><h2>每日逻辑小关卡</h2><span class="tag sun">'+(+DS.date.slice(5,7))+'月'+(+DS.date.slice(8))+'日</span></div>'+
+  '<div class="d-strip"><span class="flame">'+IC2.flame+'连续打卡 '+shownStreak()+' 天</span><span class="tag">难度 Lv.'+DS.set.level+'</span><span class="d-dots">'+[0,1,2,3,4].map(function(i){var r=res[i];return '<i class="'+(r?(r.ok&&!r.hint?'ok':r.solved||r.ok?'ok':'no'):(i===idx&&!DS.rec.done?'cur':''))+'"></i>';}).join('')+'</span></div>';
+}
+function renderDaily(){
+ var z=DS.pz,p=z.p,h=dailyHead();
+ h+='<div class="d-grid"><div class="card"><div class="qtags"><span class="tag pink">第 '+p.no+' 关 · '+esc(p.typeName)+'</span><span class="tag">'+esc(p.title)+'</span><button class="hintbtn" data-act="d-hint" '+(z.hint||z.locked?'style="display:none"':'')+'>'+UI.IC.bulb+'提示</button></div>';
+ if(p.intro)h+='<div class="d-intro">'+esc(p.intro)+'</div>';
+ if(p.clues)h+='<ul class="d-clues">'+p.clues.map(function(c){return '<li>'+esc(c)+'</li>';}).join('')+'</ul>';
+ if(p.cond)h+='<div class="d-cond">'+esc(p.cond)+'</div>';
+ if(p.type==='pattern')h+='<div class="seqrow">'+p.seq.map(function(x){return '<span>'+(p.sub==='shape'?shapeSVG(x):esc(x))+'</span>';}).join('')+'<span class="q">?</span></div>';
+ h+='<div class="d-prompt">'+esc(p.prompt)+'</div>';
+ if(p.type==='reason'&&p.sub==='who'){h+='<div class="wgrid-cap">推理小表格（点一下画 ✗，再点画 ✓，再点清空）：</div><table class="wgrid"><tr><th></th>'+p.items.map(function(it){return '<th>'+esc(it)+'</th>';}).join('')+'</tr>'+
+  p.people.map(function(pp,i){return '<tr><th>'+esc(pp)+'</th>'+p.items.map(function(_,j){var m=z.marks[i+'_'+j]||0;return '<td><button data-wg="'+i+'_'+j+'" class="'+(m===2?'yes':'')+'" aria-label="'+esc(pp)+'·'+esc(p.items[j])+'">'+(m===1?'✗':m===2?'✓':'')+'</button></td>';}).join('')+'</tr>';}).join('')+'</table>';}
+ h+='</div><div class="card" id="dAnswer">';
+ if(p.type==='sudoku')h+=sudokuHTML();
+ else{var four=p.options.length===4&&(p.type==='pattern');
+  h+='<div style="font-weight:800;margin-bottom:8px">选一选：</div><div class="d-opts'+(four?' four':'')+'">'+p.options.map(function(o,i){return '<button data-dopt="'+i+'">'+(p.type==='pattern'&&p.sub==='shape'?shapeSVG(o,34):esc(o))+'</button>';}).join('')+'</div>';}
+ h+='<div class="hintbox'+(z.hint?' show':'')+'" id="dHint">'+(z.hintText?'<b>提示：</b>'+esc(z.hintText):'')+'</div><div class="t-fb" id="dFb"></div></div></div>';
+ $('#dailyWrap').innerHTML=h;UI.show('daily');
+}
+function sudokuHTML(){
+ var z=DS.pz,p=z.p,n=p.n,br=p.box[0],bc=p.box[1],h='<div class="sd" style="grid-template-columns:repeat('+n+',1fr)">';
+ for(var i=0;i<n*n;i++){var r=Math.floor(i/n),c=i%n,given=p.puzzle[i]>0,cl=[];if(given)cl.push('given');if(z.sel===i)cl.push('sel');if(z.bad&&z.bad[i])cl.push('bad');if(z.hintCell===i)cl.push('hintc');
+  if(c%bc===bc-1&&c<n-1)cl.push('br');if(r%br===br-1&&r<n-1)cl.push('bb');
+  h+='<button data-sd="'+i+'" class="'+cl.join(' ')+'"'+(given?' aria-disabled="true"':'')+' aria-label="第'+(r+1)+'行第'+(c+1)+'格">'+(z.grid[i]||'')+'</button>';}
+ h+='</div><div class="sd-pad" style="grid-template-columns:repeat('+n+',1fr) 1.4fr">';
+ for(var v=1;v<=n;v++)h+='<button data-sdv="'+v+'">'+v+'</button>';
+ h+='<button class="fn" data-sdv="0">擦掉</button></div><div class="d-actions">'+(z.checks>=2&&!z.locked?'<button class="btn ghost" data-act="d-reveal">看答案</button>':'')+'<button class="btn primary" data-act="d-check"'+(z.locked?' style="display:none"':'')+'>检查</button></div>';
+ return h;
+}
+function dfb(cls,html){var el=$('#dFb');el.className='t-fb show '+cls;el.innerHTML=html;setTimeout(function(){var s=$('#dFb');if(s&&s.getBoundingClientRect().bottom>window.innerHeight)s.scrollIntoView({block:'nearest',behavior:'smooth'});},30);}
+function explainHTML(p){return '<ol style="margin:6px 0 0;padding-left:20px">'+p.explain.map(function(e){return '<li>'+esc(e)+'</li>';}).join('')+'</ol>';}
+function puzzleDone(ok,solved,head,cls){
+ var z=DS.pz,p=z.p;z.locked=true;
+ DS.rec.res[DS.rec.idx]={ok:ok,hint:z.hint,solved:solved,type:p.type};
+ var ty=T.daily.types[p.type];ty.n++;if(ok&&!z.hint)ty.ok++;
+ if(p.type==='sudoku'&&p.n===6&&ok&&!z.hint){if(UI.award('sudoku6'))(DS.newBadges=DS.newBadges||[]).push('sudoku6');}
+ saveT();
+ var last=DS.rec.idx===4;
+ dfb(cls,'<b class="h">'+head+'</b>'+explainHTML(p)+'<button class="btn '+(last?'purple':'mint')+'" data-act="d-next">'+(last?'完成今天的挑战':'下一关 →')+'</button>');
+ var hb=$('[data-act="d-hint"]');if(hb)hb.style.display='none';
+}
+function chooseDaily(i){
+ var z=DS.pz;if(!z||z.locked)return;var p=z.p,btn=$('[data-dopt="'+i+'"]');if(!btn||btn.disabled)return;
+ if(i===p.answer){btn.classList.add('ok');$$('[data-dopt]').forEach(function(b){b.disabled=true;});UI.SFX.ok();puzzleDone(z.miss===0,true,pickOne(PRAISE),'good');return;}
+ z.miss++;btn.classList.add('no');btn.disabled=true;UI.SFX.no();
+ if(z.miss>=2){$('[data-dopt="'+p.answer+'"]').classList.add('ok');$$('[data-dopt]').forEach(function(b){b.disabled=true;});puzzleDone(false,false,'没关系，我们来看看怎么想：','show-ans');}
+ else dfb('soft','<b class="h">'+pickOne(SOFT)+'</b>还有一次机会，再想想看。'+(z.hint?'':'可以点“提示”哦。'));
+}
+function dailyHint(){
+ var z=DS.pz;if(!z||z.locked)return;z.hint=true;var p=z.p;
+ if(p.type==='sudoku'){var hcell=LG.sdHint(z.grid.map(function(v,i){return z.bad&&z.bad[i]?0:v;}),p.n);
+  if(hcell){var r=Math.floor(hcell.idx/p.n)+1,c=hcell.idx%p.n+1;z.grid[hcell.idx]=hcell.v;z.hintCell=hcell.idx;if(z.bad)z.bad[hcell.idx]=0;
+   z.hintText='看第 '+r+' 行第 '+c+' 格：它所在的行、列和粗线框里，已经有了除 '+hcell.v+' 以外的数，所以只能填 '+hcell.v+'。我帮你填上啦，接着试试别的格子！';}
+  else z.hintText=p.hint;}
+ else z.hintText=p.hint;
+ renderDaily();UI.SFX.tap();
+}
+function sdTap(i){var z=DS.pz;if(!z||z.locked||z.p.puzzle[i])return;z.sel=i;UI.SFX.tap();refreshSd();}
+function sdVal(v){var z=DS.pz;if(!z||z.locked||z.sel<0||z.p.puzzle[z.sel])return;z.grid[z.sel]=v;if(z.bad)z.bad[z.sel]=0;if(z.hintCell===z.sel)z.hintCell=-1;UI.SFX.tap();
+ // 自动跳到下一个空格
+ var n=z.p.n;for(var k=1;k<=n*n;k++){var j=(z.sel+k)%(n*n);if(!z.grid[j]){z.sel=j;break;}}refreshSd();}
+function refreshSd(){var box=$('#dAnswer'),keep=box.querySelectorAll('#dHint,#dFb');var hint=keep[0]?keep[0].outerHTML:'',f=keep[1]?keep[1].outerHTML:'';box.innerHTML=sudokuHTML()+hint+f;}
+function sdCheck(){
+ var z=DS.pz,p=z.p;if(!z||z.locked)return;
+ if(z.grid.some(function(v){return !v;})){UI.toast('还有空格没填哦～');return;}
+ var bad={},nb=0;z.grid.forEach(function(v,i){if(v!==p.solution[i]){bad[i]=1;nb++;}});
+ if(!nb){z.bad=null;refreshSd();UI.SFX.ok();puzzleDone(z.checks===0,true,'全部填对啦！'+pickOne(PRAISE),'good');return;}
+ z.checks++;z.bad=bad;UI.SFX.no();refreshSd();
+ dfb('soft','<b class="h">'+pickOne(SOFT)+'</b>有 '+nb+' 个格子不太对（标成了红色），看看同一行、同一列和粗线框里有没有重复的数。'+(z.checks>=2?'实在想不出来，也可以点“看答案”。':''));
+}
+function sdReveal(){var z=DS.pz;if(!z||z.locked)return;z.grid=z.p.solution.slice();z.bad=null;refreshSd();puzzleDone(false,false,'没关系，看看完整的答案：','show-ans');}
+function dailyNext(){
+ DS.rec.idx++;saveT();
+ if(DS.rec.idx>=5){completeDay();renderDailyDone(true);return;}
+ startPuzzle();window.scrollTo(0,0);
+}
+function completeDay(){
+ var d=T.daily,rec=DS.rec,td=DS.date;if(rec.done)return;rec.done=true;
+ if(d.lastDone===LG.addDays(td,-1))d.streak++;else if(d.lastDone!==td)d.streak=1;
+ d.lastDone=td;d.best=Math.max(d.best,d.streak);d.doneDays++;
+ var before=d.level;d.level=LG.nextLevel(rec.level,rec.res);rec.lvChange=d.level-before;
+ DS.newBadges=DS.newBadges||[];[['daily1',true],['streak3',d.streak>=3],['streak7',d.streak>=7]].forEach(function(b){if(b[1]&&UI.award(b[0]))DS.newBadges.push(b[0]);});
+ saveT();UI.SFX.win();UI.confetti(60);if(DS.newBadges.length)setTimeout(UI.SFX.badge,900);
+}
+function renderDailyDone(fresh){
+ var rec=DS.rec,good=rec.res.filter(function(r){return r&&r.ok&&!r.hint;}).length,solved=rec.res.filter(function(r){return r&&(r.ok||r.solved);}).length;
+ var lv=rec.lvChange>0?'明天的题会难一点点，你准备好啦！':rec.lvChange<0?'明天的题会简单一点，慢慢来～':'明天继续保持这个难度。';
+ var h=dailyHead()+'<div class="card" style="text-align:center"><div class="trophy">'+UI.IC.trophy+'</div><h2 style="font-size:26px;margin-top:4px">今天的 5 关全部完成！</h2>'+
+  '<p style="color:var(--ink2);margin:6px 0">'+(good===5?'5 关全部独立答对，逻辑小达人就是你！':'独立答对 '+good+' 关'+(solved>good?'，另外 '+(solved-good)+' 关多想了一想，也闯过去了':'')+'。每天练一练，脑子会越来越灵活！')+'</p>'+
+  '<div class="stars" id="dStars">'+[0,1,2,3,4].map(function(i){return '<span style="display:inline-block">'+UI.IC.star.replace('<svg','<svg class="'+(i<good?'lit':'')+'" style="width:40px;height:40px"')+'</span>';}).join('')+'</div>'+
+  '<div class="sumg" style="margin:12px 0"><div>连续打卡<b>'+shownStreak()+' 天</b></div><div>最长连续<b>'+T.daily.best+' 天</b></div><div>独立答对<b>'+good+'/5</b></div><div>明天难度<b>Lv.'+T.daily.level+'</b></div></div>'+
+  '<div class="atip" style="text-align:left">'+esc(lv)+' 明天再来，连续打卡天数会继续增加哦。</div>'+
+  (DS.newBadges&&DS.newBadges.length&&fresh?'<div class="sec-title" style="justify-content:center">获得新徽章</div><div class="newbadges">'+DS.newBadges.map(function(id){var b=UI.badgeById(id);return '<div class="mini-badge">'+UI.badgeSVG(b)+b[2]+'</div>';}).join('')+'</div>':'')+
+  '<div class="res-actions"><button class="btn mint" data-act="think">去思路训练</button><button class="btn ghost" data-act="ability">思维能力</button><button class="btn ghost wide" data-act="home">回首页</button></div></div>';
+ $('#dailyWrap').innerHTML=h;UI.show('daily');
+}
+
+/* ======================= 首页入口 ======================= */
+function onHome(){
+ var a=$('#icThink'),b=$('#icDaily');if(a)a.innerHTML=IC2.think;if(b)b.innerHTML=IC2.daily;
+ var ab=$('[data-act="ability"]');if(ab&&ab.closest('.home-links'))ab.innerHTML=IC2.brain+'思维能力';
+ var rec=T.daily.days[today()],sub=$('#dailySub');
+ if(sub)sub.textContent=(rec&&rec.done?'今天已完成 ✓':'今天 '+(rec?rec.idx:0)+'/5')+' · 连续打卡 '+shownStreak()+' 天';
+}
+window.MathPKExt={onHome:onHome};
+onHome();
+
+/* ======================= 事件 ======================= */
+document.addEventListener('click',function(e){
+ var t=e.target.closest('button');if(!t)return;
+ if(t.dataset.tk){tPress(t.dataset.tk);return;}
+ if(t.dataset.topt!==undefined){chooseOpt(+t.dataset.topt);return;}
+ if(t.dataset.ttopic){T.think.sel=t.dataset.ttopic;saveT();UI.SFX.tap();$$('[data-ttopic]').forEach(function(b){b.classList.toggle('on',b===t);});return;}
+ if(t.dataset.tlv){T.think.level=+t.dataset.tlv;saveT();UI.SFX.tap();$$('[data-tlv]').forEach(function(b){b.classList.toggle('on',b===t);});return;}
+ if(t.dataset.dopt!==undefined){chooseDaily(+t.dataset.dopt);return;}
+ if(t.dataset.wg){var z=DS&&DS.pz;if(!z)return;var m=((z.marks[t.dataset.wg]||0)+1)%3;z.marks[t.dataset.wg]=m;t.textContent=m===1?'✗':m===2?'✓':'';t.classList.toggle('yes',m===2);UI.SFX.tap();return;}
+ if(t.dataset.sd!==undefined){sdTap(+t.dataset.sd);return;}
+ if(t.dataset.sdv!==undefined){sdVal(+t.dataset.sdv);return;}
+ switch(t.dataset.act){
+  case 'think':UI.SFX.tap();thinkStart();break;
+  case 't-go':UI.SFX.tap();TS=null;newThinkProblem();break;
+  case 't-again':UI.SFX.tap();newThinkProblem();window.scrollTo(0,0);break;
+  case 't-back':UI.SFX.tap();thinkStart();break;
+  case 't-hint':if(!TS||TS.locked)return;TS.hint=true;$('#tHint').classList.add('show');t.style.display='none';UI.SFX.tap();break;
+  case 't-submit':submitCalc();break;
+  case 't-next':UI.SFX.tap();thinkNext();break;
+  case 'ability':UI.SFX.tap();renderAbility();break;
+  case 'daily':UI.SFX.tap();openDaily();break;
+  case 'd-hint':dailyHint();break;
+  case 'd-check':sdCheck();break;
+  case 'd-reveal':sdReveal();break;
+  case 'd-next':UI.SFX.tap();dailyNext();break;
+ }
+});
+document.addEventListener('keydown',function(e){
+ if($('#modal').classList.contains('show'))return;
+ if($('#scr-think').classList.contains('active')&&TS&&TS.prob.steps[TS.si]){
+  var st=TS.prob.steps[TS.si];
+  if(TS.locked){if(e.key==='Enter'){e.preventDefault();thinkNext();}return;}
+  if(st.opts){var n=parseInt(e.key,10);if(n>=1&&n<=st.opts.length)chooseOpt(n-1);return;}
+  if(/^\d$/.test(e.key))tPress(e.key);else if(e.key==='.')tPress('.');else if(e.key==='Backspace')tPress('del');else if(e.key==='Enter'){e.preventDefault();submitCalc();}
+ }
+});
+MP.think={get state(){return TS;},get store(){return T;},get daily(){return DS;},render:renderTFig,reset:function(){T=defT();saveT();onHome();}};
 })();
 </script>
 </body>
